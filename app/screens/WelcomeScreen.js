@@ -1,16 +1,28 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { Style, Colors } from "../style/styles";
 import React from "react";
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-function WelcomeScreen(props) {
+function WelcomeScreen(props, navigation) {
   return (
     <ImageBackground style={styles.background}>
       <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require("./assets/logo.png")} />
+        <Image style={styles.logo} source={require("../assets/logo.png")} />
         <Text style={styles.logoText}>Mapplication 1.5</Text>
       </View>
-      <View style={styles.loginButton}>
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => console.log("pressed sign in")}
+      >
         <Text style={styles.buttonText}>Sign In</Text>
-      </View>
+      </TouchableOpacity>
       <View style={styles.registerButton}>
         <Text style={styles.buttonText}>Create Account</Text>
       </View>
@@ -23,22 +35,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    backgroundColor: "#131313",
+    backgroundColor: Colors.tertiary,
   },
   buttonText: {
     position: "relative",
-    display: "flex",
     top: 17,
-    color: "#fff",
+    color: Colors.white,
     fontFamily: "Montserrat",
     fontSize: 20,
-    justifyContent: "center",
-    alignItems: "center",
   },
   loginButton: {
     width: "100%",
     height: 70,
-    backgroundColor: "#ffc200",
+    backgroundColor: Colors.primary,
     alignItems: "center",
   },
   logo: {
@@ -52,14 +61,14 @@ const styles = StyleSheet.create({
   },
   logoText: {
     top: 10,
-    color: "#fff",
+    color: Colors.White,
     fontFamily: "Montserrat",
     fontSize: 15,
   },
   registerButton: {
     width: "100%",
     height: 70,
-    backgroundColor: "#875afb",
+    backgroundColor: Colors.secondary,
     alignItems: "center",
   },
 });
