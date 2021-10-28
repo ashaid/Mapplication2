@@ -59,7 +59,6 @@ class MapDisplay extends Component {
     return (
       <View style={Style.centerItem}>
         <Image style={styles.box} source={"data:image/png;base64," + data} />
-        {console.log(data)}
       </View>
     );
   }
