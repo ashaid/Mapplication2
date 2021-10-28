@@ -13,6 +13,7 @@ const Style = StyleSheet.create({
   f3: { flex: 3 },
   row: { flexDirection: "row" },
   col: { flexDirection: "column" },
+  centerItem: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
 
 export { Colors, Style };

@@ -11,18 +11,16 @@ import {
   View,
 } from "react-native";
 
-function WelcomeScreen(props, navigation) {
+function WelcomeScreen(props) {
   return (
     <ImageBackground style={styles.background}>
       <View style={styles.logoContainer}>
-        {/*         <Image style={styles.logo} source={require("../assets/logo.png")} />
-        <Text style={styles.logoText}>Mapplication 1.5</Text> */}
         <Wobble />
       </View>
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => console.log("pressed sign in")}
+        onPress={() => props.navigation.navigate("Map Display")}
       >
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
