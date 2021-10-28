@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, Image, View } from "react-native";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
-import MapDisplay from "./app/components/MapDisplayComponent";
+import MapDisplay from "./app/screens/MapDisplay";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 

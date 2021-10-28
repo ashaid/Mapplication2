@@ -35,7 +35,7 @@ function Wobble(props) {
         onPress={() => {
           rotation.value = withSequence(
             withTiming(-180, { duration: 300 }),
-            withRepeat(withTiming(180, { duration: 600 }), 4, true),
+            withRepeat(withTiming(180, { duration: 600 }), 2, true),
             withTiming(0, { duration: 300 })
           );
         }}
@@ -51,7 +51,7 @@ function Wobble(props) {
 const styles = StyleSheet.create({
   box: {
     width: 250,
-    height: 160,
+    height: 150,
     display: "flex",
   },
 });

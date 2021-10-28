@@ -8,10 +8,10 @@ import {
   Button,
   SafeAreaView,
 } from "react-native";
-import { Style } from "../style/styles";
+import { Style, Colors } from "../style/styles";
 import axios from "axios";
 
-class MapDisplay extends Component {
+class MapDisplayComponent extends Component {
   constructor() {
     super();
 
@@ -27,7 +27,7 @@ class MapDisplay extends Component {
       const result = await axios.post(
         "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=bec&start=1615&dest=1125"
       );
-      // console.log(result);
+      console.log(result);
       this.setState({
         data: result.data,
         loading: false,
@@ -72,19 +72,15 @@ class MapDisplay extends Component {
             width: "100%",
             height: "100%",
             resizeMode: "contain",
+            border: "solid",
+            borderColor: Colors.primary,
+            borderRadius: 30,
+            //transform: "rotate(90deg)",
           }}
         />
       </SafeAreaView>
     );
   }
 }
-const styles = StyleSheet.create({
-  box: {
-    display: "flex",
-    height: "100%",
-    width: undefined,
-    resizeMode: "contain",
-  },
-});
 
-export default MapDisplay;
+export { MapDisplayComponent };
