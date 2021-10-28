@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { View, Text, StyleSheet, Image, Button } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Button,
+  SafeAreaView,
+} from "react-native";
 import { Style } from "../style/styles";
 import axios from "axios";
 
@@ -20,7 +27,7 @@ class MapDisplay extends Component {
       const result = await axios.post(
         "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=bec&start=1615&dest=1125"
       );
-      console.log(result);
+      // console.log(result);
       this.setState({
         data: result.data,
         loading: false,
@@ -57,17 +64,26 @@ class MapDisplay extends Component {
       );
     }
     return (
-      <View style={Style.centerItem}>
-        <Image style={styles.box} source={"data:image/png;base64," + data} />
-      </View>
+      <SafeAreaView style={Style.centerItem}>
+        <Image
+          source={{ uri: "data:image/png;base64," + data }}
+          style={{
+            flex: 1,
+            width: "100%",
+            height: "100%",
+            resizeMode: "contain",
+          }}
+        />
+      </SafeAreaView>
     );
   }
 }
 const styles = StyleSheet.create({
   box: {
     display: "flex",
-    width: "20em",
-    height: "10em",
+    height: "100%",
+    width: undefined,
+    resizeMode: "contain",
   },
 });
 
