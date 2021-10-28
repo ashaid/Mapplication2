@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { Style, Colors } from "../style/styles";
+import { Wobble } from "../components/LogoAnimation";
 import React from "react";
 import {
   Image,
@@ -14,9 +15,11 @@ function WelcomeScreen(props, navigation) {
   return (
     <ImageBackground style={styles.background}>
       <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require("../assets/logo.png")} />
-        <Text style={styles.logoText}>Mapplication 1.5</Text>
+        {/*         <Image style={styles.logo} source={require("../assets/logo.png")} />
+        <Text style={styles.logoText}>Mapplication 1.5</Text> */}
+        <Wobble />
       </View>
+
       <TouchableOpacity
         style={styles.loginButton}
         onPress={() => console.log("pressed sign in")}
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
   },
   logoText: {
     top: 10,
-    color: Colors.White,
+    color: Colors.white,
     fontFamily: "Montserrat",
     fontSize: 15,
   },
