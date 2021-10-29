@@ -7,6 +7,8 @@ import {
   Image,
   Button,
   SafeAreaView,
+  ImageBackground,
+  ImageBase,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import axios from "axios";
@@ -16,7 +18,8 @@ class MapDisplayComponent extends Component {
     super();
 
     this.state = {
-      loading: true,
+      // change to loading: true for api call
+      loading: false,
       error: "",
       data: null,
     };
@@ -25,7 +28,8 @@ class MapDisplayComponent extends Component {
     this.setState({ loading: true });
     try {
       const result = await axios.post(
-        "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=bec&start=1615&dest=1125"
+        //"https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=bec&start=1615&dest=1125"
+        "api call"
       );
       console.log(result);
       this.setState({
@@ -44,7 +48,8 @@ class MapDisplayComponent extends Component {
     }
   };
   componentDidMount() {
-    this.loadData();
+    //this.loadData();
+    console.log("mounted");
   }
   render() {
     const { loading, error, data } = this.state;
@@ -64,21 +69,23 @@ class MapDisplayComponent extends Component {
       );
     }
     return (
-      <SafeAreaView style={Style.centerItem}>
+      <View style={{ flex: 1, alignSelf: "stretch" }}>
         <Image
-          source={{ uri: "data:image/png;base64," + data }}
+          //source={{ uri: "data:image/png;base64," + data }}
+          source={require("../assets/bec-1620-1615.png")}
           style={{
             flex: 1,
-            width: "100%",
-            height: "100%",
-            resizeMode: "contain",
+            width: null,
+            height: null,
+            resizeMode: "cover",
+            backgroundColor: "transparent",
             border: "solid",
-            borderColor: Colors.primary,
-            borderRadius: 30,
+            borderColor: Colors.secondary,
+            borderRadius: 20,
             //transform: "rotate(90deg)",
           }}
         />
-      </SafeAreaView>
+      </View>
     );
   }
 }
