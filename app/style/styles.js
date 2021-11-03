@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 const Colors = {
   primary: "#ffc200",
@@ -6,6 +6,10 @@ const Colors = {
   tertiary: "#131313",
   white: "#fff",
 };
+
+// const AppText = {
+//   size: "3px"
+// }
 
 const Style = StyleSheet.create({
   f1: { flex: 1 },

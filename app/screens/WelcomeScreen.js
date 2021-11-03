@@ -21,13 +21,16 @@ function WelcomeScreen(props) {
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => props.navigation.navigate("Map Display")}
+        onPress={() => props.navigation.navigate('MainScreen')}
       >
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
-      <View style={styles.registerButton}>
+      <TouchableOpacity 
+        style={styles.registerButton}
+        onPress={() => props.navigate.navigate('SignInScreen')}
+      >
         <Text style={styles.buttonText}>Create Account</Text>
-      </View>
+      </TouchableOpacity>
     </ImageBackground>
   );
 }
