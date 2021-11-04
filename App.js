@@ -1,3 +1,4 @@
+import "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, Image, View, Settings } from "react-native";
@@ -26,9 +27,9 @@ export default function App() {
           //options={{ title: "Welcome" }}
         />
         <Stack.Screen
-        name="MainScreen"
-        component={MainScreen}
-        //options={}
+          name="MainScreen"
+          component={MainScreen}
+          //options={}
         />
 
         <Stack.Screen
@@ -36,13 +37,13 @@ export default function App() {
           component={MapDisplay}
           options={{ headerShown: true }}
         />
-        
+
         {/* <Stack.Screen
           name="Log Out"
           component={LogOut}
           //options
         /> */}
-        
+
         {/* <Stack.Screen
           name="Building View"
           component={BuildingViewer}
@@ -60,7 +61,7 @@ export default function App() {
          component={MapMaker}
          //options
         /> */}
-        
+
         {/* <Stack.Screen
          name="Settings"
          component={Settings}
