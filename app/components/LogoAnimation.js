@@ -1,3 +1,4 @@
+import "react-native-reanimated";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
