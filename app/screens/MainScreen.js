@@ -1,15 +1,18 @@
 import React, { Children } from 'react';
-import { ImageBackground, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { ImageBackground, TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import { Wobble } from '../components/LogoAnimation';
 import { Colors } from '../style/styles';
 
 
 function MainScreen(props) {
     return (
+        
         <ImageBackground style={styles.background}>
-
+            <View style = {styles.headerContainer}>
+                <Text style = {styles.headerText}>Chef Urgle</Text>
+            </View>
             <TouchableOpacity 
-            style={styles.tabContainer}
+            style={styles.mapCalculatorContainer}
             onPress={()=>props.navigation.navigate('Map Calculator')}
             >
                 <Text style={styles.tabText}>
@@ -18,7 +21,7 @@ function MainScreen(props) {
             </TouchableOpacity>
 
             <TouchableOpacity 
-            style={styles.tabContainer}
+            style={styles.scheduleBuilderContainer}
             onPress={()=>props.navigation.navigate('Schedule Builder')}
             >
                 <Text style={styles.tabText}>
@@ -27,7 +30,7 @@ function MainScreen(props) {
             </TouchableOpacity>
 
             <TouchableOpacity 
-            style={styles.tabContainer}
+            style={styles.buildingViewContainer}
             onPress={()=>props.navigation.navigate('Building View')}
             >
                 <Text style={styles.tabText}>
@@ -36,7 +39,7 @@ function MainScreen(props) {
             </TouchableOpacity>
 
             <TouchableOpacity 
-            style={styles.tabContainer}
+            style={styles.mapMakerContainer}
             onPress={()=>props.navigation.navigate('Map Display')}
             >
                 <Text style={styles.tabText}>
@@ -45,7 +48,7 @@ function MainScreen(props) {
             </TouchableOpacity>
 
             <TouchableOpacity 
-            style={styles.tabContainer}
+            style={styles.settingsContainer}
             onPress={()=>props.navigation.navigate('Settings')}
             >
                 <Text style={styles.tabText}>
@@ -54,7 +57,7 @@ function MainScreen(props) {
             </TouchableOpacity>
 
             <TouchableOpacity 
-            style={styles.tabContainer}
+            style={styles.logOutContainer}
             onPress={()=>props.navigation.navigate('LogOut')}
             >
                 <Text style={styles.tabText}>
@@ -74,62 +77,96 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
         alignItems: "center",
         backgroundColor: "#131313",
-
+        baseline: "1",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        padding: 10,
+    },
+    headerContainer:{
+        display: "flex",
+        position: "absolute",
+        width: "100%",
+        height: 70,
+        padding: 20,
+        backgroundColor: "#2c2f33", 
+        justifyContent: "space-between",
+        alignItems: "center",
+        top: 0,
+    },
+    headerText:{
+        color: Colors.white,
+        top: 17,
+        fontFamily: "Montserrat",
+        fontSize: 30,
     },
     tabText:{
         position: "relative",
-        top: 17,
         color: Colors.white,
         fontFamily: "Montserrat",
         fontSize: 20,
     },
-    tabButton:{
-        width: 70,
-        height: 45,
-    },
-    tabContainer: {
-        baseline: "1",
-        justifyContent: "space-around",
-        flexWrap: "wrap"
-    },
-    row:{
-        flexDirection: "row",
-        flexWrap: "wrap",
-    },
-    column:{
-        flexDirection: "column",
-        flexWrap: "wrap",
-    },
     mapCalculatorContainer:{
         backgroundColor: "#f2283c",
-        width: 70,
-        height: 45,
+        padding: 20,
+        baseline: "1",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        width: "42%",
+        height: 160,
     },
     scheduleBuilderContainer:{
         backgroundColor: "#ffc280",
-        width: 70,
-        height: 45,
+        padding: 20,
+        baseline: "1",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        width: "42%",
+        height: 160,
     },
     buildingViewContainer:{
-        backgroundColor: "d72e82",
-        width: 70,
-        height: 45,
+        backgroundColor: "#d72e82",
+        padding: 20,
+        baseline: "1",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        width: "42%",
+        height: 160,
     },
     mapMakerContainer:{
         backgroundColor: "#875afb",
-        width: 70,
-        height: 45,
+        padding: 20,
+        baseline: "1",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        width: "42%",
+        height: 160,
     },
     settingsContainer:{
         backgroundColor: "#00ae6b",
-        width: 70,
-        height: 45,
+        padding: 20,
+        baseline: "1",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        width: "42%",
+        height: 160,
     },
     logOutContainer:{
         backgroundColor: "#277dff",
-        width: 70,
-        height: 45,
+        padding: 20,
+        baseline: "1",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        width: "42%",
+        height: 160,
     }
+
 })
 
 export default MainScreen;
