@@ -22,6 +22,8 @@ class MapDisplayComponent extends Component {
       loading: false,
       error: "",
       data: null,
+      startingRoom: "",
+      destinationRoom: "",
     };
   }
   loadData = async () => {
@@ -50,6 +52,7 @@ class MapDisplayComponent extends Component {
   componentDidMount() {
     //this.loadData();
     console.log("mounted");
+    console.log(this.state.startingRoom + " " + this.state.destinationRoom)
   }
   render() {
     const { loading, error, data } = this.state;

@@ -1,4 +1,4 @@
-
+import "react-native-reanimated";
 import { NavigationContainer } from "@react-navigation/native";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
@@ -21,13 +21,22 @@ function WelcomeScreen(props) {
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => props.navigation.navigate("Map Display")}
+        onPress={() => props.navigation.navigate("MainScreen")}
       >
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
+<<<<<<< HEAD
       <View style={styles.registerButton}>
         <Text style={styles.buttonText}>  Create Account</Text>
       </View>
+=======
+      <TouchableOpacity
+        style={styles.registerButton}
+        onPress={() => props.navigate.navigate("SignInScreen")}
+      >
+        <Text style={styles.buttonText}>Create Account</Text>
+      </TouchableOpacity>
+>>>>>>> 7a29fde776d126a7dab8589fcf65c92cbf48bfb5
     </ImageBackground>
   );
 }
