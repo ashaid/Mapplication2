@@ -25,18 +25,9 @@ function WelcomeScreen(props) {
       >
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
-<<<<<<< HEAD
       <View style={styles.registerButton}>
         <Text style={styles.buttonText}>  Create Account</Text>
       </View>
-=======
-      <TouchableOpacity
-        style={styles.registerButton}
-        onPress={() => props.navigate.navigate("SignInScreen")}
-      >
-        <Text style={styles.buttonText}>Create Account</Text>
-      </TouchableOpacity>
->>>>>>> 7a29fde776d126a7dab8589fcf65c92cbf48bfb5
     </ImageBackground>
   );
 }
