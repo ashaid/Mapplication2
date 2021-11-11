@@ -1,3 +1,4 @@
+import "react-native-reanimated";
 import { NavigationContainer } from "@react-navigation/native";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
@@ -20,12 +21,12 @@ function WelcomeScreen(props) {
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => props.navigation.navigate("Map Display")}
+        onPress={() => props.navigation.navigate("MainScreen")}
       >
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
       <View style={styles.registerButton}>
-        <Text style={styles.buttonText}>Create Account</Text>
+        <Text style={styles.buttonText}>  Create Account</Text>
       </View>
     </ImageBackground>
   );
@@ -40,15 +41,16 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     position: "relative",
-    top: 17,
+    top: 2,
     color: Colors.white,
-    fontFamily: "Montserrat",
-    fontSize: 20,
+    fontWeight: "bold",
+    fontSize: 30,
   },
   loginButton: {
-    width: "100%",
-    height: 70,
-    backgroundColor: Colors.primary,
+    borderRadius: 30,
+    paddingVertical: 15,
+    paddingHorizontal: 135,
+    backgroundColor: '#28459c',
     alignItems: "center",
   },
   logo: {
@@ -61,14 +63,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoText: {
-    top: 10,
+    top: 15,
     color: Colors.white,
+    fontWeight: "bold",
     fontFamily: "Montserrat",
-    fontSize: 15,
+    fontSize: 20,
   },
   registerButton: {
-    width: "100%",
-    height: 70,
+    borderRadius: 35,
+    paddingVertical: 20,
+    paddingHorizontal: 70,
     backgroundColor: Colors.secondary,
     alignItems: "center",
   },
