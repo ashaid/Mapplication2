@@ -1,3 +1,4 @@
+import "react-native-sqlite-storage";
 import REACT, { Component } from "react";
 import { openDatabase } from "react-native-sqlite-storage";
 import { closeDatabase } from "react-native-sqlite-storage";
