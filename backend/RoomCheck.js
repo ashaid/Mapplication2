@@ -39,3 +39,5 @@ const checkRoom = async (srcRoom, destRoom, srcBuilding, destBuilding) => {
   await closeConnection(); //idk if this works
   return validRooms;
 };
+
+export default checkRoom;
