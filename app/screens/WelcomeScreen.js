@@ -2,7 +2,7 @@ import "react-native-reanimated";
 import { NavigationContainer } from "@react-navigation/native";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
-import React from "react";
+import React, {useRef}  from "react";
 import {
   Image,
   ImageBackground,
