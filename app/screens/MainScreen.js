@@ -1,4 +1,4 @@
-import React, { Children }, {useRef} from "react";
+import React, { Children, useRef } from "react";
 import {
   ImageBackground,
   TouchableOpacity,
@@ -10,16 +10,15 @@ import { Wobble } from "../components/LogoAnimation";
 import { Colors, Style } from "../style/styles";
 
 function MainScreen(props) {
-  function fadeClick(){
+  function fadeClick() {
     const [fadeAnim] = useState(new Animated.Value(0));
-  
+
     React.useEffect(() => {
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 5000,
       }).start();
     }, []);
-  
   }
   return (
     <ImageBackground style={styles.background}>
@@ -30,75 +29,84 @@ function MainScreen(props) {
       <TouchableOpacity
         style={styles.mapCalculatorContainer}
         onPress={() => {
-          setTimeout(function() {props.navigation.navigate("Map Calculator");}, 400);
-      }}
-
-       onPressIn = {() => {
-         fadeClick;
-       }}
+          setTimeout(function () {
+            props.navigation.navigate("Map Calculator");
+          }, 400);
+        }}
+        onPressIn={() => {
+          fadeClick;
+        }}
       >
-        <Text style={(Style.centerItem, styles.tabText)}>
-          Find My Classes
-        </Text>
+        <Text style={(Style.centerItem, styles.tabText)}>Find My Classes</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.scheduleBuilderContainer}
         onPress={() => {
-          setTimeout(function() {props.navigation.navigate("Schedule Builder");}, 400);
-      }}
-
-       onPressIn = {() => {
-         fadeClick;
-       }}      >
+          setTimeout(function () {
+            props.navigation.navigate("Schedule Builder");
+          }, 400);
+        }}
+        onPressIn={() => {
+          fadeClick;
+        }}
+      >
         <Text style={styles.tabText}>Schedule Builder</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.buildingViewContainer}
         onPress={() => {
-          setTimeout(function() {props.navigation.navigate("Building View");}, 400);
-      }}
-
-       onPressIn = {() => {
-         fadeClick;
-       }}      >
+          setTimeout(function () {
+            props.navigation.navigate("Building View");
+          }, 400);
+        }}
+        onPressIn={() => {
+          fadeClick;
+        }}
+      >
         <Text style={styles.tabText}>Building View</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.mapMakerContainer}
         onPress={() => {
-          setTimeout(function() {props.navigation.navigate("Map Display");}, 400);
-      }}
-
-       onPressIn = {() => {
-         fadeClick;
-       }}      >
+          setTimeout(function () {
+            props.navigation.navigate("Map Display");
+          }, 400);
+        }}
+        onPressIn={() => {
+          fadeClick;
+        }}
+      >
         <Text style={styles.tabText}>Map Maker</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.settingsContainer}
         onPress={() => {
-          setTimeout(function() {props.navigation.navigate("Settings");}, 400);
-      }}
-
-       onPressIn = {() => {
-         fadeClick;
-       }}      >
+          setTimeout(function () {
+            props.navigation.navigate("Settings");
+          }, 400);
+        }}
+        onPressIn={() => {
+          fadeClick;
+        }}
+      >
         <Text style={styles.tabText}>Settings</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.logOutContainer}
         onPress={() => {
-          setTimeout(function() {props.navigation.navigate("Welcome Screen");}, 400);
-      }}
-
-       onPressIn = {() => {
-         fadeClick;
-       }}      >
+          setTimeout(function () {
+            props.navigation.navigate("Welcome Screen");
+          }, 400);
+        }}
+        onPressIn={() => {
+          fadeClick;
+        }}
+      >
         <Text style={styles.tabText}>Log Out</Text>
       </TouchableOpacity>
     </ImageBackground>

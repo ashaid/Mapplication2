@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import axios from "axios";
-import checkRoom from "../../backend/RoomCheck";
+//import checkRoom from "../../backend/RoomCheck";
 
 class MapDisplayComponent extends Component {
   constructor(props) {
@@ -72,7 +72,7 @@ class MapDisplayComponent extends Component {
   componentDidMount() {
     //this.loadData();
     console.log("mounted");
-    console.log(checkRoom(1615, 1620, "bec", "bec"));
+    //console.log(checkRoom(1615, 1620, "bec", "bec"));
   }
   handleSubmitPress = () => {
     console.log("handling");
