@@ -13,6 +13,16 @@ import {
 } from "react-native";
 
 function WelcomeScreen(props) {
+    function fadeClick(){
+    const [fadeAnim] = useState(new Animated.Value(0));
+  
+    React.useEffect(() => {
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 5000,
+      }).start();
+    }, []);
+  }
   return (
     <ImageBackground style={styles.background}>
       <View style={styles.logoContainer}>
