@@ -20,10 +20,17 @@ function WelcomeScreen(props) {
       </View>
 
       <TouchableOpacity
-        style={styles.loginButton}
-        onPress={() => props.navigation.navigate("MainScreen")}
+        onPress={() => {
+          setTimeout(function() {props.navigation.navigate("MainScreen");}, 400);
+        }}
+
+         onPressIn = {() => {
+           fadeClick;
+         }}
       >
+        <View style={styles.loginButton}>
         <Text style={styles.buttonText}>Sign In</Text>
+        </View>
       </TouchableOpacity>
       <View style={styles.registerButton}>
         <Text style={styles.buttonText}>  Create Account</Text>
