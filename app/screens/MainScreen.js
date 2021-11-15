@@ -1,4 +1,4 @@
-import React, { Children }, {useRef} from "react";
+import React, { Children } from "react";
 import {
   ImageBackground,
   TouchableOpacity,
@@ -81,13 +81,13 @@ function MainScreen(props) {
       <TouchableOpacity
         style={styles.settingsContainer}
         onPress={() => {
-          setTimeout(function() {props.navigation.navigate("Settings");}, 400);
+          setTimeout(function() {props.navigation.navigate("Preferences");}, 400);
       }}
 
        onPressIn = {() => {
          fadeClick;
        }}      >
-        <Text style={styles.tabText}>Settings</Text>
+        <Text style={styles.tabText}>Preferences</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
