@@ -1,10 +1,11 @@
-import SQLite from "react-native-sqlite-storage";
+import SQLite, { enablePromise } from "react-native-sqlite-storage";
 import REACT, { Component } from "react";
 import { openDatabase } from "react-native-sqlite-storage";
 import { closeDatabase } from "react-native-sqlite-storage";
 
 const checkRoom = async (srcRoom, destRoom, srcBuilding, destBuilding) => {
-  let validRooms = true;
+  let validRooms = false;
+  enablePromise(true);
   if (srcRoom == "-1") {
     let noStartingPoint = true;
   } else {
