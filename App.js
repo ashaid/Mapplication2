@@ -14,10 +14,21 @@ import LogOut from "./app/screens/LogOut";
 import ScheduleBuilder from "./app/screens/subscreens/ScheduleBuilder";
 import SignInScreen from "./app/screens/SignInScreen";
 import Preferences from "./app/screens/subscreens/Preferences";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  function fadeClick(){
+    const [fadeAnim] = useState(new Animated.Value(0));
+  
+    React.useEffect(() => {
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 5000,
+      }).start();
+    }, []);
+  }
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -62,11 +73,23 @@ export default function App() {
          //options
         /> */}
 
-        {/* <Stack.Screen
-         name="Settings"
-         component={Settings}
-         //options
-        /> */}
+        { <Stack.Screen
+         name="Preferences"
+         component={Preferences}
+        /* options={
+           {
+             headerTitle: props => <LogoTitle{...props}/>,
+             headerRight: ()=>(
+               <TouchableOpacity
+                  onPress={()=> setTimeout(function(){props.navigation.navigate("MainScreen");}, 400)}
+                  onPress={()=>{fadeClick;}}
+                  title="Back"
+                  color="#fff"
+               />
+             )
+             } 
+         } */
+        /> }
 
         {/* <Stack.Screen
          name="Schedule Builder"
@@ -78,7 +101,15 @@ export default function App() {
           name="Sign In"
           component={SignInScreen}
         /> */}
+
+        {// <Stack.Screen
+      //  name="Sign Up"
+      //  component={SignUpScreen}
+      //  />
+    }
+      
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+

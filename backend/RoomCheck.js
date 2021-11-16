@@ -1,15 +1,7 @@
-import "react-native-sqlite-storage";
+import SQLite from "react-native-sqlite-storage";
 import REACT, { Component } from "react";
 import { openDatabase } from "react-native-sqlite-storage";
 import { closeDatabase } from "react-native-sqlite-storage";
-
-export const createConnection = async () => {
-  return openDatabase({ name: "LSU.db", location: "default" });
-};
-
-export const closeConnection = async () => {
-  return closeDatabase({ name: "LSU.db", location: "default" });
-};
 
 const checkRoom = async (srcRoom, destRoom, srcBuilding, destBuilding) => {
   let validRooms = false;
@@ -18,7 +10,7 @@ const checkRoom = async (srcRoom, destRoom, srcBuilding, destBuilding) => {
   } else {
     let noStartingPoint = false;
   }
-  const db = await createConnection();
+  const db = SQLite.openDatabase({name : "LSU.db", readOnly : true, createFromLocation : 1});
   const destQuery = `SELECT EXISTS(SELECT 1 FROM ${destBuilding} WHERE ROOM_NUMBER = ${destRoom};`;
   let destValid = await db.executeSql(destQuery);
   if (noStartingPoint && parseInt(destValid) == 1) {
@@ -36,7 +28,7 @@ const checkRoom = async (srcRoom, destRoom, srcBuilding, destBuilding) => {
       validRooms = true;
     }
   }
-  await closeConnection(); //idk if this works
+  SQLite.closeDatabase(db);
   return validRooms;
 };
 
