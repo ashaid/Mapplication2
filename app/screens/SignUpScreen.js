@@ -1,3 +1,4 @@
+/*
 import React, {Component} from "react";
 import "react-native-reanimated";
 import {
@@ -9,11 +10,10 @@ import {
   View,
 } from "react-native";
 
-function MapCalculator(props){
+function SignUpScreen(props){
     return(
 
         <ImageBackground style = {styles.background}></ImageBackground>
-
 
     );
 }
@@ -36,4 +36,6 @@ const styles = StyleSheet.create({
 
 })
 
-export default MapCalculator;
+export default SignUpScreen;
+
+*/
