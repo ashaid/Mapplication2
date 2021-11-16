@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
 import {
   View,
   Text,

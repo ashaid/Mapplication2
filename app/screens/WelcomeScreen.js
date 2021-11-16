@@ -11,18 +11,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+const ScreenContainer = ({ children }) => (
 
+  <View style={styles.container}>{children}</View>
+
+);
 function WelcomeScreen(props) {
-    function fadeClick(){
-    const [fadeAnim] = useState(new Animated.Value(0));
-  
-    React.useEffect(() => {
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 5000,
-      }).start();
-    }, []);
-  }
+
   return (
     <ImageBackground style={styles.background}>
       <View style={styles.logoContainer}>
@@ -30,14 +25,11 @@ function WelcomeScreen(props) {
       </View>
 
       <TouchableOpacity
-        onPress={() => {
-          setTimeout(function() {props.navigation.navigate("MainScreen");}, 400);
-        }}
-
-         onPressIn = {() => {
-           fadeClick;
-         }}
+            onPress={() => {
+              props.navigation.navigate("MainScreen");
+            }}
       >
+
         <View style={styles.loginButton}>
         <Text style={styles.buttonText}>Sign In</Text>
         </View>
@@ -86,6 +78,7 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat",
     fontSize: 20,
   },
+
   registerButton: {
     borderRadius: 35,
     paddingVertical: 20,
