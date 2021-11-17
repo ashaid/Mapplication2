@@ -1,5 +1,8 @@
-import "react-native-sqlite-storage";
+import SQLite from "react-native-sqlite-storage";
+import "react-native";
 import checkRoom from "../backend/RoomCheck";
+
+jest.mock("react-native-sqlite-storage");
 
 test("bec 1615 to 1620", () => {
   let srcRoom = 1615;

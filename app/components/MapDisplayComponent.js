@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
 import {
   View,
   Text,
@@ -9,12 +9,14 @@ import {
   SafeAreaView,
   ImageBackground,
   ImageBase,
+  TextInput,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import axios from "axios";
+import checkRoom from "../../backend/RoomCheck";
 
 class MapDisplayComponent extends Component {
-  constructor() {
+  constructor(props) {
     super();
 
     this.state = {
@@ -24,14 +26,32 @@ class MapDisplayComponent extends Component {
       data: null,
       startingRoom: "",
       destinationRoom: "",
+      updateMap: false,
     };
   }
-  loadData = async () => {
+  apiTestHelper = async () => {
+    try {
+      const result = await axios.post(
+        "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=bec&start=" +
+          args[0] +
+          "&dest=" +
+          args[1]
+      );
+      console.log(result);
+      return result.data;
+    } catch (error) {
+      console.error("error: ", error);
+    }
+  };
+  loadData = async (...args) => {
+    console.log(args);
     this.setState({ loading: true });
     try {
       const result = await axios.post(
-        //"https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=bec&start=1615&dest=1125"
-        "api call"
+        "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=bec&start=" +
+          args[0] +
+          "&dest=" +
+          args[1]
       );
       console.log(result);
       this.setState({
@@ -52,10 +72,32 @@ class MapDisplayComponent extends Component {
   componentDidMount() {
     //this.loadData();
     console.log("mounted");
-    console.log(this.state.startingRoom + " " + this.state.destinationRoom)
   }
+  handleSubmitPress = () => {
+    if (this.state.startingRoom && this.state.destinationRoom != "") {
+      console.log("success");
+      this.setState({ updateMap: true });
+      // *** UNCOMMENT FOR API CALL
+      // this.loadData(this.state.startingRoom, this.state.destinationRoom);
+    } else {
+      console.log("failed");
+    }
+  };
+
+  handleStartingRoom = (text) => {
+    this.setState({ startingRoom: text });
+  };
+  handleDestinationRoom = (text) => {
+    this.setState({ destinationRoom: text });
+  };
+  handleUpdateMapToFalse = () => {
+    this.setState({ updateMap: false });
+  };
   render() {
-    const { loading, error, data } = this.state;
+    const { loading, error, data, startingRoom, destinationRoom, updateMap } =
+      this.state;
+    if (this.state.updateMap)
+      console.log(this.state.startingRoom + " " + this.state.destinationRoom);
     if (loading) {
       return <Text>Loading ...</Text>;
     }
@@ -71,7 +113,8 @@ class MapDisplayComponent extends Component {
         </Text>
       );
     }
-    return (
+    let map;
+    map = (
       <View style={{ flex: 1, alignSelf: "stretch" }}>
         <Image
           //source={{ uri: "data:image/png;base64," + data }}
@@ -88,6 +131,49 @@ class MapDisplayComponent extends Component {
             //transform: "rotate(90deg)",
           }}
         />
+      </View>
+    );
+    return (
+      <View
+        style={
+          (Style.centerItem,
+          { width: "100%", height: "100%", backgroundColor: Colors.tertiary })
+        }
+      >
+        <View
+          style={{
+            display: "flex",
+            width: "100%",
+            height: "80%",
+            backgroundColor: Colors.tertiary,
+          }}
+        >
+          {map}
+        </View>
+
+        <TextInput
+          placeholder="starting room"
+          onChangeText={this.handleStartingRoom}
+          style={{ color: Colors.white }}
+        ></TextInput>
+        <TextInput
+          placeholder="destination room"
+          onChangeText={this.handleDestinationRoom}
+          style={{ color: Colors.white }}
+        ></TextInput>
+
+        <Button
+          type="submit"
+          onPress={
+            () => {
+              this.handleSubmitPress();
+              this.handleUpdateMapToFalse();
+            }
+            // () => console.log(`${startingRoom} and ${destinationRoom}`)
+          }
+        >
+          button
+        </Button>
       </View>
     );
   }

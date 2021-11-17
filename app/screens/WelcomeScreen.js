@@ -2,7 +2,7 @@ import "react-native-reanimated";
 import { NavigationContainer } from "@react-navigation/native";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
-import React from "react";
+import React, {useRef}  from "react";
 import {
   Image,
   ImageBackground,
@@ -11,8 +11,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+const ScreenContainer = ({ children }) => (
 
+  <View style={styles.container}>{children}</View>
+
+);
 function WelcomeScreen(props) {
+
   return (
     <ImageBackground style={styles.background}>
       <View style={styles.logoContainer}>
@@ -20,14 +25,29 @@ function WelcomeScreen(props) {
       </View>
 
       <TouchableOpacity
-        style={styles.loginButton}
-        onPress={() => props.navigation.navigate("MainScreen")}
+            onPress={() => {
+              props.navigation.navigate("MainScreen");
+            }}
       >
+
+        <View style={styles.loginButton}>
         <Text style={styles.buttonText}>Sign In</Text>
+        </View>
       </TouchableOpacity>
+      <TouchableOpacity
+
+      onPress={()=>{setTimeout(function() {props.navigation.navigate("SignUpScreen");}, 400);
+      }}
+
+      onPressIn = {() => {
+       fadeClick;
+      }}
+
+      >
       <View style={styles.registerButton}>
         <Text style={styles.buttonText}>  Create Account</Text>
       </View>
+      </TouchableOpacity>
     </ImageBackground>
   );
 }
@@ -69,6 +89,7 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat",
     fontSize: 20,
   },
+
   registerButton: {
     borderRadius: 35,
     paddingVertical: 20,
