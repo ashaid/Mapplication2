@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import MapDisplay from "./app/screens/MapDisplay";
 import MainScreen from "./app/screens/MainScreen";
+import SignUpScreen from "./app/screens/SignUpScreen";
 import BuildingViewer from "./app/screens/subscreens/BuildingViewer";
 import MapCalculator from "./app/screens/subscreens/MapCalculator";
 import MapMaker from "./app/screens/subscreens/MapMaker";
@@ -47,6 +48,11 @@ export default function App() {
           name="Map Display"
           component={MapDisplay}
           options={{ headerShown: true }}
+        />
+
+        <Stack.Screen
+          name="SignUpScreen"
+          component={SignUpScreen}
         />
 
         {/* <Stack.Screen
@@ -102,12 +108,6 @@ export default function App() {
           component={SignInScreen}
         /> */}
 
-        {// <Stack.Screen
-      //  name="Sign Up"
-      //  component={SignUpScreen}
-      //  />
-    }
-      
       </Stack.Navigator>
     </NavigationContainer>
   );

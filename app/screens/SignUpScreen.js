@@ -1,4 +1,3 @@
-/*
 import React, {Component} from "react";
 import "react-native-reanimated";
 import {
@@ -13,7 +12,11 @@ import {
 function SignUpScreen(props){
     return(
 
-        <ImageBackground style = {styles.background}></ImageBackground>
+        <ImageBackground style = {styles.background}>
+
+            <Text>Fill In</Text>
+
+        </ImageBackground>
 
     );
 }
@@ -37,5 +40,3 @@ const styles = StyleSheet.create({
 })
 
 export default SignUpScreen;
-
-*/
