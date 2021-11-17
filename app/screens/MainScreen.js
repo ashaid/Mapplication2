@@ -8,56 +8,7 @@ import {
 } from "react-native";
 import { Wobble } from "../components/LogoAnimation";
 import { Colors, Style } from "../style/styles";
-import ScreenContainer  from "../components/ScreenContainer";
-
-
-
-
-<<<<<<< HEAD
-=======
-      <TouchableOpacity
-        style={styles.mapMakerContainer}
-        onPress={() => {
-          setTimeout(function () {
-            props.navigation.navigate("Map Display");
-          }, 400);
-        }}
-        onPressIn={() => {
-          fadeClick;
-        }}
-      >
-        <Text style={styles.tabText}>Map Maker</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.settingsContainer}
-        onPress={() => {
-          setTimeout(function() {props.navigation.navigate("Preferences");}, 400);
-      }}
-
-       onPressIn = {() => {
-         fadeClick;
-       }}      >
-        <Text style={styles.tabText}>Preferences</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.logOutContainer}
-        onPress={() => {
-          setTimeout(function () {
-            props.navigation.navigate("Welcome Screen");
-          }, 400);
-        }}
-        onPressIn={() => {
-          fadeClick;
-        }}
-      >
-        <Text style={styles.tabText}>Log Out</Text>
-      </TouchableOpacity>
-    </ImageBackground>
-  );
-}
->>>>>>> b169bc9219dd1f7461dc3fa0341bff74db1ddc14
+import ScreenContainer from "../components/ScreenContainer";
 
 const styles = StyleSheet.create({
   background: {
@@ -71,7 +22,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     padding: 10,
   },
-    logoContainer: {
+  logoContainer: {
     position: "absolute",
     top: 250,
     alignItems: "center",
@@ -104,8 +55,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
-    borderRadius: 5
-  }
-
+    borderRadius: 5,
+  },
 });
-
