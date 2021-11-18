@@ -10,25 +10,11 @@ import {
   useColorScheme,
   TabBarIOS,
 } from "react-native";
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from "@react-navigation/native";
+import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import WelcomeScreen from "./app/screens/WelcomeScreen";
 import MapDisplay from "./app/screens/MapDisplay";
-import MainScreen from "./app/screens/MainScreen";
-import BuildingViewer from "./app/screens/subscreens/BuildingViewer";
-import MapCalculator from "./app/screens/subscreens/MapCalculator";
-import MapMaker from "./app/screens/subscreens/MapMaker";
-import LogOut from "./app/screens/LogOut";
-import ScheduleBuilder from "./app/screens/subscreens/ScheduleBuilder";
-import SignInScreen from "./app/screens/SignInScreen";
-import Preferences from "./app/screens/subscreens/Preferences";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Home, LogIn, ProfileScreen } from "./app/screens/Screens.js";
+import { Home, LogIn, ProfileScreen, Splash } from "./app/screens/Screens.js";
 import { AuthContext } from "./app/components/AuthContext.js";
 
 const MapStack = createNativeStackNavigator();
@@ -39,8 +25,11 @@ const ProfileStack = createNativeStackNavigator();
 const Tabs = createMaterialBottomTabNavigator();
 
 const LogInStackScreen = () => (
-  <LogInStack.Navigator>
-    <LogInStack.Screen name="LogIn" component={LogIn} />
+  <LogInStack.Navigator screenOptions={{ headerShown: false }}>
+    <LogInStack.Screen 
+    name="LogIn" 
+    component={LogIn} 
+    />
   </LogInStack.Navigator>
 );
 
@@ -51,7 +40,7 @@ const HomeStackScreen = () => (
 );
 
 const ProfileStackScreen = () => (
-  <ProfileStack.Navigator>
+  <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
     <ProfileStack.Screen name="Profile" component={ProfileScreen} />
   </ProfileStack.Navigator>
 );
@@ -71,33 +60,46 @@ const TabsScreen = () => (
 );
 
 const RootStackScreen = ({ userToken }) => (
-  <RootStack.Navigator headerMode="none">
+  <RootStack.Navigator headerMode="none" screenOptions={{ headerShown: false }}>
     {userToken ? (
-      <RootStack.Screen name="Main Screen" component={TabsScreen} />
+      <RootStack.Screen 
+      name="Main Screen" 
+      component={TabsScreen} 
+      />
     ) : (
-      <RootStack.Screen name="Log In Screen" component={LogInStackScreen} />
+      <RootStack.Screen 
+      name="Log In Screen" 
+      component={LogInStackScreen} 
+      />
     )}
   </RootStack.Navigator>
 );
 
 export default function App() {
   const [userToken, setUserToken] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(true);
   const authContext = React.useMemo(() => {
-    return (
-      {
+    return {
+      
         logIn: () => {
+          setIsLoading(false)
           setUserToken("asdf");
         },
-      },
-      {
         signOut: () => {
           setUserToken(null);
         },
-      }
-    );
+      };
   }, []);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+  if (isLoading) {
+    return < Splash />
+  }
   return (
-    <AuthContext.Provider value={authContext}>
+    <AuthContext.Provider value={authContext} >
       <NavigationContainer>
         <RootStackScreen userToken={userToken} />
       </NavigationContainer>
