@@ -13,7 +13,7 @@ const RootStack = createNativeStackNavigator();
 const LogInStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
-const Tabs = createMaterialBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const LogInStackScreen = () => (
   <LogInStack.Navigator screenOptions={{ headerShown: false }}>
@@ -42,12 +42,12 @@ const MapStackScreen = () => (
   </MapStack.Navigator>
 );
 
-const TabsScreen = () => (
-  <Tabs.Navigator>
-    <Tabs.Screen name="Home" component={HomeStackScreen} />
-    <Tabs.Screen name="Map Display" component={MapStackScreen} />
-    <Tabs.Screen name="Profile" component={ProfileStackScreen} />
-  </Tabs.Navigator>
+const TabScreen = () => (
+  <Tab.Navigator>
+    <Tab.Screen name="Home" component={HomeStackScreen} />
+    <Tab.Screen name="Map Display" component={MapStackScreen} />
+    <Tab.Screen name="Profile" component={ProfileStackScreen} />
+  </Tab.Navigator>
 );
 
 const RootStackScreen = ({ userToken }) => (
@@ -55,7 +55,7 @@ const RootStackScreen = ({ userToken }) => (
     {userToken ? (
       <RootStack.Screen 
       name="Main Screen" 
-      component={TabsScreen} 
+      component={TabScreen} 
       />
     ) : (
       <RootStack.Screen 
