@@ -34,9 +34,11 @@ function WelcomeScreen(props) {
         <Text style={styles.buttonText}>Sign In</Text>
         </View>
       </TouchableOpacity>
+
       <TouchableOpacity
 
-      onPress={()=>{setTimeout(function() {props.navigation.navigate("SignUpScreen");}, 400);
+      onPress={()=>{
+        setTimeout(function() {props.navigation.navigate("SignUpScreen");}, 400);
       }}
 
       onPressIn = {() => {
@@ -45,7 +47,7 @@ function WelcomeScreen(props) {
 
       >
       <View style={styles.registerButton}>
-        <Text style={styles.buttonText}>  Create Account</Text>
+        <Text style={styles.buttonText}> Create Account</Text>
       </View>
       </TouchableOpacity>
     </ImageBackground>

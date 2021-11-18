@@ -1,15 +1,6 @@
 import "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  Image,
-  View,
-  Settings,
-  useColorScheme,
-  TabBarIOS,
-} from "react-native";
 import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
