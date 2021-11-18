@@ -112,7 +112,8 @@ function ButtonProtocol(startingRoom, destinationRoom, startBuilding, destinatio
 const stylesMD = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
+    color: "#131313",
+    backgroundColor: "#131313",
   },
   source: {
     borderWidth: 0.5,
