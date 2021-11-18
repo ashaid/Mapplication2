@@ -50,11 +50,11 @@ class MapDisplay extends Component {
         <View>
           <Text>Enter Starting Point:</Text>
         </View>
-        <View>
+        <View style={styles.row}>
           {/* from https://github.com/lawnstarter/react-native-picker-select */}
           <RNPickerSelect
             onValueChange={(value) => this.setStartingBuilding(value)}
-            placeholder={{ label: "Select your building", value: null }}
+            placeholder={{ label: "Starting Building", value: null }}
             items={[
               { label: "BEC", value: "bec" },
               { label: "PFT", value: "pft" },
@@ -63,7 +63,7 @@ class MapDisplay extends Component {
           />
           <TextInput
             style={styles.input}
-            placeholder={"Ex: 1200"}
+            placeholder={"Ex:1200"}
             onChangeText={(value) => this.setStartingRoom(value)}
             maxLength={4}
           />
@@ -71,11 +71,11 @@ class MapDisplay extends Component {
         <View>
           <Text>Enter Destination:</Text>
         </View>
-        <View>
+        <View style={styles.row}>
           {/* from https://github.com/lawnstarter/react-native-picker-select */}
           <RNPickerSelect
             onValueChange={(value) => this.setStartingBuilding(value)}
-            placeholder={{ label: "Select your building", value: null }}
+            placeholder={{ label: "Destination Building", value: null }}
             items={[
               { label: "BEC", value: "bec" },
               { label: "PFT", value: "pft" },
@@ -84,7 +84,7 @@ class MapDisplay extends Component {
             />
           <TextInput
             style={styles.input}
-            placeholder={"Ex: 1615"}
+            placeholder={"Ex:1615"}
             maxLength={4}
           />
         </View>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#777",
     padding: 8,
-    margin: 10,
+    height: 20,
     width: 70,
   },
   image: {
@@ -129,6 +129,10 @@ const styles = StyleSheet.create({
     height: "100%",
     aspectRatio: 1,
     resizeMode: "contain",
+  },
+  row: {
+    flex: 1,
+    flexDirection: "row"
   },
 });
 export default MapDisplay;
