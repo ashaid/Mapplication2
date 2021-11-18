@@ -19,7 +19,9 @@ export const Home = ({ navigation }) => (
       resizeMode="cover"
       source={require("../assets/Background.png")}
     >
-      <Text style={{ color: Colors.white }}>Hi</Text>
+      <View style = {styles.logoContainter}>
+      <Text style={styles.logoText}>Mapplication</Text>
+      </View>
     </ImageBackground>
   </ScreenContainer>
 );
@@ -51,11 +53,34 @@ export const ProfileScreen = ({ navigation }) => {
         resizeMode="cover"
         source={require("../assets/Background.png")}
       >
-        <View style={Style.centerItem}>
-          <Button title="Find My Classes" />
-          <Button title="My Maps" />
-          <Button title="UR mom lol" />
+        <View style={Style.buttonContainer}>
+          <TouchableOpacity style = {styles.button}>
+
+          <Text style = {styles.buttonText}>View Schedule</Text>
+
+          </TouchableOpacity>
+          <TouchableOpacity style = {styles.button}>
+
+          <Text style = {styles.buttonText}>Preferences</Text>
+
+          </TouchableOpacity>
+          <TouchableOpacity style = {styles.button}>
+
+          <Text style = {styles.buttonText}>Log Out</Text>
+
+          </TouchableOpacity>
         </View>
+      </ImageBackground>
+    </ScreenContainer>
+  );
+};
+
+export const Preferences = ({navigation}) => {
+
+  return(
+    <ScreenContainer>
+      <ImageBackground style = {styles.background}>
+        <Text>Testing 1..2..</Text>
       </ImageBackground>
     </ScreenContainer>
   );
@@ -66,6 +91,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#2c2f33",
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
@@ -82,5 +108,29 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.tertiary,
     width: "100%",
     height: "100%",
+  },
+  buttonContainer: {
+    position: "absolute",
+    top: 250,
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  buttonText: {
+    position: "relative",
+    top: 2,
+    color: Colors.white,
+    fontWeight: "bold",
+    fontSize: 30,
+  },
+  logoContainer: {
+    position: "absolute",
+    top: 250,
+    alignItems: "center",
+  },
+  logoText: {
+    top: 15,
+    color: Colors.white,
+    fontWeight: "bold",
+    fontSize: 20,
   },
 });
