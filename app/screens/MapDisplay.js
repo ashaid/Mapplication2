@@ -10,6 +10,7 @@ import {
   Button,
   Alert,
   Image,
+  TouchableOpacity,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import RNPickerSelect from "react-native-picker-select";
@@ -88,16 +89,16 @@ class MapDisplay extends Component {
           />
         </View>
         <View style={stylesMD.buttonContainer}>
-          <Button
-            title="Submit"
+          <TouchableOpacity
             onPress={
               () =>
               {
                 ButtonProtocol();
               }
-                /*collects user input and sends to API call, then display the actual maps to the user*/
             }
-          />
+              >
+            <Text style={stylesMD.buttonText}>Submit</Text>
+          </TouchableOpacity>
         </View>
       </View>
       </ImageBackground>
@@ -162,24 +163,30 @@ const stylesMD = StyleSheet.create({
   },
   buttonContainer:
   {
-    flexWrap: "wrap",
     flex: 1,
+    marginTop: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 40,
+    marginBottom: 120,
+    backgroundColor: 'blue',
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    borderRadius: 100,
   },
   textTop:
   {
     fontSize: 24,
     marginTop: 90,
     color: 'white',
-    marginBottom: 5
+    marginBottom: 5,
+    fontWeight: "bold",
   },
   textBottom:
   {
     fontSize: 24,
     color: 'white',
-    marginBottom: 5
+    marginBottom: 5,
+    fontWeight: "bold",
   },
   background: {
     flex: 1,
@@ -195,7 +202,15 @@ const stylesMD = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     color: "white",
-    marginTop: 100
+    marginTop: 100,
+    fontWeight: "bold",
+  },
+  buttonText:
+  {
+    color: "white",
+    marginTop: 3,
+    alignItems: "center",
+    justifyContent: "center",
   }
 });
 
@@ -214,13 +229,14 @@ const pickerStyles = StyleSheet.create({
   },
   inputAndroid: {
     fontSize: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
+    paddingHorizontal: 90,
+    paddingVertical: 21,
     borderWidth: 1,
-    borderColor: 'purple',
-    borderRadius: 8,
-    color: 'white',
+    borderColor: 'blue',
+    borderRadius: 1,
+    color: 'black',
     paddingRight: 30,
+    backgroundColor: 'white'
   },
 
 });

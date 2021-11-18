@@ -208,9 +208,11 @@ const styles = StyleSheet.create({
     //borderColor: Colors.white,
   },
   logoText: {
-    top: 15,
     color: "#b532de",
     fontWeight: "bold",
-    fontSize: 100,
+    fontSize: 50,
+    alignItems: "center",
+    justifyContent:"center",
+    marginTop: 120,
   },
 });
