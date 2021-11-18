@@ -40,6 +40,7 @@ class MapDisplay extends Component {
   render() {
     const { startingRoom, startingBuilding } = this.state;
     return (
+   //   <BackgroundImage style={styles.backgroud}>
       <View style={(styles.container, Style.centerItem)}>
         <Image
           //source={{ uri: "data:image/png;base64," + data }}
@@ -99,14 +100,19 @@ class MapDisplay extends Component {
           }
         />
       </View>
+    //  </BackgroundImage>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  background: {
+    backgroundColor: "#131313",
+  },
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
+    color: "#131313",
+    backgroundColor: "#131313",
   },
   input: {
     borderWidth: 1,
