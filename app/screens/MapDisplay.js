@@ -9,6 +9,7 @@ import {
   useState,
   Button,
   Alert,
+  Image,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import RNPickerSelect from "react-native-picker-select";
@@ -41,6 +42,11 @@ class MapDisplay extends Component {
     const { startingRoom, startingBuilding } = this.state;
     return (
       <View style={(styles.container, Style.centerItem)}>
+        <Image
+          //source={{ uri: "data:image/png;base64," + data }}
+          source={require("../assets/bec-1620-1615.png")}
+          style={Style.centerItem}
+        />
         <View>
           <Text>Enter Starting Point:</Text>
         </View>
@@ -89,9 +95,7 @@ class MapDisplay extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: Colors.white,
   },
   input: {
     borderWidth: 1,
@@ -99,6 +103,22 @@ const styles = StyleSheet.create({
     padding: 8,
     margin: 10,
     width: 70,
+  },
+  image: {
+    // flex: 1,
+    // width: null,
+    // height: null,
+    // resizeMode: "cover",
+    // backgroundColor: "transparent",
+    // border: "solid",
+    // borderColor: Colors.secondary,
+    // borderRadius: 20,
+    //transform: "rotate(90deg)",
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    aspectRatio: 1,
+    resizeMode: "contain",
   },
 });
 export default MapDisplay;
