@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
+
 import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Style, Colors } from "../style/styles";
@@ -20,10 +21,8 @@ export const Home = ({ navigation }) => (
       resizeMode="cover"
       source={require("../assets/Background.png")}
     >
-      <View style = {styles.buttonContainer}>
-        <View style = {styles.logoContainer}>
-      <Text style={styles.buttonText}>Mapplication</Text>
-        </View>
+      <View style = {styles.logoContainter}>
+      <Text style={styles.logoText}>     Mapplication</Text>
       </View>
     </ImageBackground>
   </ScreenContainer>
@@ -86,23 +85,29 @@ export const ProfileScreen = ({ navigation }) => {
             <Text style = {styles.buttonText}>Log Out</Text>
 
           </TouchableOpacity>
+          <TouchableOpacity style = {styles.button}
+          onPress = {InfoPage} >
+
+          <Text style = {styles.buttonText}>Info Page</Text>
+
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     </ScreenContainer>
   );
 };
 
-export const Preferences = ({navigation}) => {
-
-  return(
-    <ScreenContainer>
-      <ImageBackground style = {styles.background}>
-        <Text>Testing 1..2..</Text>
-      </ImageBackground>
-    </ScreenContainer>
-  );
-};
-
+const InfoPage = ({ navigation }) => {
+  <ScreenContainer>
+    <ImageBackground
+        style={{ flex: 1, width: "100%", height: "100%" }}
+        resizeMode="cover"
+        source={require("../assets/Background.png")}
+      >
+        <Text style = {styles.buttonText}> View Schedule </Text>
+    </ImageBackground>
+  </ScreenContainer>
+}
 export const ScheduleScreen = ({navigation}) => {
   return(
     <ScreenContainer>
@@ -204,8 +209,8 @@ const styles = StyleSheet.create({
   },
   logoText: {
     top: 15,
-    color: Colors.white,
+    color: "#b532de",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 100,
   },
 });
