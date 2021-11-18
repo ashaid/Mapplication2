@@ -53,12 +53,13 @@ class MapDisplay extends Component {
           {/* from https://github.com/lawnstarter/react-native-picker-select */}
           <RNPickerSelect
             onValueChange={(value) => this.setStartingBuilding(value)}
-            placeholder={{ label: "Starting Building", value: null }}
+            placeholder={{ label: "Building", value: null }}
             items={[
               { label: "BEC", value: "bec" },
               { label: "PFT", value: "pft" },
               { label: "Lockett", value: "loc" },
             ]}
+
           />
           <TextInput
             style={styles.input}
@@ -74,12 +75,13 @@ class MapDisplay extends Component {
           {/* from https://github.com/lawnstarter/react-native-picker-select */}
           <RNPickerSelect
             onValueChange={(value) => this.setStartingBuilding(value)}
-            placeholder={{ label: "Destination Building", value: null }}
+            placeholder={{ label: "Building", value: null }}
             items={[
               { label: "BEC", value: "bec" },
               { label: "PFT", value: "pft" },
               { label: "Lockett", value: "loc" },
               ]}
+              style={pickerStyles}
             />
           <TextInput
             style={styles.input}
@@ -134,4 +136,29 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
 });
+
+const pickerStyles = StyleSheet.create({
+  inputIOS:
+  {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    color: 'black',
+    paddingRight: 30,
+  },
+  inputAndroid: {
+    fontSize: 16,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0.5,
+    borderColor: 'purple',
+    borderRadius: 8,
+    color: 'black',
+    paddingRight: 30,
+  },
+
+});
+
 export default MapDisplay;
