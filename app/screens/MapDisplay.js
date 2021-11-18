@@ -38,7 +38,6 @@ class MapDisplay extends Component {
   };
 
   render() {
-    //NEED DROP DOWN MENU SOLUTION FOR BUILDINGS, CANNOT RELY ON USER INPUT FOR BUILDINGS TOO EASY FOR SPELLING ERRORS
     const { startingRoom, startingBuilding } = this.state;
     return (
       <View style={(styles.container, Style.centerItem)}>
