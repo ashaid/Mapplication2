@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Button, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, Button, ImageBackground, TouchableOpacity} from "react-native";
 import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import MainScreen from "./MainScreen";
@@ -46,7 +46,15 @@ export const LogIn = ({ navigation }) => {
         resizeMode="cover"
         source={require("../assets/Background.png")}
       >
-        <Button title="Log In" />
+        <TouchableOpacity style = {styles.button}>
+
+        onPress={()=>
+        {props.navigation.navigate("SignInScreen");}
+         }
+
+        <Text>Log In</Text>
+
+        </TouchableOpacity>
       </ImageBackground>
     </ScreenContainer>
   );
