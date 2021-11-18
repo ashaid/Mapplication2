@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexWrap: "wrap",
-    flex: "1",
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20

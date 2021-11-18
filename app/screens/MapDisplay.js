@@ -42,7 +42,7 @@ class MapDisplay extends Component {
     return (
     <ImageBackground style = {stylesMD.background}>
       <View style={(stylesMD.container, Style.centerItem)}>
-
+        <Text style={stylesMD.header}>MAP BUILDER</Text>
         <View>
           <Text style={stylesMD.textTop}>Enter Starting Point:</Text>
         </View>
@@ -162,12 +162,16 @@ const stylesMD = StyleSheet.create({
   },
   buttonContainer:
   {
+    flexWrap: "wrap",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
     marginBottom: 40,
   },
   textTop:
   {
     fontSize: 24,
-    marginTop: 200,
+    marginTop: 90,
     color: 'white',
     marginBottom: 5
   },
@@ -185,6 +189,14 @@ const stylesMD = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  header:
+  {
+    fontSize: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    color: "white",
+    marginTop: 100
+  }
 });
 
 const pickerStyles = StyleSheet.create({
