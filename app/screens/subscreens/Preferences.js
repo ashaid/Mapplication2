@@ -1,3 +1,4 @@
+/*
 import React, {Component} from "react";
 import "react-native-reanimated";
 import {
@@ -77,3 +78,4 @@ const styles = StyleSheet.create({
 })
 
 export default Preferences;
+*/
