@@ -10,6 +10,7 @@ import {
   Button,
   Alert,
   Image,
+  TouchableOpacity,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import RNPickerSelect from "react-native-picker-select";
@@ -47,8 +48,8 @@ class MapDisplay extends Component {
           source={require("../assets/bec-1620-1615.png")}
           style={Style.centerItem}
         />
-        <View>
-          <Text>Enter Starting Point:</Text>
+        <View style = {styles.textContainer}>
+          <Text style = {styles.inputText}>Enter Starting Point:</Text>
         </View>
         <View style={styles.row}>
           {/* from https://github.com/lawnstarter/react-native-picker-select */}
@@ -69,8 +70,8 @@ class MapDisplay extends Component {
             maxLength={4}
           />
         </View>
-        <View>
-          <Text>Enter Destination:</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.inputText}>Enter Destination:</Text>
         </View>
         <View style={styles.row}>
           {/* from https://github.com/lawnstarter/react-native-picker-select */}
@@ -90,15 +91,19 @@ class MapDisplay extends Component {
             maxLength={4}
           />
         </View>
-        <Button
-          title="Submit"
+        
+        <TouchableOpacity style = {styles.buttonContainer}
           onPress={
-            () =>
+            ()=>
               console.log(
-                "Simple Button Pressed"
-              ) /*collects user input and sends to API call, then display the actual maps to the user*/
-          }
-        />
+                "Submit button pressed"
+                /*collects user input and sends to API call, then display the actual maps to the user*/ 
+              )
+          }>
+          <Text style = {styles.inputText}>
+            Submit
+          </Text>
+        </TouchableOpacity>
       </View>
     //  </BackgroundImage>
     );
@@ -141,6 +146,32 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row"
   },
+  textContainer:{
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "75%",
+    alignItems: "center",
+    backgroundColor: "#277dff",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+  },
+  buttonContainer:{
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "75%",
+    alignItems: "center",
+    backgroundColor: "#00ae6b",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+  },
+  inputText:{
+    position: "relative",
+    color: Colors.white,
+    fontWeight: "bold",
+    fontSize: 20,
+  }
 });
 
 const pickerStyles = StyleSheet.create({
