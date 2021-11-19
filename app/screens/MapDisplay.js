@@ -65,7 +65,12 @@ class MapDisplay extends Component {
   };
 
   render() {
-    const { startingRoom, startingBuilding } = this.state;
+    const {
+      startingRoom,
+      startingBuilding,
+      destinationRoom,
+      destinationBuilding,
+    } = this.state;
     return (
       <ImageBackground style={stylesMD.background}>
         <View style={(stylesMD.container, Style.centerItem)}>
@@ -118,7 +123,12 @@ class MapDisplay extends Component {
             <TouchableOpacity
               onPress={() => {
                 this.printInputState();
-                this.props.navigation.push("Rendered Map");
+                this.props.navigation.push("Rendered Map", {
+                  startingRoom,
+                  destinationRoom,
+                  startingBuilding,
+                  destinationBuilding,
+                });
               }}
             >
               <Text style={stylesMD.buttonText}>Submit</Text>

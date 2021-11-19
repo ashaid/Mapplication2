@@ -28,8 +28,8 @@ class MapDisplayComponent extends Component {
       loading: false,
       error: "",
       data: null,
-      startingRoom: "",
-      destinationRoom: "",
+      // startingRoom: "",
+      // destinationRoom: "",
       updateMap: false,
     };
   }
@@ -76,7 +76,7 @@ class MapDisplayComponent extends Component {
   componentDidMount() {
     //this.loadData();
     console.log("mounted");
-    console.log(this.props);
+    console.log(this.props.route.params.startingRoom);
   }
   handleSubmitPress = () => {
     if (this.state.startingRoom && this.state.destinationRoom != "") {
