@@ -54,12 +54,14 @@ export const LogIn = ({ navigation }) => {
 
   return (
     // <ScreenContainer style={{ flex: 1 }}>
-    <SafeAreaView style={{ flex: 1 }}>
-      <ImageBackground style={styles.background}>
+
+    <ImageBackground style={styles.background}>
+      <SafeAreaView style={{ flex: 1 }}>
         <Wobble />
         <Button title="Log In" onPress={() => logIn()} />
-      </ImageBackground>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ImageBackground>
+
     // </ScreenContainer>
   );
 };
