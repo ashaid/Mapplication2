@@ -76,9 +76,9 @@ export const ProfileScreen = ({ navigation }) => {
       >
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            title="Find My Classes"
+            title="Schedule Builder"
             onPress={() => {
-              navigation.push("Find My Classes");
+              navigation.push("Scheduler");
             }}
             style={styles.scheduleButton}
           >
