@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   headerStyle: {
-    backgroundColor: "ffff",
+    backgroundColor: "green",
   },
   container: {
     flex: 1,
