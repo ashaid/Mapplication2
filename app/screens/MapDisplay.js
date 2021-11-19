@@ -73,10 +73,12 @@ class MapDisplay extends Component {
     } = this.state;
     return (
       <ImageBackground style={stylesMD.background}>
-        <View style={(stylesMD.container, Style.centerItem)}>
-          <Text style={stylesMD.header}>MAP BUILDER</Text>
-          <View>
-            <Text style={stylesMD.textTop}>Enter Starting Point:</Text>
+        <View style = {stylesMD.screenContainer}>
+          <View style={stylesMD.headerContainer}>
+          <Text style={stylesMD.inputText}>MAP BUILDER</Text>
+          </View>
+          <View style = {stylesMD.textContainer}>
+            <Text style={stylesMD.inputText}>Enter Starting Point:</Text>
           </View>
           <View style={stylesMD.row}>
             {/* from https://github.com/lawnstarter/react-native-picker-select */}
@@ -97,8 +99,8 @@ class MapDisplay extends Component {
               maxLength={4}
             />
           </View>
-          <View>
-            <Text style={stylesMD.textBottom}>Enter Destination:</Text>
+          <View style = {stylesMD.textContainer}>
+            <Text style={stylesMD.inputText}>Enter Destination:</Text>
           </View>
           <View style={stylesMD.row}>
             {/* from https://github.com/lawnstarter/react-native-picker-select */}
@@ -130,7 +132,7 @@ class MapDisplay extends Component {
                 });
               }}
             >
-              <Text style={stylesMD.buttonText}>Submit</Text>
+              <Text style={stylesMD.inputText}>Submit</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -140,14 +142,16 @@ class MapDisplay extends Component {
 }
 
 const stylesMD = StyleSheet.create({
-  container: {
+  screenContainer: {
     flex: 1,
-    color: "#131313",
+    top: 20,
+    alignItems: "center",
+    flexDirection: "column",
     backgroundColor: "#131313",
   },
   source: {
     borderWidth: 0.5,
-    borderColor: "blue",
+    borderColor: "#277dff",
     padding: 8,
     height: 45,
     width: 80,
@@ -159,7 +163,7 @@ const stylesMD = StyleSheet.create({
     backgroundColor: "white",
   },
   destination: {
-    borderColor: "blue",
+    borderColor: "#277dff",
     paddingHorizontal: 10,
     paddingVertical: 8,
     height: 45,
@@ -190,6 +194,7 @@ const stylesMD = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
   },
+  /*
   buttonContainer: {
     flex: 1,
     marginTop: 50,
@@ -214,6 +219,16 @@ const stylesMD = StyleSheet.create({
     marginBottom: 5,
     fontWeight: "bold",
   },
+  */
+ headerContainer: {
+    width: "75%",
+    backgroundColor: "#277dff",
+    borderWidth: .5,
+    borderColor: "#277dff",
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+ },
   background: {
     flex: 1,
     justifyContent: "flex-end",
@@ -230,16 +245,7 @@ const stylesMD = StyleSheet.create({
     marginTop: 100,
     fontWeight: "bold",
   },
-  buttonText: {
-    color: "white",
-    marginTop: 3,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
-/*
-textContainer:{
-  flexDirection: "row",
+  textContainer:{
   justifyContent: "center",
   width: "75%",
   alignItems: "center",
@@ -247,6 +253,9 @@ textContainer:{
   paddingHorizontal: 20,
   paddingVertical: 10,
   marginVertical: 10,
+  borderWidth: .5,
+  borderColor: "#277dff",
+  borderRadius: 10,
 },
 buttonContainer:{
   flexDirection: "row",
@@ -257,13 +266,21 @@ buttonContainer:{
   paddingHorizontal: 20,
   paddingVertical: 10,
   marginVertical: 10,
+  borderWidth: .5,
+  borderColor: "#00ae6b",
+  borderRadius: 10,
 },
 inputText:{
   position: "relative",
   color: Colors.white,
+  marginTop: 3,
+  alignItems: "center",
+  justifyContent: "center",
   fontWeight: "bold",
   fontSize: 20,
-}*/
+},
+});
+
 const pickerStyles = StyleSheet.create({
   inputIOS: {
     fontSize: 16,

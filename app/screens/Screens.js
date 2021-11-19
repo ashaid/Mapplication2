@@ -23,7 +23,7 @@ export const Home = ({ navigation }) => (
       source={require("../assets/Background.png")}
     >
       <View style={styles.logoContainter}>
-        <Text style={styles.logoText}>    Mapplication</Text>
+        <Text style={styles.logoText}>Mapplication</Text>
       </View>
     </ImageBackground>
   </ScreenContainer>
@@ -184,12 +184,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
-    //borderWidth: 10,
-    //borderRadius: 5,
-    //borderColor: Colors.white,
+    borderWidth: 10,
+    borderRadius: 5,
+    borderColor: Colors.white,
   },
   logoText: {
-    color: "#4b0082",
+    color: Colors.white,
     fontWeight: "bold",
     fontSize: 50,
     alignItems: "center",
