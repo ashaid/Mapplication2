@@ -22,9 +22,11 @@ export const Home = ({ navigation }) => (
       resizeMode="cover"
       source={require("../assets/Background.png")}
     >
-      <View style={styles.logoContainter}>
+    <View style = {styles.itemContainer}>
+      <View style={styles.logoContainer}>
         <Text style={styles.logoText}>Mapplication</Text>
       </View>
+    </View>
     </ImageBackground>
   </ScreenContainer>
 );
@@ -113,6 +115,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
+  itemContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    top: "45%",
+  },
   background: {
     flex: 1,
     justifyContent: "center",
@@ -181,12 +188,9 @@ const styles = StyleSheet.create({
     width: "75%",
     alignItems: "center",
     backgroundColor: "#277dff",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    marginVertical: 10,
     borderWidth: 10,
     borderRadius: 5,
-    borderColor: Colors.white,
+    borderColor: "#277dff",
   },
   logoText: {
     color: Colors.white,
@@ -194,6 +198,5 @@ const styles = StyleSheet.create({
     fontSize: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 120,
   },
 });

@@ -82,6 +82,7 @@ class MapDisplay extends Component {
           </View>
           <View style={stylesMD.row}>
             {/* from https://github.com/lawnstarter/react-native-picker-select */}
+            <View style = {stylesMD.dropDown}>
             <RNPickerSelect
               style={pickerStyles}
               onValueChange={(value) => this.setStartingBuilding(value)}
@@ -92,6 +93,7 @@ class MapDisplay extends Component {
                 { label: "Lockett", value: "loc" },
               ]}
             />
+            </View>
             <TextInput
               style={stylesMD.source}
               placeholder={"Ex:1200"}
@@ -104,6 +106,7 @@ class MapDisplay extends Component {
           </View>
           <View style={stylesMD.row}>
             {/* from https://github.com/lawnstarter/react-native-picker-select */}
+            <View style = {stylesMD.dropDown}>
             <RNPickerSelect
               onValueChange={(value) => this.setDestinationBuilding(value)}
               placeholder={{ label: "Building", value: null }}
@@ -113,6 +116,7 @@ class MapDisplay extends Component {
                 { label: "Lockett", value: "loc" },
               ]}
             />
+            </View>
             <TextInput
               style={stylesMD.destination}
               placeholder={"Ex:1615"}
@@ -154,7 +158,7 @@ const stylesMD = StyleSheet.create({
     borderColor: "#277dff",
     padding: 8,
     height: 45,
-    width: 80,
+    width: "50%",
     marginTop: 0,
     fontSize: 16,
     paddingHorizontal: 10,
@@ -167,7 +171,7 @@ const stylesMD = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 8,
     height: 45,
-    width: 80,
+    width: "50%",
     borderWidth: 0.5,
     marginBottom: 50,
     fontSize: 16,
@@ -193,6 +197,20 @@ const stylesMD = StyleSheet.create({
   row: {
     flex: 1,
     flexDirection: "row",
+  },
+  dropDown: {
+    borderColor: "#277dff",
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    height: 45,
+    width: "50%",
+    borderWidth: 0.5,
+    marginBottom: 50,
+    fontSize: 16,
+    borderRadius: 10,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
   },
   /*
   buttonContainer: {
@@ -221,7 +239,7 @@ const stylesMD = StyleSheet.create({
   },
   */
  headerContainer: {
-    width: "75%",
+    width: "100%",
     backgroundColor: "#277dff",
     borderWidth: .5,
     borderColor: "#277dff",
@@ -247,7 +265,7 @@ const stylesMD = StyleSheet.create({
   },
   textContainer:{
   justifyContent: "center",
-  width: "75%",
+  width: "100%",
   alignItems: "center",
   backgroundColor: "#277dff",
   paddingHorizontal: 20,
@@ -260,12 +278,12 @@ const stylesMD = StyleSheet.create({
 buttonContainer:{
   flexDirection: "row",
   justifyContent: "center",
-  width: "75%",
+  width: "100%",
   alignItems: "center",
   backgroundColor: "#00ae6b",
   paddingHorizontal: 20,
   paddingVertical: 10,
-  marginVertical: 10,
+ marginVertical: 50,
   borderWidth: .5,
   borderColor: "#00ae6b",
   borderRadius: 10,
