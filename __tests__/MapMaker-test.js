@@ -3,14 +3,10 @@ import "axios";
 import axios from "axios";
 import React from "react";
 import renderer from "react-test-renderer";
-import apiTestHelper from "../app/screens/MapDisplay";
+import MapDisplay from "../app/screens/MapDisplay";
+import { TextInput } from "react-native-gesture-handler";
 
-jest.mock("axios");
-
-test("axios test", async () => {
-  axios.get.mockResolvedValue({
-    data: [{ data: 5 }],
-  });
-  let testData = await apiTestHelper();
-  expect(testData).toEqual("5");
+test("tests,", () => {
+  const wrapped = mount(<MapDisplay />);
+  expect(wrapped.find("startingRoom").get(0).props.value.toEqual("something"));
 });
