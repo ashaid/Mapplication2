@@ -41,6 +41,28 @@ const ProfileStackScreen = () => {
   );
 }
 
+/*
+const PreferenceStackScreen = () => (
+  <PreferenceStack.Navigator screenOptions={{headerShown:false}}>
+    <PreferenceStack.Screen name = "Preferences" component={Preferences}/>
+  </PreferenceStack.Navigator>
+);
+
+
+const SchedulerStackScreen = () => (
+  <SchedulerStack.Navigator screenOptions={{headerShown:false}}>
+    <SchedulerStack.Screen name = "ScheduleScreen" component={ScheduleScreen}/>
+  </SchedulerStack.Navigator>
+);
+
+const LogOutStackScreen = () => {
+  <LogInStack.Navigator screenOptions={{headerShown:false}}>
+    <LogOutStack.Screen name = "LogOutScreen" component={LogOutScreen}/>
+  </LogInStack.Navigator>
+};
+*/
+
+
 const MapStackScreen = () => (
   <MapStack.Navigator screenOptions={{ headerShown: false }}>
     <MapStack.Screen name="Map Display" component={MapDisplay} />
@@ -67,9 +89,28 @@ const RootStackScreen = ({ userToken }) => (
       name="Log In Screen" 
       component={LogInStackScreen} 
       />
-    )}
+    )} 
   </RootStack.Navigator>
 );
+
+/*
+: (
+      <RootStackScreen
+      name="Preferences"
+      component={PreferenceStackScreen}
+      />
+    ) : (
+      <RootStackScreen
+      name="ScheduleScreen"
+      component={PreferenceStackScreen}
+      />
+    ) : (
+      <RootStackScreen
+      name="LogOutScreen"
+      component={LogOutStackScreen}
+      />
+    )
+*/
 
 export default function App() {
   const [userToken, setUserToken] = React.useState(null);

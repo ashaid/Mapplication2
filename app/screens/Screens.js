@@ -7,10 +7,12 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
+
 import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
+//import { white } from "react-native-paper/lib/typescript/styles/colors";
 
 export const Home = ({ navigation }) => (
   <ScreenContainer>
@@ -19,12 +21,14 @@ export const Home = ({ navigation }) => (
       resizeMode="cover"
       source={require("../assets/Background.png")}
     >
-      <Text style={{ color: Colors.white }}>Hi</Text>
+      <View style = {styles.logoContainter}>
+      <Text style={styles.logoText}>     Mapplication</Text>
+      </View>
     </ImageBackground>
   </ScreenContainer>
 );
 
-export const FindClasses = ({ navigation }) => {
+export const FindClasses = () => {
   return (
   <ScreenContainer>
     <ImageBackground
@@ -75,13 +79,13 @@ export const ProfileScreen = ({ navigation }) => {
             }} 
             />
         </View>
-        <View>
+        {/* <View>
           <Button title = "My Maps" 
             onPress={() => {
             navigation.push("Find My Classes")
             }} 
           />
-        </View>
+        </View> */}
 
       </ImageBackground>
     </ScreenContainer>
@@ -91,7 +95,34 @@ export const ProfileScreen = ({ navigation }) => {
 
 
 const styles = StyleSheet.create({
-  button: {
+  imgBackground: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  background: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.tertiary,
+    width: "100%",
+    height: "100%",
+  },
+  scheduleButton: {
+    flexDirection: "row",
+    width: "70%",
+    height: "15%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#00ae6b",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+    borderRadius: 5,
+  },
+  preferencesButton: {
+    backgroundColor: "#ffc200",
+    width: "70%",
+    height: "15%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -100,16 +131,50 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 5,
   },
-  imgBackground: {
-    flex: 1,
+  logoutButton: {
+    flexDirection: "row",
+    width: "70%",
+    height: "15%",
     justifyContent: "center",
-  },
-  background: {
-    flex: 1,
-    justifyContent: "flex-end",
     alignItems: "center",
-    backgroundColor: Colors.tertiary,
-    width: "100%",
-    height: "100%",
+    backgroundColor: "#ff7a00",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+    borderRadius: 5,
+  },
+  buttonContainer: {
+    flexWrap: "wrap",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20
+  },
+  buttonText: {
+    position: "relative",
+    color: Colors.white,
+    fontWeight: "bold",
+    fontSize: 30,
+  },
+  logoContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "75%",
+    alignItems: "center",
+    backgroundColor: "#277dff",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+    //borderWidth: 10,
+    //borderRadius: 5,
+    //borderColor: Colors.white,
+  },
+  logoText: {
+    color: "#b532de",
+    fontWeight: "bold",
+    fontSize: 50,
+    alignItems: "center",
+    justifyContent:"center",
+    marginTop: 120,
   },
 });
