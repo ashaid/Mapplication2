@@ -290,7 +290,8 @@ const pickerStyles = StyleSheet.create({
     borderColor: "#277dff",
     borderRadius: 1,
     color: "black",
-    paddingRight: 30,
+    paddingRight: 98,
+    paddingLeft: 98,
     backgroundColor: "white",
   },
 });
