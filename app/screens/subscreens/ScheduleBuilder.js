@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   SafeAreaView,
+  Alert,
 } from "react-native";
 import TimeTableView, { genTimeBlock } from "react-native-timetable";
 
@@ -121,7 +122,6 @@ export class ScheduleBuilder extends Component {
             pivotDate={this.pivotDate}
             numberOfDays={this.numOfDays}
             onEventPress={this.onEventPress}
-            // headerStyle={styles.headerStyle}
             formatDateHeader="dddd"
             locale="ko"
           />
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   headerStyle: {
-    backgroundColor: "white",
+    backgroundColor: "ffff",
   },
   container: {
     flex: 1,
