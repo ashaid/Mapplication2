@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MapDisplay from "./app/screens/MapDisplay";
 import { MapDisplayComponent } from "./app/components/MapDisplayComponent";
+import { ScheduleBuilder } from "./app/screens/subscreens/ScheduleBuilder";
 import {
   FindClasses,
   Home,
@@ -51,6 +52,11 @@ const ProfileStackScreen = () => {
       <ProfileStack.Screen
         name="Find My Classes"
         component={FindClasses}
+        options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
+        name="Scheduler"
+        component={ScheduleBuilder}
         options={{ headerShown: true }}
       />
     </ProfileStack.Navigator>
