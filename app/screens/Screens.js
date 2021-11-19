@@ -6,6 +6,7 @@ import {
   Button,
   ImageBackground,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 
 import { AuthContext } from "../components/AuthContext";
@@ -21,8 +22,8 @@ export const Home = ({ navigation }) => (
       resizeMode="cover"
       source={require("../assets/Background.png")}
     >
-      <View style = {styles.logoContainter}>
-      <Text style={styles.logoText}>     Mapplication</Text>
+      <View style={styles.logoContainter}>
+        <Text style={styles.logoText}> Mapplication</Text>
       </View>
     </ImageBackground>
   </ScreenContainer>
@@ -38,12 +39,14 @@ export const LogIn = ({ navigation }) => {
   const { logIn } = React.useContext(AuthContext);
 
   return (
-    <ScreenContainer style={{ flex: 1 }}>
+    // <ScreenContainer style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground style={styles.background}>
         <Wobble />
         <Button title="Log In" onPress={() => logIn()} />
       </ImageBackground>
-    </ScreenContainer>
+    </SafeAreaView>
+    // </ScreenContainer>
   );
 };
 
@@ -56,40 +59,28 @@ export const ProfileScreen = ({ navigation }) => {
         source={require("../assets/Background.png")}
       >
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style = {styles.scheduleButton}
-            onPress={
-              () => navigation.navigate('ScheduleScreen')
-            }
+          <TouchableOpacity
+            style={styles.scheduleButton}
+            onPress={() => navigation.navigate("ScheduleScreen")}
           >
-            <Text style = {styles.buttonText}>View Schedule</Text>
-
+            <Text style={styles.buttonText}>View Schedule</Text>
           </TouchableOpacity>
-          
-          <TouchableOpacity style = {styles.preferencesButton}
-            
-            onPress={
-              () => navigation.navigate('Preferences')
-            }
+
+          <TouchableOpacity
+            style={styles.preferencesButton}
+            onPress={() => navigation.navigate("Preferences")}
           >
-
-            <Text style = {styles.buttonText}>Preferences</Text>
-
+            <Text style={styles.buttonText}>Preferences</Text>
           </TouchableOpacity>
-          
-          <TouchableOpacity style = {styles.logoutButton}
-            onPress={
-              () => navigation.navigate('LogOutScreen')
-            }
+
+          <TouchableOpacity
+            style={styles.logoutButton}
+            onPress={() => navigation.navigate("LogOutScreen")}
           >
-
-            <Text style = {styles.buttonText}>Log Out</Text>
-
+            <Text style={styles.buttonText}>Log Out</Text>
           </TouchableOpacity>
-          <TouchableOpacity style = {styles.button}
-          onPress = {InfoPage} >
-
-          <Text style = {styles.buttonText}>Info Page</Text>
-
+          <TouchableOpacity style={styles.button} onPress={InfoPage}>
+            <Text style={styles.buttonText}>Info Page</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -100,16 +91,16 @@ export const ProfileScreen = ({ navigation }) => {
 const InfoPage = ({ navigation }) => {
   <ScreenContainer>
     <ImageBackground
-        style={{ flex: 1, width: "100%", height: "100%" }}
-        resizeMode="cover"
-        source={require("../assets/Background.png")}
-      >
-        <Text style = {styles.buttonText}> View Schedule </Text>
+      style={{ flex: 1, width: "100%", height: "100%" }}
+      resizeMode="cover"
+      source={require("../assets/Background.png")}
+    >
+      <Text style={styles.buttonText}> View Schedule </Text>
     </ImageBackground>
-  </ScreenContainer>
-}
-export const ScheduleScreen = ({navigation}) => {
-  return(
+  </ScreenContainer>;
+};
+export const ScheduleScreen = ({ navigation }) => {
+  return (
     <ScreenContainer>
       <ImageBackground>
         <View>
@@ -120,8 +111,8 @@ export const ScheduleScreen = ({navigation}) => {
   );
 };
 
-export const LogOutScreen = ({navigation}) => {
-  return(
+export const LogOutScreen = ({ navigation }) => {
+  return (
     <ScreenContainer>
       <ImageBackground>
         <View>
@@ -186,7 +177,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 20
+    padding: 20,
   },
   buttonText: {
     position: "relative",
@@ -212,7 +203,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 50,
     alignItems: "center",
-    justifyContent:"center",
+    justifyContent: "center",
     marginTop: 120,
   },
 });
