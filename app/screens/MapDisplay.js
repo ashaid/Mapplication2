@@ -84,7 +84,7 @@ class MapDisplay extends Component {
           </View>
           <View style={stylesMD.row}>
             {/* from https://github.com/lawnstarter/react-native-picker-select */}
-            <View style = {stylesMD.dropDown}>
+            <View>
             <RNPickerSelect
               style={pickerStyles}
               onValueChange={(value) => this.setStartingBuilding(value)}
@@ -108,8 +108,9 @@ class MapDisplay extends Component {
           </View>
           <View style={stylesMD.row}>
             {/* from https://github.com/lawnstarter/react-native-picker-select */}
-            <View style = {stylesMD.dropDown}>
+            <View>
             <RNPickerSelect
+              style={pickerStyles}
               onValueChange={(value) => this.setDestinationBuilding(value)}
               placeholder={{ label: "Building", value: null }}
               items={[
@@ -183,22 +184,7 @@ const stylesMD = StyleSheet.create({
   row: {
     flex: 1,
     flexDirection: "row",
-  },
-  dropDown: {
-    borderColor: "#277dff",
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    height: 45,
-    width: "50%",
-    borderWidth: 0.5,
-    marginBottom: 50,
-    fontSize: 20,
-    borderRadius: 10,
-    backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  
+  },  
   buttonContainer: {
     flex: 1,
     marginTop: 50,
@@ -287,11 +273,12 @@ const pickerStyles = StyleSheet.create({
   inputIOS: {
     fontSize: 16,
     paddingVertical: 12,
-    paddingHorizontal: 10,
+    paddingHorizontal: 100,
     borderWidth: 1,
-    borderColor: "blue",
+    borderColor: "#277dff",
     color: "black",
-    paddingRight: 30,
+    paddingLeft: 65,
+    paddingRight: 65,
     borderRadius: 8,
     backgroundColor: "white",
   },
@@ -300,7 +287,7 @@ const pickerStyles = StyleSheet.create({
     paddingHorizontal: 90,
     paddingVertical: 21,
     borderWidth: 1,
-    borderColor: "blue",
+    borderColor: "#277dff",
     borderRadius: 1,
     color: "black",
     paddingRight: 30,
