@@ -82,14 +82,25 @@ export const ProfileScreen = ({ navigation }) => {
           >
             <Text style={styles.buttonText}>View Schedule</Text>
           </TouchableOpacity>
-        </View>
-        {/* <View>
-          <Button title = "My Maps" 
+          <TouchableOpacity
+            // title="Find My Classes"
             onPress={() => {
-            navigation.push("Find My Classes")
-            }} 
-          />
-        </View> */}
+              navigation.push("Find My Classes");
+            }}
+            style={styles.preferencesButton}
+          >
+            <Text style={styles.buttonText}>Preferences</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            title="Find My Classes"
+            onPress={() => {
+              navigation.push("Find My Classes");
+            }}
+            style={styles.logoutButton}
+          >
+            <Text style={styles.buttonText}>Log Out</Text>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </ScreenContainer>
   );
@@ -156,6 +167,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontWeight: "bold",
     fontSize: 30,
+    textAlign: "center",
   },
   logoContainer: {
     flexDirection: "row",
