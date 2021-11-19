@@ -9,13 +9,21 @@ import {
   View,
 } from "react-native";
 
-function LogOut(props){
+export class LogOut extends Component{
+    render(){
     return(
 
-        <ImageBackground style = {styles.background}></ImageBackground>
+        <ImageBackground style = {styles.background}>
+            <View>
+                <Text>
+                    The official log out Page
+                </Text>
+            </View>
+        </ImageBackground>
 
 
     );
+    }
 }
 
 const styles = StyleSheet.create({

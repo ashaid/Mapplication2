@@ -7,6 +7,8 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import MapDisplay from "./app/screens/MapDisplay";
 import { MapDisplayComponent } from "./app/components/MapDisplayComponent";
 import { ScheduleBuilder } from "./app/screens/subscreens/ScheduleBuilder";
+import {Preferences} from "./app/screens/subscreens/Preferences";
+import {LogOut} from "./app/screens/LogOut";
 import {
   FindClasses,
   Home,
@@ -58,6 +60,16 @@ const ProfileStackScreen = () => {
         name="Scheduler"
         component={ScheduleBuilder}
         options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
+       name="Preferences"
+       component={Preferences}
+       options={{headerShown:true}}
+      />
+      <ProfileStack.Screen
+        name="Log Out"
+        component={LogOut}
+        options={{headerShown:true}}
       />
     </ProfileStack.Navigator>
   );

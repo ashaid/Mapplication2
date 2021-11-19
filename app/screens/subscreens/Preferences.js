@@ -1,4 +1,4 @@
-/*
+
 import React, {Component} from "react";
 import "react-native-reanimated";
 import {
@@ -10,72 +10,106 @@ import {
   View,
 } from "react-native";
 
-function Preferences(props){
-
-    function fadeClick(){
-        const [fadeAnim] = useState(new Animated.Value(0));
-      
-        React.useEffect(() => {
-          Animated.timing(fadeAnim, {
-            toValue: 1,
-            duration: 5000,
-          }).start();
-        }, []);
-    }
-    return(
-
-        <ImageBackground style = {styles.background}>
-            <View style = {styles.header}>
-                <TouchableOpacity style = {styles.backButton}
-                onPress={()=> {setTimeout(function(){props.navigation.navigate("MainScreen");}, 400)}}
-                onPress={()=>{fadeClick;}}>
-                    <Text style = {styles.headerText}>Back</Text>
-
-                </TouchableOpacity>
-                <Text stlye={styles.headerText}>Chef Urgle</Text>
-            </View>
-            <TouchableOpacity>
-
-                <Text>Accessibility</Text>
-
-            </TouchableOpacity>
-            <TouchableOpacity>
-
-                <Text>Account</Text>
-
-            </TouchableOpacity>
-
-
-        </ImageBackground>
-
-
-    );
+export class Preferences extends Component{
+    render(){
+        return(
+            <ImageBackground style = {styles.background}>
+                <View style = {styles.screenContainer}>
+                    <TouchableOpacity style = {styles.profileContainer}>
+                        <Text style = {styles.buttonText}>
+                            Profile Settings
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style = {styles.accessContainer}>
+                        <Text style = {styles.buttonText}>
+                            Accessibility
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style = {styles.privacyContainer}>
+                        <Text style = {styles.buttonText}>
+                            Privacy Statement
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity stlye = {styles.termsContainer}>
+                        <Text style = {styles.buttonText}>
+                            Terms and Conditions
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
+        );
+       }
 }
 
 const styles = StyleSheet.create({
-
-    background:{
-            flex: 1,
-            justifyContent: "flex-end",
-            alignItems: "center",
-            backgroundColor: "#131313",
-            baseline: "1",
-            justifyContent: "space-between",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            padding: 10,
-    },
-    backButton:{
-
-    },
-    header:{
-
-    },
-    headerText: {
-
-    },
+background: {
+    color: "#131313",
+    backgroundColor: "#131313",
+    flex: 1,
+},
+screenContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    top: 20,
+},
+profileContainer:{
+    backgroundColor: "#ffc200",
+    width: "70%",
+    height: "25%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+    borderRadius: 10,
+},
+accessContainer:{
+    backgroundColor: "#ff7a00",
+    width: "70%",
+    height: "25%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+    borderRadius: 10,
+},
+privacyContainer:{
+    backgroundColor: "#d95702",
+    width: "70%",
+    height: "25%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+    borderRadius: 10,
+},
+termsContainer:{
+    backgroundColor: "#f2283c",
+    width: "70%",
+    height: "52%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+    borderRadius: 10,
+},
+buttonText: {
+    display: "flex",
+    position: "relative",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 30,
+    textAlign: "center",
+    alignSelf: "auto",
+}
 
 })
 
 export default Preferences;
-*/
