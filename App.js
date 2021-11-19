@@ -68,11 +68,11 @@ const MapStackScreen = () => (
 );
 
 const TabScreen = () => (
-  <Tab.Navigator>
-    <Tab.Screen name="Home" component={HomeStackScreen} />
-    <Tab.Screen name="Map Display" component={MapStackScreen} />
-    <Tab.Screen name="Profile" component={ProfileStackScreen} />
-  </Tab.Navigator>
+  <Tabs.Navigator>
+    <Tabs.Screen name="Home" component={HomeStackScreen} />
+    <Tabs.Screen name="Map Display" component={MapStackScreen} />
+    <Tabs.Screen name="Profile" component={ProfileStackScreen} />
+  </Tabs.Navigator>
 );
 
 const RootStackScreen = ({ userToken }) => (
