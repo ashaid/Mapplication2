@@ -158,18 +158,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   buttonContainer: {
+    display: "flex",
     flexWrap: "wrap",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    alignSelf: "auto",
   },
   buttonText: {
+    display: "flex",
     position: "relative",
     color: Colors.white,
     fontWeight: "bold",
     fontSize: 30,
     textAlign: "center",
+    alignSelf: "auto",
   },
   logoContainer: {
     flexDirection: "row",
