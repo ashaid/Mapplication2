@@ -6,6 +6,7 @@ import {
   Button,
   ImageBackground,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 
 import { AuthContext } from "../components/AuthContext";
@@ -21,12 +22,28 @@ export const Home = ({ navigation }) => (
       resizeMode="cover"
       source={require("../assets/Background.png")}
     >
-      <View style = {styles.logoContainter}>
-      <Text style={styles.logoText}>     Mapplication</Text>
+    <View style = {styles.itemContainer}>
+      <View style={styles.logoContainer}>
+        <Text style={styles.logoText}>Mapplication</Text>
       </View>
+    </View>
     </ImageBackground>
   </ScreenContainer>
 );
+
+export const FindClasses = () => {
+  return (
+    <ScreenContainer>
+      <ImageBackground
+        style={{ flex: 1, width: "100%", height: "100%" }}
+        resizeMode="cover"
+        source={require("../assets/Background.png")}
+      >
+        <View style={Style.centerItem}></View>
+      </ImageBackground>
+    </ScreenContainer>
+  );
+};
 
 export const Splash = () => (
   <ScreenContainer>
@@ -38,12 +55,16 @@ export const LogIn = ({ navigation }) => {
   const { logIn } = React.useContext(AuthContext);
 
   return (
-    <ScreenContainer style={{ flex: 1 }}>
-      <ImageBackground style={styles.background}>
+    // <ScreenContainer style={{ flex: 1 }}>
+
+    <ImageBackground style={styles.background}>
+      <SafeAreaView style={{ flex: 1 }}>
         <Wobble />
         <Button title="Log In" onPress={() => logIn()} />
-      </ImageBackground>
-    </ScreenContainer>
+      </SafeAreaView>
+    </ImageBackground>
+
+    // </ScreenContainer>
   );
 };
 
@@ -56,76 +77,33 @@ export const ProfileScreen = ({ navigation }) => {
         source={require("../assets/Background.png")}
       >
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style = {styles.scheduleButton}
-            onPress={
-              () => navigation.navigate('ScheduleScreen')
-            }
+          <TouchableOpacity
+            title="Schedule Builder"
+            onPress={() => {
+              navigation.push("Scheduler");
+            }}
+            style={styles.scheduleButton}
           >
-            <Text style = {styles.buttonText}>View Schedule</Text>
-
+            <Text style={styles.buttonText}>View Schedule</Text>
           </TouchableOpacity>
-          
-          <TouchableOpacity style = {styles.preferencesButton}
-            
-            onPress={
-              () => navigation.navigate('Preferences')
-            }
+          <TouchableOpacity
+            // title="Find My Classes"
+            onPress={() => {
+              navigation.push("Find My Classes");
+            }}
+            style={styles.preferencesButton}
           >
-
-            <Text style = {styles.buttonText}>Preferences</Text>
-
+            <Text style={styles.buttonText}>Preferences</Text>
           </TouchableOpacity>
-          
-          <TouchableOpacity style = {styles.logoutButton}
-            onPress={
-              () => navigation.navigate('LogOutScreen')
-            }
+          <TouchableOpacity
+            title="Find My Classes"
+            onPress={() => {
+              navigation.push("Find My Classes");
+            }}
+            style={styles.logoutButton}
           >
-
-            <Text style = {styles.buttonText}>Log Out</Text>
-
+            <Text style={styles.buttonText}>Log Out</Text>
           </TouchableOpacity>
-          <TouchableOpacity style = {styles.button}
-          onPress = {InfoPage} >
-
-          <Text style = {styles.buttonText}>Info Page</Text>
-
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </ScreenContainer>
-  );
-};
-
-const InfoPage = ({ navigation }) => {
-  <ScreenContainer>
-    <ImageBackground
-        style={{ flex: 1, width: "100%", height: "100%" }}
-        resizeMode="cover"
-        source={require("../assets/Background.png")}
-      >
-        <Text style = {styles.buttonText}> View Schedule </Text>
-    </ImageBackground>
-  </ScreenContainer>
-}
-export const ScheduleScreen = ({navigation}) => {
-  return(
-    <ScreenContainer>
-      <ImageBackground>
-        <View>
-          <Text>TestPage</Text>
-        </View>
-      </ImageBackground>
-    </ScreenContainer>
-  );
-};
-
-export const LogOutScreen = ({navigation}) => {
-  return(
-    <ScreenContainer>
-      <ImageBackground>
-        <View>
-          <Text>TestPage</Text>
         </View>
       </ImageBackground>
     </ScreenContainer>
@@ -136,6 +114,11 @@ const styles = StyleSheet.create({
   imgBackground: {
     flex: 1,
     justifyContent: "center",
+  },
+  itemContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    top: "45%",
   },
   background: {
     flex: 1,
@@ -182,17 +165,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   buttonContainer: {
+    display: "flex",
     flexWrap: "wrap",
-    flex: "1",
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: 20
+    padding: 20,
+    alignSelf: "auto",
   },
   buttonText: {
+    display: "flex",
     position: "relative",
     color: Colors.white,
     fontWeight: "bold",
     fontSize: 30,
+    textAlign: "center",
+    alignSelf: "auto",
   },
   logoContainer: {
     flexDirection: "row",
@@ -200,17 +188,15 @@ const styles = StyleSheet.create({
     width: "75%",
     alignItems: "center",
     backgroundColor: "#277dff",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    marginVertical: 10,
-    //borderWidth: 10,
-    //borderRadius: 5,
-    //borderColor: Colors.white,
+    borderWidth: 10,
+    borderRadius: 5,
+    borderColor: "#277dff",
   },
   logoText: {
-    top: 15,
-    color: "#b532de",
+    color: Colors.white,
     fontWeight: "bold",
-    fontSize: 100,
+    fontSize: 50,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
