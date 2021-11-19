@@ -29,6 +29,20 @@ export const Home = ({ navigation }) => (
   </ScreenContainer>
 );
 
+export const FindClasses = () => {
+  return (
+    <ScreenContainer>
+      <ImageBackground
+        style={{ flex: 1, width: "100%", height: "100%" }}
+        resizeMode="cover"
+        source={require("../assets/Background.png")}
+      >
+        <View style={Style.centerItem}></View>
+      </ImageBackground>
+    </ScreenContainer>
+  );
+};
+
 export const Splash = () => (
   <ScreenContainer>
     <Text>Loading...</Text>
@@ -60,64 +74,22 @@ export const ProfileScreen = ({ navigation }) => {
       >
         <View style={styles.buttonContainer}>
           <TouchableOpacity
+            title="Find My Classes"
+            onPress={() => {
+              navigation.push("Find My Classes");
+            }}
             style={styles.scheduleButton}
-            onPress={() => navigation.navigate("ScheduleScreen")}
           >
             <Text style={styles.buttonText}>View Schedule</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.preferencesButton}
-            onPress={() => navigation.navigate("Preferences")}
-          >
-            <Text style={styles.buttonText}>Preferences</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.logoutButton}
-            onPress={() => navigation.navigate("LogOutScreen")}
-          >
-            <Text style={styles.buttonText}>Log Out</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={InfoPage}>
-            <Text style={styles.buttonText}>Info Page</Text>
-          </TouchableOpacity>
         </View>
-      </ImageBackground>
-    </ScreenContainer>
-  );
-};
-
-const InfoPage = ({ navigation }) => {
-  <ScreenContainer>
-    <ImageBackground
-      style={{ flex: 1, width: "100%", height: "100%" }}
-      resizeMode="cover"
-      source={require("../assets/Background.png")}
-    >
-      <Text style={styles.buttonText}> View Schedule </Text>
-    </ImageBackground>
-  </ScreenContainer>;
-};
-export const ScheduleScreen = ({ navigation }) => {
-  return (
-    <ScreenContainer>
-      <ImageBackground>
-        <View>
-          <Text>TestPage</Text>
-        </View>
-      </ImageBackground>
-    </ScreenContainer>
-  );
-};
-
-export const LogOutScreen = ({ navigation }) => {
-  return (
-    <ScreenContainer>
-      <ImageBackground>
-        <View>
-          <Text>TestPage</Text>
-        </View>
+        {/* <View>
+          <Button title = "My Maps" 
+            onPress={() => {
+            navigation.push("Find My Classes")
+            }} 
+          />
+        </View> */}
       </ImageBackground>
     </ScreenContainer>
   );
