@@ -18,6 +18,7 @@ import {
 import { Style, Colors } from "../style/styles";
 import axios from "axios";
 import checkRoom from "../../backend/RoomCheck";
+import FloorFinder from "../../backend/FloorFinder";
 
 class MapDisplayComponent extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class MapDisplayComponent extends Component {
 
     this.state = {
       // change to loading: true for api call
-      loading: false,
+      loading: true,
       error: "",
       data: null,
       // startingRoom: "",
@@ -33,21 +34,9 @@ class MapDisplayComponent extends Component {
       updateMap: false,
     };
   }
-  apiTestHelper = async () => {
-    try {
-      const result = await axios.post(
-        "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=bec&start=" +
-          args[0] +
-          "&dest=" +
-          args[1]
-      );
-      console.log(result);
-      return result.data;
-    } catch (error) {
-      console.error("error: ", error);
-    }
-  };
+
   loadData = async (...args) => {
+    // args[0] = building, args[1] = startingRoom, args[2] = destinationRoom
     console.log(args);
     this.setState({ loading: true });
     try {
@@ -77,32 +66,28 @@ class MapDisplayComponent extends Component {
     //this.loadData();
     console.log("mounted");
     console.log(this.props.route.params.startingRoom);
+    console.log(
+      FloorFinder(
+        this.props.route.params.startingBuilding,
+        this.props.route.params.startingRoom
+      )
+    );
   }
-  handleSubmitPress = () => {
-    if (this.state.startingRoom && this.state.destinationRoom != "") {
-      console.log("success");
-      this.setState({ updateMap: true });
-      // *** UNCOMMENT FOR API CALL
-      // this.loadData(this.state.startingRoom, this.state.destinationRoom);
-    } else {
-      console.log("failed");
-    }
+
+  handleMapDeconstruction = () => {
+    /*
+     * 1 MAP = STARTING POINT -> ENDING POINT ->  SAME FLOOR/BUILDING
+     * 2 MAP = NO STARTING POINT -> 2ND FLOOR END POINT -> ANY BUILDING
+     * 3 MAP = STARTING POINT 1ST FLOOR -> 2ND FLOOR END POINT -> DIFFERENT BUILDINGS
+     * 4 MAP = STARTING POINT 2ND FLOOR -> 2ND FLOOR END POINT -> DIFFERENT BUILDINGS
+     */
+    // condition ? exprIfTrue : exprIfFalse
+    const TOTAL_MAPS = 0;
+    // sameFloor/Building ? =>
   };
 
-  handleStartingRoom = (text) => {
-    this.setState({ startingRoom: text });
-  };
-  handleDestinationRoom = (text) => {
-    this.setState({ destinationRoom: text });
-  };
-  handleUpdateMapToFalse = () => {
-    this.setState({ updateMap: false });
-  };
   render() {
-    const { loading, error, data, startingRoom, destinationRoom, updateMap } =
-      this.state;
-    if (this.state.updateMap)
-      console.log(this.state.startingRoom + " " + this.state.destinationRoom);
+    const { loading, error, data } = this.state;
     if (loading) {
       return <Text>Loading ...</Text>;
     }
