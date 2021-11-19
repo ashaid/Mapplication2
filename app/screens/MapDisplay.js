@@ -64,24 +64,6 @@ class MapDisplay extends Component {
     );
   };
 
-<<<<<<< HEAD
-          />
-          <TextInput
-            style={stylesMD.source}
-            placeholder={"Ex:1200"}
-            onChangeText={(value) => this.setStartingRoom(value)}
-            maxLength={4}
-          />
-        </View>
-        <View>
-          <Text style={stylesMD.textBottom}>Enter Destination:</Text>
-        </View>
-        <View style={stylesMD.row}>
-          {/* from https://github.com/lawnstarter/react-native-picker-select */}
-          <RNPickerSelect
-            onValueChange={(value) => this.setStartingBuilding(value)}
-              { label: "Lockett", value: "loc" },
-=======
   render() {
     const {
       startingRoom,
@@ -127,7 +109,6 @@ class MapDisplay extends Component {
                 { label: "BEC", value: "bec" },
                 { label: "PFT", value: "pft" },
                 { label: "Lockett", value: "loc" },
->>>>>>> 3b1016552805c5b08326c0aa7685bcfe3e999685
               ]}
             />
             <TextInput
