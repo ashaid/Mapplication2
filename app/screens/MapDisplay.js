@@ -117,7 +117,6 @@ class MapDisplay extends Component {
           <View style={stylesMD.buttonContainer}>
             <TouchableOpacity
               onPress={() => {
-                ButtonProtocol();
                 this.printInputState();
               }}
             >
