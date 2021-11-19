@@ -5,7 +5,7 @@ import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MapDisplay from "./app/screens/MapDisplay";
-import { Home, LogIn, ProfileScreen, Splash } from "./app/screens/Screens.js";
+import { FindClasses, Home, LogIn, ProfileScreen, Splash } from "./app/screens/Screens.js";
 import { AuthContext } from "./app/components/AuthContext.js";
 
 const MapStack = createNativeStackNavigator();
@@ -13,7 +13,9 @@ const RootStack = createNativeStackNavigator();
 const LogInStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
+const TabProfileStack = createNativeStackNavigator();
 const Tabs = createMaterialBottomTabNavigator();
+const ClassStack = createNativeStackNavigator();
 
 const LogInStackScreen = () => (
   <LogInStack.Navigator screenOptions={{ headerShown: false }}>
@@ -30,11 +32,14 @@ const HomeStackScreen = () => (
   </HomeStack.Navigator>
 );
 
-const ProfileStackScreen = () => (
-  <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
+const ProfileStackScreen = () => {
+  return (
+  <ProfileStack.Navigator screenOptions={{ headerShown: false }} initialRouteName = "Profile">
     <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+    <ProfileStack.Screen name="Find My Classes" component={FindClasses} options={{headerShown: true}}/>
   </ProfileStack.Navigator>
-);
+  );
+}
 
 const MapStackScreen = () => (
   <MapStack.Navigator screenOptions={{ headerShown: false }}>
@@ -79,6 +84,10 @@ export default function App() {
         signOut: () => {
           setUserToken(null);
         },
+        classes: () => {
+          setIsLoading(false)
+          setUserToken("fdsa")
+        }
       };
   }, []);
   React.useEffect(() => {

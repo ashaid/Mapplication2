@@ -24,6 +24,22 @@ export const Home = ({ navigation }) => (
   </ScreenContainer>
 );
 
+export const FindClasses = ({ navigation }) => {
+  return (
+  <ScreenContainer>
+    <ImageBackground
+      style={{ flex: 1, width: "100%", height: "100%" }}
+      resizeMode="cover"
+      source={require("../assets/Background.png")}
+    >
+    <View style = {Style.centerItem}>
+
+    </View>
+    </ImageBackground>
+  </ScreenContainer>
+  );
+};
+
 export const Splash = () => (
   <ScreenContainer>
     <Text>Loading...</Text>
@@ -51,15 +67,28 @@ export const ProfileScreen = ({ navigation }) => {
         resizeMode="cover"
         source={require("../assets/Background.png")}
       >
-        <View style={Style.centerItem}>
-          <Button title="Find My Classes" />
-          <Button title="My Maps" />
-          <Button title="UR mom lol" />
+                
+        <View>
+          <Button title = "Find My Classes"
+            onPress={() => {
+            navigation.push("Find My Classes")
+            }} 
+            />
         </View>
+        <View>
+          <Button title = "My Maps" 
+            onPress={() => {
+            navigation.push("Find My Classes")
+            }} 
+          />
+        </View>
+
       </ImageBackground>
     </ScreenContainer>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   button: {
