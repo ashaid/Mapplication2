@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MapDisplay from "./app/screens/MapDisplay";
+import { MapDisplayComponent } from "./app/components/MapDisplayComponent";
 import {
   FindClasses,
   Home,
@@ -59,6 +60,11 @@ const ProfileStackScreen = () => {
 const MapStackScreen = () => (
   <MapStack.Navigator screenOptions={{ headerShown: false }}>
     <MapStack.Screen name="Map Display" component={MapDisplay} />
+    <ProfileStack.Screen
+      name="Rendered Map"
+      component={MapDisplayComponent}
+      options={{ headerShown: true }}
+    />
   </MapStack.Navigator>
 );
 

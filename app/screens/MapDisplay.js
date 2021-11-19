@@ -118,6 +118,7 @@ class MapDisplay extends Component {
             <TouchableOpacity
               onPress={() => {
                 this.printInputState();
+                this.props.navigation.push("Rendered Map");
               }}
             >
               <Text style={stylesMD.buttonText}>Submit</Text>

@@ -23,7 +23,7 @@ export const Home = ({ navigation }) => (
       source={require("../assets/Background.png")}
     >
       <View style={styles.logoContainter}>
-        <Text style={styles.logoText}> Mapplication</Text>
+        <Text style={styles.logoText}>Mapplication</Text>
       </View>
     </ImageBackground>
   </ScreenContainer>

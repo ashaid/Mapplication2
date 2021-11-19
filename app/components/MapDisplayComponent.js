@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from "@react-navigation/native";
 import {
   View,
   Text,
@@ -72,6 +76,7 @@ class MapDisplayComponent extends Component {
   componentDidMount() {
     //this.loadData();
     console.log("mounted");
+    console.log(this.props);
   }
   handleSubmitPress = () => {
     if (this.state.startingRoom && this.state.destinationRoom != "") {
@@ -150,30 +155,6 @@ class MapDisplayComponent extends Component {
         >
           {map}
         </View>
-
-        <TextInput
-          placeholder="starting room"
-          onChangeText={this.handleStartingRoom}
-          style={{ color: Colors.white }}
-        ></TextInput>
-        <TextInput
-          placeholder="destination room"
-          onChangeText={this.handleDestinationRoom}
-          style={{ color: Colors.white }}
-        ></TextInput>
-
-        <Button
-          type="submit"
-          onPress={
-            () => {
-              this.handleSubmitPress();
-              this.handleUpdateMapToFalse();
-            }
-            // () => console.log(`${startingRoom} and ${destinationRoom}`)
-          }
-        >
-          button
-        </Button>
       </View>
     );
   }
