@@ -87,18 +87,18 @@ export const ProfileScreen = ({ navigation }) => {
             <Text style={styles.buttonText}>View Schedule</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            // title="Find My Classes"
+            title="Preferences"
             onPress={() => {
-              navigation.push("Find My Classes");
+              navigation.push("Preferences");
             }}
             style={styles.preferencesButton}
           >
             <Text style={styles.buttonText}>Preferences</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            title="Find My Classes"
+            title="Log Out"
             onPress={() => {
-              navigation.push("Find My Classes");
+              navigation.push("Log Out");
             }}
             style={styles.logoutButton}
           >
