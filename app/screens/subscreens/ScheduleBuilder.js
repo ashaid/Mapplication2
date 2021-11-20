@@ -83,9 +83,6 @@ export class ScheduleBuilder extends Component {
     this.timetableRef = ref;
   };
 
-  onEventPress = (evt) => {
-    Alert.alert("Event Details", console.log(evt));
-  };
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -93,13 +90,13 @@ export class ScheduleBuilder extends Component {
           <TimeTableView
             scrollViewRef={this.scrollViewRef}
             events={events_data}
-            pivotTime={9}
+            pivotTime={7}
             pivotEndTime={20}
             pivotDate={this.pivotDate}
+            headerStyle={styles.headerStyle}
             numberOfDays={this.numOfDays}
-            onEventPress={this.onEventPress}
             formatDateHeader="dddd"
-            locale="ko"
+            locale="en-us"
           />
         </View>
       </SafeAreaView>
@@ -119,7 +116,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   headerStyle: {
-    backgroundColor: "green",
+    backgroundColor: "#277dff",
   },
   container: {
     flex: 1,
