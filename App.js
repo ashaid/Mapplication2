@@ -7,8 +7,8 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import MapDisplay from "./app/screens/MapDisplay";
 import { MapDisplayComponent } from "./app/components/MapDisplayComponent";
 import { ScheduleBuilder } from "./app/screens/subscreens/ScheduleBuilder";
-import {Preferences} from "./app/screens/subscreens/Preferences";
-import {LogOut} from "./app/screens/LogOut";
+import { Preferences } from "./app/screens/subscreens/Preferences";
+import { LogOut } from "./app/screens/LogOut";
 import {
   FindClasses,
   Home,
@@ -20,6 +20,7 @@ import { AuthContext } from "./app/components/AuthContext.js";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { MapViews } from "./app/screens/subscreens/MapViews";
 
 import { Style, Colors } from "./app/style/styles";
 
@@ -62,14 +63,14 @@ const ProfileStackScreen = () => {
         options={{ headerShown: true }}
       />
       <ProfileStack.Screen
-       name="Preferences"
-       component={Preferences}
-       options={{headerShown:true}}
+        name="Preferences"
+        component={Preferences}
+        options={{ headerShown: true }}
       />
       <ProfileStack.Screen
         name="Log Out"
         component={LogOut}
-        options={{headerShown:true}}
+        options={{ headerShown: true }}
       />
     </ProfileStack.Navigator>
   );

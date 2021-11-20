@@ -26,7 +26,7 @@ class MapDisplayComponent extends Component {
 
     this.state = {
       // change to loading: true for api call
-      loading: true,
+      loading: false,
       error: "",
       data: null,
       // startingRoom: "",
@@ -65,13 +65,7 @@ class MapDisplayComponent extends Component {
   componentDidMount() {
     //this.loadData();
     console.log("mounted");
-    console.log(this.props.route.params.startingRoom);
-    console.log(
-      FloorFinder(
-        this.props.route.params.startingBuilding,
-        this.props.route.params.startingRoom
-      )
-    );
+    this.handleMapDeconstruction();
   }
 
   handleMapDeconstruction = () => {
@@ -79,11 +73,43 @@ class MapDisplayComponent extends Component {
      * 1 MAP = STARTING POINT -> ENDING POINT ->  SAME FLOOR/BUILDING
      * 2 MAP = NO STARTING POINT -> 2ND FLOOR END POINT -> ANY BUILDING
      * 3 MAP = STARTING POINT 1ST FLOOR -> 2ND FLOOR END POINT -> DIFFERENT BUILDINGS
-     * 4 MAP = STARTING POINT 2ND FLOOR -> 2ND FLOOR END POINT -> DIFFERENT BUILDINGS
+     * 4 MAP = STARTING POINT 2ND FLOOR -> 2ND FLOOR END POINT -> DIFFERENT BUILDINGS (NOT IMPLEMENTING)
+     *
+     * need to think about basement logic? idk
      */
-    // condition ? exprIfTrue : exprIfFalse
-    const TOTAL_MAPS = 0;
+    const {
+      startingBuilding,
+      startingRoom,
+      destinationBuilding,
+      destinationRoom,
+    } = this.props.route.params;
+
+    let TOTAL_MAPS = 0;
+
+    const startingFloor = FloorFinder(startingBuilding, startingRoom);
+    const destinationFloor = FloorFinder(destinationBuilding, destinationRoom);
     // sameFloor/Building ? =>
+    console.log(
+      parseInt(startingFloor.length) - parseInt(destinationFloor.length)
+    );
+    console.log(startingFloor && destinationFloor);
+    startingBuilding == -1
+      ? (TOTAL_MAPS = 2)
+      : startingFloor == destinationFloor
+      ? (TOTAL_MAPS = 1)
+      : parseInt(startingFloor.length) - parseInt(destinationFloor.length) != 0
+      ? (TOTAL_MAPS = 3)
+      : (TOTAL_MAPS = 4);
+
+    console.log("TOTAL MAPS: " + TOTAL_MAPS);
+
+    console.log(
+      "startingFloor: " +
+        startingFloor +
+        " " +
+        "destinationFloor: " +
+        destinationFloor
+    );
   };
 
   render() {
