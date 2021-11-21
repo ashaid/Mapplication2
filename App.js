@@ -9,10 +9,15 @@ import { MapDisplayComponent } from "./app/components/MapDisplayComponent";
 import { ScheduleBuilder } from "./app/screens/subscreens/ScheduleBuilder";
 import {Preferences} from "./app/screens/subscreens/Preferences";
 import {LogOut} from "./app/screens/LogOut";
+import {Terms} from "./app/screens/subscreens/Terms";
+import {PrivacyStatement} from "./app/screens/subscreens/PrivacyStatement";
+import {ProfileSettings} from "./app/screens/subscreens/ProfileSettings";
+import {Accessibility} from "./app/screens/subscreens/Accessibility";
 import {
   FindClasses,
   Home,
   LogIn,
+  PreScreen,
   ProfileScreen,
   Splash,
 } from "./app/screens/Screens.js";
@@ -29,6 +34,7 @@ const LogInStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
 const TabProfileStack = createNativeStackNavigator();
+// const PreStack = createNativeStackNavigator();
 const Tabs = createMaterialBottomTabNavigator();
 const ClassStack = createNativeStackNavigator();
 
@@ -72,6 +78,32 @@ const ProfileStackScreen = () => {
         options={{headerShown:true}}
       />
     </ProfileStack.Navigator>
+  );
+};
+
+const PreStackScreen = () => {
+  return (
+    <PreStack.Navigator
+      screenOptions={{ headerShown: true}}
+      initialRouteName="Profile Settings"
+    >
+      <PreStack.Screen name="Profile Settings" component={ProfileSettings} />
+      <PreStack.Screen
+        name="Accessibility"
+        component={Accessibility}
+        options={{ headerShown: true }}
+      />
+      <PreStack.Screen
+        name="Privacy Statement"
+        component={PrivacyStatement}
+        options={{ headerShown: true }}
+      />
+      <PreStack.Screen
+       name="Terms and Conditions"
+       component={Terms}
+       options={{headerShown:true}}
+      />
+    </PreStack.Navigator>
   );
 };
 

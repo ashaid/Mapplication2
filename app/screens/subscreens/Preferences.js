@@ -1,4 +1,3 @@
-
 import React, {Component} from "react";
 import "react-native-reanimated";
 import {
@@ -15,22 +14,38 @@ export class Preferences extends Component{
         return(
             <ImageBackground style = {styles.background}>
                 <View style = {styles.screenContainer}>
-                    <TouchableOpacity style = {styles.profileContainer}>
+                    <TouchableOpacity style = {styles.profileContainer}
+                     title="Profile Settings"
+                     onPress={() => {
+                       navigation.push("ProfileSettings");
+                     }}>
                         <Text style = {styles.buttonText}>
                             Profile Settings
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style = {styles.accessContainer}>
+                    <TouchableOpacity style = {styles.accessContainer}
+                     title="Accessibility"
+                     onPress={() => {
+                       navigation.push("Accessibility");
+                     }}>
                         <Text style = {styles.buttonText}>
                             Accessibility
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style = {styles.privacyContainer}>
+                    <TouchableOpacity style = {styles.privacyContainer}
+                     title="Privacy Statement"
+                     onPress={() => {
+                       navigation.push("PrivacyStatement");
+                     }}>
                         <Text style = {styles.buttonText}>
                             Privacy Statement
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity stlye = {styles.termsContainer}>
+                    <TouchableOpacity stlye = {styles.termsContainer}
+                     title="Terms and Conditions"
+                     onPress={() => {
+                       navigation.push("Terms");
+                     }}>
                         <Text style = {styles.buttonText}>
                             Terms and Conditions
                         </Text>
