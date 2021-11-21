@@ -167,7 +167,7 @@ const stylesMD = StyleSheet.create({
     fontSize: 16,
     paddingHorizontal: 10,
     paddingVertical: 8,
-    borderRadius: 8,
+    borderRadius: 10,
     backgroundColor: "white",
   },
   destination: {
