@@ -25,6 +25,7 @@ import { AuthContext } from "./app/components/AuthContext.js";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import { MapViews } from "./app/screens/subscreens/MapViews";
 
 import { Style, Colors } from "./app/style/styles";
 
@@ -68,14 +69,14 @@ const ProfileStackScreen = () => {
         options={{ headerShown: true }}
       />
       <ProfileStack.Screen
-       name="Preferences"
-       component={Preferences}
-       options={{headerShown:true}}
+        name="Preferences"
+        component={Preferences}
+        options={{ headerShown: true }}
       />
       <ProfileStack.Screen
         name="Log Out"
         component={LogOut}
-        options={{headerShown:true}}
+        options={{ headerShown: true }}
       />
     </ProfileStack.Navigator>
   );

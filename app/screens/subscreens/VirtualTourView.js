@@ -20,20 +20,16 @@ function VirtualTourView(props){
 
 const styles = StyleSheet.create({
 
-    background:{
-        background: {
-            flex: 1,
-            justifyContent: "flex-end",
-            alignItems: "center",
-            backgroundColor: "#131313",
-            baseline: "1",
-            justifyContent: "space-between",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            padding: 10,
-        },
-    }
-
+    background: {
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: "center",
+        backgroundColor: "#131313",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        padding: 10,
+    },
 })
 
 export default VirtualTourView;

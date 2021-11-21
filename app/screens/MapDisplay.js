@@ -73,26 +73,29 @@ class MapDisplay extends Component {
     } = this.state;
     return (
       <ImageBackground style={stylesMD.background}>
-        <View style = {stylesMD.screenContainer}>
-          <View style={stylesMD.headerContainer}>
-          <Text style={stylesMD.inputText}>MAP BUILDER</Text>
+        <View style={stylesMD.screenContainer}>
+          <View style={{ marginTop: 70, marginBottom: 40 }}>
+            <View style={stylesMD.headerContainer}>
+              <Text style={stylesMD.header}>MAP BUILDER</Text>
+            </View>
           </View>
-          <View style = {stylesMD.textContainer}>
+          <View style={stylesMD.textContainer}>
             <Text style={stylesMD.inputText}>Enter Starting Point:</Text>
           </View>
           <View style={stylesMD.row}>
             {/* from https://github.com/lawnstarter/react-native-picker-select */}
-            <View style = {stylesMD.dropDown}>
-            <RNPickerSelect
-              style={pickerStyles}
-              onValueChange={(value) => this.setStartingBuilding(value)}
-              placeholder={{ label: "Building", value: null }}
-              items={[
-                { label: "BEC", value: "bec" },
-                { label: "PFT", value: "pft" },
-                { label: "Lockett", value: "loc" },
-              ]}
-            />
+            <View>
+              <RNPickerSelect
+                style={pickerStyles}
+                onValueChange={(value) => this.setStartingBuilding(value)}
+                placeholder={{ label: "Building", value: null }}
+                items={[
+                  { label: "No Starting Location", value: -1 },
+                  { label: "BEC", value: "bec" },
+                  { label: "PFT", value: "pft" },
+                  { label: "Lockett", value: "loc" },
+                ]}
+              />
             </View>
             <TextInput
               style={stylesMD.source}
@@ -101,21 +104,22 @@ class MapDisplay extends Component {
               maxLength={4}
             />
           </View>
-          <View style = {stylesMD.textContainer}>
+          <View style={stylesMD.textContainer}>
             <Text style={stylesMD.inputText}>Enter Destination:</Text>
           </View>
           <View style={stylesMD.row}>
             {/* from https://github.com/lawnstarter/react-native-picker-select */}
-            <View style = {stylesMD.dropDown}>
-            <RNPickerSelect
-              onValueChange={(value) => this.setDestinationBuilding(value)}
-              placeholder={{ label: "Building", value: null }}
-              items={[
-                { label: "BEC", value: "bec" },
-                { label: "PFT", value: "pft" },
-                { label: "Lockett", value: "loc" },
-              ]}
-            />
+            <View>
+              <RNPickerSelect
+                style={pickerStyles}
+                onValueChange={(value) => this.setDestinationBuilding(value)}
+                placeholder={{ label: "Building", value: null }}
+                items={[
+                  { label: "BEC", value: "bec" },
+                  { label: "PFT", value: "pft" },
+                  { label: "Lockett", value: "loc" },
+                ]}
+              />
             </View>
             <TextInput
               style={stylesMD.destination}
@@ -178,49 +182,18 @@ const stylesMD = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "white",
   },
-  image: {
-    // flex: 1,
-    // width: null,
-    // height: null,
-    // resizeMode: "cover",
-    // backgroundColor: "transparent",
-    // border: "solid",
-    // borderColor: Colors.secondary,
-    // borderRadius: 20,
-    //transform: "rotate(90deg)",
-    flex: 1,
-    width: "100%",
-    height: "100%",
-    aspectRatio: 1,
-    resizeMode: "contain",
-  },
   row: {
     flex: 1,
     flexDirection: "row",
   },
-  dropDown: {
-    borderColor: "#277dff",
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    height: 45,
-    width: "50%",
-    borderWidth: 0.5,
-    marginBottom: 50,
-    fontSize: 16,
-    borderRadius: 10,
-    backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  /*
   buttonContainer: {
     flex: 1,
     marginTop: 50,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 120,
-    backgroundColor: "blue",
-    paddingVertical: 2,
+    backgroundColor: "#277dff",
+    paddingVertical: 6,
     paddingHorizontal: 8,
     borderRadius: 100,
   },
@@ -237,16 +210,15 @@ const stylesMD = StyleSheet.create({
     marginBottom: 5,
     fontWeight: "bold",
   },
-  */
- headerContainer: {
+  headerContainer: {
     width: "100%",
     backgroundColor: "#277dff",
-    borderWidth: .5,
+    borderWidth: 0.5,
     borderColor: "#277dff",
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
- },
+  },
   background: {
     flex: 1,
     justifyContent: "flex-end",
@@ -260,54 +232,41 @@ const stylesMD = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     color: "white",
-    marginTop: 100,
     fontWeight: "bold",
   },
-  textContainer:{
-  justifyContent: "center",
-  width: "100%",
-  alignItems: "center",
-  backgroundColor: "#277dff",
-  paddingHorizontal: 20,
-  paddingVertical: 10,
-  marginVertical: 10,
-  borderWidth: .5,
-  borderColor: "#277dff",
-  borderRadius: 10,
-},
-buttonContainer:{
-  flexDirection: "row",
-  justifyContent: "center",
-  width: "100%",
-  alignItems: "center",
-  backgroundColor: "#00ae6b",
-  paddingHorizontal: 20,
-  paddingVertical: 10,
- marginVertical: 50,
-  borderWidth: .5,
-  borderColor: "#00ae6b",
-  borderRadius: 10,
-},
-inputText:{
-  position: "relative",
-  color: Colors.white,
-  marginTop: 3,
-  alignItems: "center",
-  justifyContent: "center",
-  fontWeight: "bold",
-  fontSize: 20,
-},
+  textContainer: {
+    justifyContent: "center",
+    width: "100%",
+    alignItems: "center",
+    backgroundColor: "#277dff",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginVertical: 10,
+    borderWidth: 0.5,
+    borderColor: "#277dff",
+    borderRadius: 10,
+  },
+  inputText: {
+    position: "relative",
+    color: Colors.white,
+    marginTop: 3,
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
 });
 
 const pickerStyles = StyleSheet.create({
   inputIOS: {
     fontSize: 16,
     paddingVertical: 12,
-    paddingHorizontal: 10,
+    paddingHorizontal: 100,
     borderWidth: 1,
-    borderColor: "blue",
+    borderColor: "#277dff",
     color: "black",
-    paddingRight: 30,
+    paddingLeft: 65,
+    paddingRight: 65,
     borderRadius: 8,
     backgroundColor: "white",
   },
@@ -316,10 +275,11 @@ const pickerStyles = StyleSheet.create({
     paddingHorizontal: 90,
     paddingVertical: 21,
     borderWidth: 1,
-    borderColor: "blue",
+    borderColor: "#277dff",
     borderRadius: 1,
     color: "black",
-    paddingRight: 30,
+    paddingRight: 98,
+    paddingLeft: 98,
     backgroundColor: "white",
   },
 });

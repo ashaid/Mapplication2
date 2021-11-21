@@ -1,39 +1,25 @@
-import React, {Component} from "react";
-import "react-native-reanimated";
-import {
-  Image,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+// import Carousel from "react-native-snap-carousel";
 
-function MapViews(props){
-    return(
+// export class MapViews extends Component {
+//   _renderItem = ({ item, index }) => {
+//     return (
+//       <View style={styles.slide}>
+//         <Text style={styles.title}>{item.title}</Text>
+//       </View>
+//     );
+//   };
 
-        <ImageBackground style = {styles.background}></ImageBackground>
-
-
-    );
-}
-
-const styles = StyleSheet.create({
-
-    background:{
-        background: {
-            flex: 1,
-            justifyContent: "flex-end",
-            alignItems: "center",
-            backgroundColor: "#131313",
-            baseline: "1",
-            justifyContent: "space-between",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            padding: 10,
-        },
-    }
-
-})
-
-export default MapViews;
+//   render() {
+//     return (
+//       <Carousel
+//         ref={(c) => {
+//           this._carousel = c;
+//         }}
+//         data={this.state.entries}
+//         renderItem={this._renderItem}
+//         sliderWidth={sliderWidth}
+//         itemWidth={itemWidth}
+//       />
+//     );
+//   }
+// }
