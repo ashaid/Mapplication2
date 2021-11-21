@@ -17,8 +17,8 @@ import {
   FindClasses,
   Home,
   LogIn,
-  PreScreen,
   ProfileScreen,
+  PreScreen,
   Splash,
 } from "./app/screens/Screens.js";
 import { AuthContext } from "./app/components/AuthContext.js";
@@ -26,8 +26,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { MapViews } from "./app/screens/subscreens/MapViews";
-
 import { Style, Colors } from "./app/style/styles";
+import { tupleExpression } from "@babel/types";
 
 const MapStack = createNativeStackNavigator();
 const RootStack = createNativeStackNavigator();
@@ -35,7 +35,7 @@ const LogInStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
 const TabProfileStack = createNativeStackNavigator();
-// const PreStack = createNativeStackNavigator();
+const PreStack = createNativeStackNavigator();
 const Tabs = createMaterialBottomTabNavigator();
 const ClassStack = createNativeStackNavigator();
 
@@ -74,6 +74,26 @@ const ProfileStackScreen = () => {
         options={{ headerShown: true }}
       />
       <ProfileStack.Screen
+        name="Profile Settings"
+        component={PreStackScreen}
+        options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
+        name="Accessibility"
+        component={PreStackScreen}
+        options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
+        name="PrivacyStatement"
+        component={PreStackScreen}
+        options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
+        name="Terms and Conditions"
+        component={PreStackScreen}
+        options={{ headerShown: true }}
+      />
+      <ProfileStack.Screen
         name="Log Out"
         component={LogOut}
         options={{ headerShown: true }}
@@ -85,24 +105,24 @@ const ProfileStackScreen = () => {
 const PreStackScreen = () => {
   return (
     <PreStack.Navigator
-      screenOptions={{ headerShown: true}}
+      screenOptions={{ headerShown: false }}
       initialRouteName="Profile Settings"
     >
       <PreStack.Screen name="Profile Settings" component={ProfileSettings} />
       <PreStack.Screen
         name="Accessibility"
         component={Accessibility}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
       <PreStack.Screen
         name="Privacy Statement"
         component={PrivacyStatement}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
       <PreStack.Screen
        name="Terms and Conditions"
        component={Terms}
-       options={{headerShown:true}}
+       options={{headerShown: true }}
       />
     </PreStack.Navigator>
   );

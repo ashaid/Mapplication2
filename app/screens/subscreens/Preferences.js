@@ -17,7 +17,7 @@ export class Preferences extends Component{
                     <TouchableOpacity style = {styles.profileContainer}
                      title="Profile Settings"
                      onPress={() => {
-                       navigation.push("ProfileSettings");
+                       this.props.navigation.push("Profile Settings");
                      }}>
                         <Text style = {styles.buttonText}>
                             Profile Settings
@@ -26,7 +26,7 @@ export class Preferences extends Component{
                     <TouchableOpacity style = {styles.accessContainer}
                      title="Accessibility"
                      onPress={() => {
-                       navigation.push("Accessibility");
+                        this.props.navigation.push("Accessibility");
                      }}>
                         <Text style = {styles.buttonText}>
                             Accessibility
@@ -35,7 +35,7 @@ export class Preferences extends Component{
                     <TouchableOpacity style = {styles.privacyContainer}
                      title="Privacy Statement"
                      onPress={() => {
-                       navigation.push("PrivacyStatement");
+                        this.props.navigation.push("PrivacyStatement");
                      }}>
                         <Text style = {styles.buttonText}>
                             Privacy Statement
@@ -44,12 +44,12 @@ export class Preferences extends Component{
                     <TouchableOpacity stlye = {styles.termsContainer}
                      title="Terms and Conditions"
                      onPress={() => {
-                       navigation.push("Terms");
+                        this.props.navigation.push("Terms and Conditions");
                      }}>
                         <Text style = {styles.buttonText}>
                             Terms and Conditions
                         </Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> 
                 </View>
             </ImageBackground>
         );
