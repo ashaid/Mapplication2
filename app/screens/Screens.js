@@ -110,56 +110,6 @@ export const ProfileScreen = ({ navigation }) => {
   );
 };
 
-export const PreScreen = ({ navigation }) => {
-  return (
-    <ScreenContainer>
-      <ImageBackground
-        style={{ flex: 1, width: "100%", height: "100%" }}
-        resizeMode="cover"
-        source={require("../assets/Background.png")}
-      >
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            title="Profile Settings"
-            onPress={() => {
-              navigation.push("ProfileSettings");
-            }}
-            style={styles.scheduleButton}
-          >
-            <Text style={styles.buttonText}>Profile Settings</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            title="Accessibility"
-            onPress={() => {
-              navigation.push("Accessibility");
-            }}
-            style={styles.preferencesButton}
-          >
-            <Text style={styles.buttonText}>Accessibility</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            title="Privacy Statement"
-            onPress={() => {
-              navigation.push("PrivacyStatement");
-            }}
-            style={styles.logoutButton}
-          >
-            <Text style={styles.buttonText}>Privacy Statement</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            title="Terms and Conditons"
-            onPress={() => {
-              navigation.push("Terms");
-            }}
-            style={styles.logoutButton}
-          >
-            <Text style={styles.buttonText}>Terms and Conditons</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </ScreenContainer>
-  );
-};
 
 const styles = StyleSheet.create({
   imgBackground: {
