@@ -140,7 +140,7 @@ class MapDisplay extends Component {
                 });
               }}
             >
-              <Text style={stylesMD.inputText}>Submit</Text>
+              <Text style={stylesMD.buttonText}>Go!</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -192,10 +192,20 @@ const stylesMD = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 120,
-    backgroundColor: "#277dff",
+    width: "75%",
+    backgroundColor: "white",
     paddingVertical: 6,
     paddingHorizontal: 8,
     borderRadius: 100,
+  },
+  buttonText:{
+    position: "relative",
+    color: "black",
+    marginTop: 3,
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "bold",
+    fontSize: 20,
   },
   textTop: {
     fontSize: 24,
@@ -213,11 +223,10 @@ const stylesMD = StyleSheet.create({
   headerContainer: {
     width: "100%",
     backgroundColor: "#277dff",
-    borderWidth: 0.5,
-    borderColor: "#277dff",
-    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+    paddingHorizontal: 30,
+    borderRadius: 10,
   },
   background: {
     flex: 1,
@@ -228,7 +237,7 @@ const stylesMD = StyleSheet.create({
     height: "100%",
   },
   header: {
-    fontSize: 50,
+    fontSize: 45,
     alignItems: "center",
     justifyContent: "center",
     color: "white",
@@ -238,12 +247,10 @@ const stylesMD = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     alignItems: "center",
-    backgroundColor: "#277dff",
+    backgroundColor: "#99aab5",
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
-    borderWidth: 0.5,
-    borderColor: "#277dff",
     borderRadius: 10,
   },
   inputText: {
