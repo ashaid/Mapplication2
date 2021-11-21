@@ -86,20 +86,41 @@ class MapDisplayComponent extends Component {
 
     let TOTAL_MAPS = 0;
 
-    const startingFloor = FloorFinder(startingBuilding, startingRoom);
-    const destinationFloor = FloorFinder(destinationBuilding, destinationRoom);
+    let startingFloor = FloorFinder(startingBuilding, startingRoom);
+    let destinationFloor = FloorFinder(destinationBuilding, destinationRoom);
+
+    let sFloorHold = startingFloor.match(/(\d+)/);
+    let dFloorHold = destinationFloor.match(/(\d+)/);
+
+    let sFloorNum = parseInt(sFloorHold[0]);
+    let dFloorNum = parseInt(dFloorHold[0]);
+
+    if(sFloorNum == 0)
+    {
+      sFloorNum++;
+    }
+    if(dFloorNum == 0)
+    {
+      dFloorNum++;
+    }
     // sameFloor/Building ? =>
     console.log(
       parseInt(startingFloor.length) - parseInt(destinationFloor.length)
     );
     console.log(startingFloor && destinationFloor);
-    startingBuilding == -1
-      ? (TOTAL_MAPS = 2)
-      : startingFloor == destinationFloor
-      ? (TOTAL_MAPS = 1)
-      : parseInt(startingFloor.length) - parseInt(destinationFloor.length) != 0
-      ? (TOTAL_MAPS = 3)
-      : (TOTAL_MAPS = 4);
+
+    if(startingBuilding == -1)
+    {
+      TOTAL_MAPS = dFloorNum;
+    }
+    else if(startingFloor == destinationFloor)
+    {
+      TOTAL_MAPS = 1;
+    }
+    else
+    {
+      TOTAL_MAPS = sFloorNum + dFloorNum;
+    }
 
     console.log("TOTAL MAPS: " + TOTAL_MAPS);
 
