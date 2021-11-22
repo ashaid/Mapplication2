@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         position: "relative",
         color: "#F7FAF8",
         fontWeight: "bold",
-        fontSize: 35,
+        fontSize: 30,
         textAlign: "left",
         alignSelf: "auto",
     },
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         position: "relative",
         color: "white",
         fontWeight: "bold",
-        fontSize: 65,
+        fontSize: 35,
         textAlign: "center",
     }
     })
