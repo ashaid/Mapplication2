@@ -14,15 +14,19 @@ export class PrivacyStatement extends Component{
     render(){
         return(
             <ImageBackground style = {styles.background}>
-                <Text style = {styles.TitleText}>
-                Mapplication aspires to protect all users from any exploitation from foreign attacks {"\n"}
-                </Text>
-                 <Text style = {styles.TermsText}>
-                    We complete this by {"\n"}
-                    1) Protecting all valuable data from each user {"\n"}
-                    2) Don't force the user to put any details that are not needed while using the app {"\n"}
-                    3) Have security measures when a leak happens 
-                </Text>
+                <View style = {styles.textContainer}>
+                    <Text style = {styles.screenText}>
+                        Mapplication aspires to protect all users from exploitation by foreign attacks. {"\n"}
+                        We complete this by {"\n"}
+                        1) Protecting all valuable data from each user {"\n"}
+                        2) Don't force the user to put any details that are not needed while using the app {"\n"}
+                        3) Implementing security measures when a leak happens {"\n\n"}
+                        Mapplication does not store or take any information that is not explicitly given to the app from the user. {"\n"}
+                        Mapplication stores only information pertinent to elements specifically requested by the app. {"\n"}
+                        Mapplication does not store the user's information on any other database or storage facility. Mapplication does not keep files or records on users
+                        schedules, locations, or college.
+                    </Text>
+                </View>
             </ImageBackground>
         );
        }
@@ -33,24 +37,26 @@ const styles = StyleSheet.create({
         color: "#131313",
         backgroundColor: "#131313",
         flex: 1,
+        alignItems: "center",
     },
-    TermsText: {
-        display: "flex",
-        position: "relative",
-        color: "#F7FAF8",
-        fontWeight: "bold",
-        fontSize: 30,
-        textAlign: "left",
-        alignSelf: "auto",
+    textContainer:{
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#131313",
+        width: "75%",
+        borderWidth: .5,
+        borderColor: "white",
+        borderRadius: 10,
+        paddingHorizontal: 30,
     },
-    TitleText: {
+    screenText: {
         display: "flex",
         position: "relative",
         color: "white",
-        fontWeight: "bold",
-        fontSize: 35,
+        fontSize: 15,
         textAlign: "center",
-    }
+        alignSelf: "auto",
+    },
     })
 
     export default PrivacyStatement;
