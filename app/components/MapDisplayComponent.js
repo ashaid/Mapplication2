@@ -29,8 +29,6 @@ class MapDisplayComponent extends Component {
       loading: false,
       error: "",
       data: null,
-      // startingRoom: "",
-      // destinationRoom: "",
       updateMap: false,
     };
   }
@@ -99,28 +97,21 @@ class MapDisplayComponent extends Component {
     let dFloorNum = parseInt(dFloorHold[0]);
 
     //if a floor is in the basement aka 0, it ups the floornumber so that it is included in the map count
-    if(sFloorNum == 0)
-    {
+    if (sFloorNum == 0) {
       sFloorNum++;
     }
-    if(dFloorNum == 0)
-    {
+    if (dFloorNum == 0) {
       dFloorNum++;
     }
 
     console.log(startingFloor && destinationFloor);
 
     //evaluates the source and destination floors in order to get a number of map images that need to be generated
-    if(startingBuilding == -1)
-    {
+    if (startingBuilding == -1) {
       TOTAL_MAPS = dFloorNum;
-    }
-    else if(startingFloor == destinationFloor)
-    {
+    } else if (startingFloor == destinationFloor) {
       TOTAL_MAPS = 1;
-    }
-    else
-    {
+    } else {
       TOTAL_MAPS = sFloorNum + dFloorNum;
     }
 
