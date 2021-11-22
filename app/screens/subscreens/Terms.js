@@ -15,9 +15,6 @@ export class Terms extends Component{
         return(
             <ImageBackground style = {styles.background}>
                 <View>
-                <Text style = {styles.TitleText}>
-                This page is Terms and Conditions{"\n"}
-                </Text>
                 <Text style = {styles.TermsText}>
                     1) Under no circumstances should the user try to compromise the security of the app{"\n"}
                     2) Under no circumstances should the user use the app for financial gain{"\n"}
@@ -41,17 +38,9 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         fontSize: 25,
-        textAlign: "left",
+        textAlign: "center",
         alignSelf: "auto",
     },
-    TitleText: {
-        display: "flex",
-        position: "relative",
-        color: "white",
-        fontWeight: "bold",
-        fontSize: 65,
-        textAlign: "center",
-    }
     })
 
     export default Terms;
