@@ -130,7 +130,7 @@ const MapStackScreen = () => (
 const TabsScreen = () => (
   <Tabs.Navigator>
     <Tabs.Screen
-      name="Home"
+      name="HomeScreen"
       component={HomeStackScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
@@ -139,7 +139,7 @@ const TabsScreen = () => (
       }}
     />
     <Tabs.Screen
-      name="Map Display"
+      name="Map Display Screen"
       component={MapStackScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
@@ -153,7 +153,7 @@ const TabsScreen = () => (
       }}
     />
     <Tabs.Screen
-      name="Profile"
+      name="ProfileScreen"
       component={ProfileStackScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
