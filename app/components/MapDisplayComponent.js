@@ -86,15 +86,19 @@ class MapDisplayComponent extends Component {
 
     let TOTAL_MAPS = 0;
 
+    //established the floor the room is located on and creates an identifier string
     let startingFloor = FloorFinder(startingBuilding, startingRoom);
     let destinationFloor = FloorFinder(destinationBuilding, destinationRoom);
 
+    //take the id strings and isolated the numbers in an array
     let sFloorHold = startingFloor.match(/(\d+)/);
     let dFloorHold = destinationFloor.match(/(\d+)/);
 
+    //changes the strings in the array into integers
     let sFloorNum = parseInt(sFloorHold[0]);
     let dFloorNum = parseInt(dFloorHold[0]);
 
+    //if a floor is in the basement aka 0, it ups the floornumber so that it is included in the map count
     if(sFloorNum == 0)
     {
       sFloorNum++;
@@ -103,12 +107,10 @@ class MapDisplayComponent extends Component {
     {
       dFloorNum++;
     }
-    // sameFloor/Building ? =>
-    console.log(
-      parseInt(startingFloor.length) - parseInt(destinationFloor.length)
-    );
+
     console.log(startingFloor && destinationFloor);
 
+    //evaluates the source and destination floors in order to get a number of map images that need to be generated
     if(startingBuilding == -1)
     {
       TOTAL_MAPS = dFloorNum;
@@ -122,8 +124,10 @@ class MapDisplayComponent extends Component {
       TOTAL_MAPS = sFloorNum + dFloorNum;
     }
 
+    //prints total number of maps
     console.log("TOTAL MAPS: " + TOTAL_MAPS);
 
+    //prints id strings for starting and destination floor
     console.log(
       "startingFloor: " +
         startingFloor +
@@ -133,6 +137,7 @@ class MapDisplayComponent extends Component {
     );
   };
 
+  //renders a loading screen
   render() {
     const { loading, error, data } = this.state;
     if (loading) {

@@ -16,8 +16,6 @@ import { Style, Colors } from "../style/styles";
 import RNPickerSelect from "react-native-picker-select";
 
 class MapDisplay extends Component {
-  //const [startingRoom, setStartingRoomText] = React.useState("");
-  //const [destinationRoom, setDestinationRoomText] = React.useState("");
   constructor() {
     super();
 
@@ -29,19 +27,19 @@ class MapDisplay extends Component {
       destinationBuilding: "",
     };
   }
-
+  //sets the starting room
   setStartingRoom = (text) => {
     this.setState({ startingRoom: text });
   };
-
+  //sets the destination room
   setDestinationRoom = (text) => {
     this.setState({ destinationRoom: text });
   };
-
+  //sets the starting building
   setStartingBuilding = (text) => {
     this.setState({ startingBuilding: text });
   };
-
+  //sets the destination building
   setDestinationBuilding = (text) => {
     this.setState({ destinationBuilding: text });
   };
