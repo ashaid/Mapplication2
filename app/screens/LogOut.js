@@ -8,9 +8,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { AuthContext } from "../components/AuthContext";
 
-export class LogOut extends Component{
-    render(){
+
+export const LogOut = () => {
+const { signOut } = React.useContext(AuthContext);
     return(
 
         <ImageBackground style = {styles.background}>
@@ -19,7 +21,7 @@ export class LogOut extends Component{
                     Are sure you want to log out?
                 </Text>
                 <TouchableOpacity style = {styles.button}
-                    
+                    onPress={() => signOut()}
                 >
                     <Text style = {styles.itemText}>
                         Log Out
@@ -30,7 +32,6 @@ export class LogOut extends Component{
 
 
     );
-    }
 }
 
 const styles = StyleSheet.create({
