@@ -7,12 +7,12 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import MapDisplay from "./app/screens/MapDisplay";
 import { MapDisplayComponent } from "./app/components/MapDisplayComponent";
 import { ScheduleBuilder } from "./app/screens/subscreens/ScheduleBuilder";
-import {Preferences} from "./app/screens/subscreens/Preferences";
-import {LogOut} from "./app/screens/LogOut";
-import {Terms} from "./app/screens/subscreens/Terms";
-import {PrivacyStatement} from "./app/screens/subscreens/PrivacyStatement";
-import {ProfileSettings} from "./app/screens/subscreens/ProfileSettings";
-import {Accessibility} from "./app/screens/subscreens/Accessibility";
+import { Preferences } from "./app/screens/subscreens/Preferences";
+import { LogOut } from "./app/screens/LogOut";
+import { Terms } from "./app/screens/subscreens/Terms";
+import { PrivacyStatement } from "./app/screens/subscreens/PrivacyStatement";
+import { ProfileSettings } from "./app/screens/subscreens/ProfileSettings";
+import { Accessibility } from "./app/screens/subscreens/Accessibility";
 import {
   FindClasses,
   Home,
@@ -52,7 +52,14 @@ const HomeStackScreen = () => (
 const ProfileStackScreen = () => {
   return (
     <ProfileStack.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        headerShown: false,
+        headerStyle: { backgroundColor: Colors.tertiary },
+        headerTitleStyle: {
+          color: Colors.white,
+        },
+        headerTintColor: Colors.white,
+      }}
       initialRouteName="Profile"
     >
       <ProfileStack.Screen name="Profile" component={ProfileScreen} />
@@ -73,7 +80,7 @@ const ProfileStackScreen = () => {
       />
       <ProfileStack.Screen
         name="Profile Settings"
-        component={ProfileSettings} 
+        component={ProfileSettings}
         options={{ headerShown: true }}
       />
       <ProfileStack.Screen
@@ -148,13 +155,20 @@ const TabsScreen = () => (
             size={20}
           />
         ),
+        headerStyle: { backgroundColor: Colors.primary },
       }}
     />
   </Tabs.Navigator>
 );
 
 const RootStackScreen = ({ userToken }) => (
-  <RootStack.Navigator headerMode="none" screenOptions={{ headerShown: false }}>
+  <RootStack.Navigator
+    headerMode="none"
+    screenOptions={{
+      headerShown: false,
+      headerStyle: { backgroundColor: Colors.primary },
+    }}
+  >
     {userToken ? (
       <RootStack.Screen name="Main Screen" component={TabsScreen} />
     ) : (
