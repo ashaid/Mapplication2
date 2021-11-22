@@ -45,7 +45,7 @@ const LogInStackScreen = () => (
 
 const HomeStackScreen = () => (
   <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-    <HomeStack.Screen name="Home" component={Home} />
+    <HomeStack.Screen name="Home Screen" component={Home} />
   </HomeStack.Navigator>
 );
 
@@ -62,7 +62,7 @@ const ProfileStackScreen = () => {
       }}
       initialRouteName="Profile"
     >
-      <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+      <ProfileStack.Screen name="ProfileScreen" component={ProfileScreen} />
       <ProfileStack.Screen
         name="Find My Classes"
         component={FindClasses}
@@ -118,7 +118,7 @@ const MapStackScreen = () => (
       headerTintColor: Colors.white,
     }}
   >
-    <MapStack.Screen name="Map Display" component={MapDisplay} />
+    <MapStack.Screen name="Map Display Screen" component={MapDisplay} />
     <ProfileStack.Screen
       name="Rendered Map"
       component={MapDisplayComponent}
@@ -130,7 +130,7 @@ const MapStackScreen = () => (
 const TabsScreen = () => (
   <Tabs.Navigator>
     <Tabs.Screen
-      name="HomeScreen"
+      name="Home"
       component={HomeStackScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
@@ -139,7 +139,7 @@ const TabsScreen = () => (
       }}
     />
     <Tabs.Screen
-      name="Map Display Screen"
+      name="Map Display"
       component={MapStackScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
@@ -153,7 +153,7 @@ const TabsScreen = () => (
       }}
     />
     <Tabs.Screen
-      name="ProfileScreen"
+      name="Profile"
       component={ProfileStackScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
