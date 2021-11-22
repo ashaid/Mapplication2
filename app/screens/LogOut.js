@@ -22,7 +22,7 @@ export class LogOut extends Component{
                     
                 >
                     <Text style = {styles.itemText}>
-                        Yes, I want to log out.
+                        Log Out
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         width: "75%",
-        height: "90%",
+        height: "30%",
         backgroundColor: "#277dff",
         borderRadius: 10,
         justifyContent: "center",
@@ -64,12 +64,12 @@ const styles = StyleSheet.create({
     },
     button: {
         justifyContent: "center",
-        width: "100%",
+        width: "70%",
         height: "30%",
         alignItems: "center",
         backgroundColor: "#32cd32",
         borderRadius: 10,
-        top: "33%",
+        top: "15%",
     }
 })
 

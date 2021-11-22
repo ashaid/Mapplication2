@@ -72,11 +72,12 @@ class MapDisplay extends Component {
     return (
       <ImageBackground style={stylesMD.background}>
         <View style={stylesMD.screenContainer}>
-          <View style={{ marginTop: 70, marginBottom: 40 }}>
+          <View style={{ marginTop: 70, marginBottom: 15 }}>
             <View style={stylesMD.headerContainer}>
               <Text style={stylesMD.header}>MAP BUILDER</Text>
             </View>
           </View>
+          <View style = {stylesMD.line}></View>
           <View style={stylesMD.textContainer}>
             <Text style={stylesMD.inputText}>Enter Starting Point:</Text>
           </View>
@@ -259,6 +260,16 @@ const stylesMD = StyleSheet.create({
     justifyContent: "center",
     fontWeight: "bold",
     fontSize: 20,
+  },
+  line: {
+    color: "white",
+    backgroundColor: "white",
+    width: "75%",
+    height: 2,
+    display: "flex",
+    flexDirection: "row",
+    marginVertical: 10,
+    borderRadius: 5,
   },
 });
 
