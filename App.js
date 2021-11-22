@@ -108,7 +108,16 @@ const ProfileStackScreen = () => {
 };
 
 const MapStackScreen = () => (
-  <MapStack.Navigator screenOptions={{ headerShown: false }}>
+  <MapStack.Navigator
+    screenOptions={{
+      headerShown: false,
+      headerStyle: { backgroundColor: Colors.tertiary },
+      headerTitleStyle: {
+        color: Colors.white,
+      },
+      headerTintColor: Colors.white,
+    }}
+  >
     <MapStack.Screen name="Map Display" component={MapDisplay} />
     <ProfileStack.Screen
       name="Rendered Map"
