@@ -13,6 +13,7 @@ import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
+import { FadeLoading } from 'react-native-fade-loading';
 //import { white } from "react-native-paper/lib/typescript/styles/colors";
 
 export const Home = ({ navigation }) => (
@@ -47,7 +48,7 @@ export const FindClasses = () => {
 
 export const Splash = () => (
   <ScreenContainer>
-    <Text>Loading...</Text>
+    <FadeLoading primaryColor="gray" secondaryColor="lightgray" />
   </ScreenContainer>
 );
 
