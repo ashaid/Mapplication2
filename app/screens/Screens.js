@@ -33,7 +33,7 @@ export const Home = () => (
       </View>
     <SafeAreaView>
       <View>
-        <Text>Your Saved Maps</Text>
+        <Text style = {styles.imageText}>Your Saved Maps</Text>
         <ImageView
           images = {images}
           imageIndex = {0}
@@ -221,20 +221,6 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontWeight: "bold",
     fontSize: 40,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  imageContainer: {
-    width: "50%",
-    marginHorizontal: 10,
-    marginBottom: 10,
-  },
-  imageTextContainer: {
-    backgroundColor: "#ff7a00",
-    borderRadius: 10,
-    padding: 5,
-    margin: 10,
-    width: "75%",
     alignItems: "center",
     justifyContent: "center",
   },

@@ -16,10 +16,10 @@ export class Terms extends Component{
             <ImageBackground style = {styles.background}>
                 <View style = {styles.textContainer}>
                 <Text style = {styles.screenText}>
-                    Mapplication Terms and Conditions {"\n"}
-                    By using this application the user agrees to and should conform to the principles outlined as follows: {"\n"}
-                    1) Under no circumstances should the user try to compromise the security of the app{"\n"}
-                    2) Under no circumstances should the user use the app for financial gain{"\n"}
+                    Mapplication Terms and Conditions: {"\n\n"}
+                    By using this application the user agrees to and should conform to the principles outlined as follows: {"\n\n"}
+                    1) Under no circumstances should the user try to compromise the security of the app{"\n\n"}
+                    2) Under no circumstances should the user use the app for financial gain{"\n\n"}
                     3) Under no circumstances should the user use the app for anything other then school preparation
                 </Text>
                 </View>
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
         color: "#131313",
         backgroundColor: "#131313",
         alignItems: "center",
+        justifyContent: "center",
         flex: 1,
     },
     textContainer: {
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: "center",
         alignSelf: "auto",
+        marginVertical: 10,
     },
     })
 

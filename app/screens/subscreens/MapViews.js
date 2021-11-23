@@ -1,3 +1,4 @@
+/*
 import React, { Component, useState } from "react";
 import {
   SafeAreaView,
@@ -51,3 +52,4 @@ export default class MapViews extends Component {
     );
   }
 }
+*/
