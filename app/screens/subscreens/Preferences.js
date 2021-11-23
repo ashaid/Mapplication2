@@ -41,7 +41,7 @@ export class Preferences extends Component{
                             Privacy Statement
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity stlye = {styles.termsContainer}
+                    <TouchableOpacity style = {styles.termsContainer}
                      title="Terms and Conditions"
                      onPress={() => {
                         this.props.navigation.push("Terms and Conditions");
@@ -75,7 +75,7 @@ profileContainer:{
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: 40,
     marginVertical: 10,
     borderRadius: 10,
 },
@@ -104,9 +104,9 @@ privacyContainer:{
     borderRadius: 10,
 },
 termsContainer:{
-    backgroundColor: "#f2283c",
+    backgroundColor: "#f32409",
     width: "70%",
-    height: "52%",
+    height: "25%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
