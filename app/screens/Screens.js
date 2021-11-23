@@ -14,7 +14,7 @@ import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
-import { FadeLoading } from 'react-native-fade-loading';
+import { FadeLoading } from "react-native-fade-loading";
 import ImageView from "react-native-image-view";
 import images from "../components/CarouselData";
 import AnimatedSplash from "react-native-animated-splash-screen";
@@ -27,26 +27,29 @@ export const Home = () => (
       resizeMode="cover"
       source={require("../assets/Background.png")}
     >
-    <View style = {styles.itemContainer}>
-      <View style={styles.logoContainer}>
-        <Text style={styles.logoText}>Welcome</Text>
+      <View style={styles.itemContainer}>
+        <View style={styles.logoContainer}>
+          <Text style={styles.logoText}>Welcome</Text>
+        </View>
+        <SafeAreaView>
+          <View>
+            <Text style={styles.imageText}>Your Saved Maps</Text>
+            {/* <ImageView
+              images={images}
+              imageIndex={0}
+              isVisible={true}
+              useNativeDriver={false}
+              renderHeader={(currentImage) => (
+                <View>
+                  <Text>{images.title}</Text>
+                </View>
+              )}
+            ></ImageView> */}
+          </View>
+        </SafeAreaView>
       </View>
-    <SafeAreaView>
-      <View>
-        <Text style = {styles.imageText}>Your Saved Maps</Text>
-        <ImageView
-          images = {images}
-          imageIndex = {0}
-          isVisible = {true}
-          renderHeader = {(currentImage) => (<View><Text>{images.title}</Text></View>)}
-        >
-        </ImageView>
-      </View>
-    </SafeAreaView>
-    </View>
     </ImageBackground>
   </ScreenContainer>
-
 );
 
 export const FindClasses = () => {
@@ -66,9 +69,9 @@ export const FindClasses = () => {
 export const Splash = () => (
   <ScreenContainer>
     <AnimatedSplash
-    logoImage={require("../assets/logo.png")}
-    backgroundColor={"#131313"}
-    translucent = {false}
+      logoImage={require("../assets/logo.png")}
+      backgroundColor={"#131313"}
+      translucent={false}
     />
   </ScreenContainer>
 );
@@ -131,7 +134,6 @@ export const ProfileScreen = ({ navigation }) => {
     </ScreenContainer>
   );
 };
-
 
 const styles = StyleSheet.create({
   circle: {

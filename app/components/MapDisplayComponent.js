@@ -14,12 +14,17 @@ import {
   ImageBackground,
   ImageBase,
   TextInput,
+  FlatList,
+  Dimensions,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import axios from "axios";
 import checkRoom from "../../backend/RoomCheck";
 import FloorFinder from "../../backend/FloorFinder";
-import { FadeLoading } from 'react-native-fade-loading';
+import nodeUpdater from "../../backend/NodeUpdater";
+import { FadeLoading } from "react-native-fade-loading";
+const SCREEN_WIDTH = Dimensions.get("window").width;
+
 class MapDisplayComponent extends Component {
   constructor(props) {
     super();
@@ -131,8 +136,7 @@ class MapDisplayComponent extends Component {
     console.log(startingFloor && destinationFloor);
 
     //evaluates the source and destination floors in order to get a number of map images that need to be generated
-    if (startingBuilding == -1) 
-    {
+    if (startingBuilding == -1) {
       // no starting
       let entranceNode = 9999;
       this.loadData(
@@ -141,21 +145,16 @@ class MapDisplayComponent extends Component {
         destinationRoom
       );
       TOTAL_MAPS = dFloorNum;
-    } 
-    else if (startBuild == destBuild) 
-    {
+    } else if (startBuild == destBuild) {
       // same building same floor
-      if (sFloorNum == dFloorNum) 
-      {
+      if (sFloorNum == dFloorNum) {
         this.loadData(
           destinationFloor.replace(/.$/, dFloorNum.toString()),
           startingRoom,
           destinationRoom
         );
         TOTAL_MAPS = 1;
-      } 
-      else 
-      {
+      } else {
         this.loadData(
           startingFloor.replace(/.$/, sFloorNum.toString()),
           startingRoom,
@@ -169,22 +168,16 @@ class MapDisplayComponent extends Component {
         );
         TOTAL_MAPS = 2;
       }
-    } 
-    else 
-    {
+    } else {
       // min 2 max 4
       // bec1 pft1 = we know we need 2
       nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
-      if (mapTotalControl == 2) 
-      {
+      if (mapTotalControl == 2) {
         this.loadData(startingFloor, startingRoom, nodeContainer[1]);
         this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
         TOTAL_MAPS = mapTotalControl;
-      } 
-      else if (mapTotalControl == 3) 
-      {
-        if (sFloorNum < dFloorNum) 
-        {
+      } else if (mapTotalControl == 3) {
+        if (sFloorNum < dFloorNum) {
           this.loadData(startingFloor, startingRoom, nodeContainer[1]);
           // bec1 pft2 = we know we need 3 maps
           // if sfloor < dfloor
@@ -194,20 +187,20 @@ class MapDisplayComponent extends Component {
             staircaseNode
           );
           this.loadData(destinationFloor, staircaseNode, destinationRoom);
-        }
-        else 
-        {
+        } else {
           this.loadData(startingFloor, startingRoom, staircaseNode);
           // pft2 bec1
           // if sfloor > dfloor
-          this.loadData(startingFloor.replace(/.$/, "1"), staircaseNode, nodeContainer[1]);
+          this.loadData(
+            startingFloor.replace(/.$/, "1"),
+            staircaseNode,
+            nodeContainer[1]
+          );
           this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
         }
 
         TOTAL_MAPS = mapTotalControl;
-      } 
-      else 
-      {
+      } else {
         // bec2 pf2 = we know we need 4
         // if mapTotalControl = 4
         // pft, bec, loc
@@ -268,8 +261,10 @@ class MapDisplayComponent extends Component {
       );
     });
   };
+
   render() {
     const { loading, error, dataArray } = this.state;
+    const images = this.maps();
     if (loading) {
       return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
     }
@@ -319,11 +314,32 @@ class MapDisplayComponent extends Component {
             backgroundColor: Colors.tertiary,
           }}
         >
-          {this.maps()}
+          <FlatList
+            horizontal={true}
+            pagingEnabled={true}
+            showsHorizontalScrollIndicator={false}
+            data={this.images} //probably needs something with state to make it work
+            legacyImplementation={false}
+            renderItem={({ item, index }) => {
+              <View
+                style={{
+                  width: SCREEN_WIDTH + 5,
+                  height: "auto",
+                  flexDirection: "row",
+                }}
+              >
+                <Image
+                  source={{ item }} //use this to set image soruce
+                  key={index} //important to set a key for list items, shouldn't use indexes as keys but may still work
+                />
+              </View>;
+            }}
+            style={{ width: SCREEN_WIDTH + 5, height: "100%" }}
+          />
+          {/* {this.maps()} */}
         </View>
       </View>
     );
   }
 }
-
 export { MapDisplayComponent };

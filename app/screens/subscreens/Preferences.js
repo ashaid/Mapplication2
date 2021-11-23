@@ -70,7 +70,7 @@ screenContainer: {
 profileContainer:{
     backgroundColor: "#ffc200",
     width: "70%",
-    height: "25%",
+    height: "20%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -82,7 +82,7 @@ profileContainer:{
 accessContainer:{
     backgroundColor: "#ff7a00",
     width: "70%",
-    height: "25%",
+    height: "20%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -94,7 +94,7 @@ accessContainer:{
 privacyContainer:{
     backgroundColor: "#d95702",
     width: "70%",
-    height: "25%",
+    height: "20%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -106,7 +106,7 @@ privacyContainer:{
 termsContainer:{
     backgroundColor: "#f32409",
     width: "70%",
-    height: "25%",
+    height: "20%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
