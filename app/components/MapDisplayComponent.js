@@ -20,11 +20,7 @@ import axios from "axios";
 import checkRoom from "../../backend/RoomCheck";
 import FloorFinder from "../../backend/FloorFinder";
 import nodeUpdater from "../../backend/NodeUpdater";
-<<<<<<< HEAD
-import { FadeLoading } from 'react-native-fade-loading';
-=======
 import { FadeLoading } from "react-native-fade-loading";
->>>>>>> 486849d06f15ab939faea44eefd46534e588df11
 
 class MapDisplayComponent extends Component {
   constructor(props) {
