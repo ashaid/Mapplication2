@@ -20,7 +20,7 @@ import images from "../components/CarouselData";
 import AnimatedSplash from "react-native-animated-splash-screen";
 //import { white } from "react-native-paper/lib/typescript/styles/colors";
 
-export const Home = ({ navigation }) => (
+export const Home = () => (
   <ScreenContainer>
     <ImageBackground
       style={{ flex: 1, width: "100%", height: "100%" }}
@@ -55,7 +55,7 @@ export const FindClasses = () => {
       <ImageBackground
         style={{ flex: 1, width: "100%", height: "100%" }}
         resizeMode="cover"
-        source={require("../assets/logo.png")}
+        source={require("../assets/Background.png")}
       >
         <View style={Style.centerItem}></View>
       </ImageBackground>
@@ -73,7 +73,7 @@ export const Splash = () => (
   </ScreenContainer>
 );
 
-export const LogIn = ({ navigation }) => {
+export const LogIn = () => {
   const { logIn } = React.useContext(AuthContext);
 
   return (
