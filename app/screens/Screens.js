@@ -14,9 +14,10 @@ import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
-import { FadeLoading } from 'react-native-fade-loading';
+import { FadeLoading } from "react-native-fade-loading";
 import ImageView from "react-native-image-view";
 import images from "../components/CarouselData";
+import CarouselTest from "../components/CarouselTest";
 //import { white } from "react-native-paper/lib/typescript/styles/colors";
 
 export const Home = ({ navigation }) => (
@@ -26,26 +27,29 @@ export const Home = ({ navigation }) => (
       resizeMode="cover"
       source={require("../assets/Background.png")}
     >
-    <View style = {styles.itemContainer}>
-      <View style={styles.logoContainer}>
-        <Text style={styles.logoText}>Welcome</Text>
+      <View style={styles.itemContainer}>
+        <View style={styles.logoContainer}>
+          <Text style={styles.logoText}>Welcome</Text>
+        </View>
+        <SafeAreaView>
+          <View>
+            <Text>Your Saved Maps</Text>
+            {/* <ImageView
+              images={images}
+              imageIndex={0}
+              isVisible={true}
+              renderHeader={(currentImage) => (
+                <View>
+                  <Text>{images.title}</Text>
+                </View>
+              )}
+            ></ImageView> */}
+            <CarouselTest />
+          </View>
+        </SafeAreaView>
       </View>
-    <SafeAreaView>
-      <View>
-        <Text>Your Saved Maps</Text>
-        <ImageView
-          images = {images}
-          imageIndex = {0}
-          isVisible = {true}
-          renderHeader = {(currentImage) => (<View><Text>{images.title}</Text></View>)}
-        >
-        </ImageView>
-      </View>
-    </SafeAreaView>
-    </View>
     </ImageBackground>
   </ScreenContainer>
-
 );
 
 export const FindClasses = () => {
@@ -126,7 +130,6 @@ export const ProfileScreen = ({ navigation }) => {
     </ScreenContainer>
   );
 };
-
 
 const styles = StyleSheet.create({
   imgBackground: {

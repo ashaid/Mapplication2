@@ -6308,6 +6308,11 @@
   "resolved" "https://registry.npmjs.org/react-native-image-pan-zoom/-/react-native-image-pan-zoom-2.1.12.tgz"
   "version" "2.1.12"
 
+"react-native-image-view@^2.1.9":
+  "integrity" "sha512-+DA/+tLM7KHaLs41Hdd+m5UpGX2qtEdMamMZCsXCsJ5J6RwWrqBXQrGVB9Op7dIkZW2DDRVKZTP/FuSNEGtzJg=="
+  "resolved" "https://registry.npmjs.org/react-native-image-view/-/react-native-image-view-2.1.9.tgz"
+  "version" "2.1.9"
+
 "react-native-image-zoom-viewer@^3.0.1":
   "integrity" "sha512-la6s5DNSuq4GCRLsi5CZ29FPjgTpdCuGIRdO5T9rUrAtxrlpBPhhSnHrbmPVxsdtOUvxHacTh2Gfa9+RraMZQA=="
   "resolved" "https://registry.npmjs.org/react-native-image-zoom-viewer/-/react-native-image-zoom-viewer-3.0.1.tgz"
@@ -6411,7 +6416,7 @@
     "prop-types" "^15.6.0"
     "react-timer-mixin" "^0.13.4"
 
-"react-native@*", "react-native@>=0.42.0", "react-native@>=0.46", "react-native@>=0.57", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz":
+"react-native@*", "react-native@>=0.42.0", "react-native@>=0.44.0", "react-native@>=0.46", "react-native@>=0.57", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz":
   "integrity" "sha512-qWR6pcG4yDu/Rthm+DvAS017rL38LbZFnJv/k4HL4ZUH/WhKuqC+stD7TlpaOBb3N2bkydm9s+GCa14T41MLEg=="
   "resolved" "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz"
   "version" "0.63.2"
@@ -6472,7 +6477,7 @@
   "resolved" "https://registry.npmjs.org/react-timer-mixin/-/react-timer-mixin-0.13.4.tgz"
   "version" "0.13.4"
 
-"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.13.1", "react@^16.8.0 || ^17.0.0", "react@>=15.0.0", "react@>=16.3.0", "react@>=16.5.1", "react@16 || 17", "react@16.13.1", "react@17.0.2":
+"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.13.1", "react@^16.8.0 || ^17.0.0", "react@>=15.0.0", "react@>=15.2.0", "react@>=16.3.0", "react@>=16.5.1", "react@16 || 17", "react@16.13.1", "react@17.0.2":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"
