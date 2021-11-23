@@ -146,8 +146,7 @@ class MapDisplay extends Component {
               onChangeText={(value) => this.setDestinationRoom(value)}
             />
           </View>
-          <View style={stylesMD.buttonContainer}>
-            <TouchableOpacity
+            <TouchableOpacity style = {stylesMD.goButton}
               onPress={() => {
                 this.printInputState();
                 this.props.navigation.push("Rendered Map", {
@@ -160,7 +159,6 @@ class MapDisplay extends Component {
             >
               <Text style={stylesMD.buttonText}>Go!</Text>
             </TouchableOpacity>
-          </View>
         </View>
       </ImageBackground>
     );
@@ -204,12 +202,12 @@ const stylesMD = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
   },
-  buttonContainer: {
+  goButton:{
     marginTop: 50,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 120,
-    width: "100%",
+    width: "80%",
     height: "8%",
     backgroundColor: "white",
     paddingVertical: 6,
@@ -288,6 +286,7 @@ const stylesMD = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 5,
   },
+  
 });
 
 const pickerStyles = StyleSheet.create({

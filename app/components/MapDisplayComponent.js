@@ -25,6 +25,7 @@ import nodeUpdater from "../../backend/NodeUpdater";
 import { FadeLoading } from "react-native-fade-loading";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
+import { FadeLoading } from 'react-native-fade-loading';
 class MapDisplayComponent extends Component {
   constructor(props) {
     super();
