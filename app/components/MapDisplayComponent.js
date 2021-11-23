@@ -28,7 +28,7 @@ class MapDisplayComponent extends Component {
 
     this.state = {
       // change to loading: true for api call
-      loading: false,
+      loading: true,
       error: "",
       dataArray: [],
       updateMap: false,
@@ -37,40 +37,44 @@ class MapDisplayComponent extends Component {
 
   loadData = async (...args) => {
     // args[0] = building, args[1] = startingRoom, args[2] = destinationRoom
-    var result =
-      "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=" +
-      args[0] +
-      "&start=" +
-      args[1] +
-      "&dest=" +
-      args[2];
-    this.state.dataArray.push(result);
-    this.setState({ dataArray: this.state.dataArray });
+    // var result =
+    //   "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=" +
+    //   args[0] +
+    //   "&start=" +
+    //   args[1] +
+    //   "&dest=" +
+    //   args[2];
+    // this.state.dataArray.push(result);
+    // this.setState({ dataArray: this.state.dataArray });
     // this.setState({ loading: true });
-    // try {
-    //   const result = await axios.post(
-    //     "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=" +
-    //       args[0] +
-    //       "&start=" +
-    //       args[1] +
-    //       "&dest=" +
-    //       args[2]
-    //   );
-    //   console.log(result);
-    //   this.setState({
-    //     data: result.data,
-    //     loading: false,
-    //     error: false,
-    //   });
-    // } catch (error) {
-    //   console.error("error: ", error);
+    try {
+      var result = await axios.post(
+        "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=" +
+          args[0] +
+          "&start=" +
+          args[1] +
+          "&dest=" +
+          args[2]
+      );
+      console.log(result);
+      let imgString = result.data;
+      console.log(imgString);
+      this.state.dataArray.push(imgString);
+      this.setState({
+        dataArray: this.state.dataArray,
+        // loading: false,
+        error: false,
+      });
+    } catch (error) {
+      console.error("error: ", error);
 
-    //   this.setState({
-    //     // objects cannot be used as a react child
-    //     // -> <p>{error}</p> would throw otherwise
-    //     error: `${error}`,
-    //     loading: false,
-    //   });
+      this.setState({
+        // objects cannot be used as a react child
+        // -> <p>{error}</p> would throw otherwise
+        error: `${error}`,
+        loading: false,
+      });
+    }
   };
   componentDidMount() {
     //this.loadData();
@@ -217,7 +221,6 @@ class MapDisplayComponent extends Component {
         TOTAL_MAPS = mapTotalControl;
       }
     }
-    console.log(this.state.dataArray);
     //prints total number of maps
     console.log("TOTAL MAPS: " + TOTAL_MAPS);
 
@@ -229,14 +232,33 @@ class MapDisplayComponent extends Component {
         "destinationFloor: " +
         destinationFloor
     );
+    console.log("LOGGING");
+    console.log(this.state.dataArray);
+    console.log("DONE LOGGIN");
+    this.setState({ loading: false });
   };
 
   //renders a loading screen
   maps = () => {
     return this.state.dataArray.map((element, i) => {
       return (
-        <View key={i}>
-          <Text style={{ color: Colors.white }}>{element}</Text>
+        <View key={i} style={{ flex: 1, alignSelf: "stretch" }}>
+          <Text style={{ color: Colors.white }}>{console.log(element)}</Text>
+          <Image
+            source={{ uri: "data:image/png;charset=utf-8;base64," + element }}
+            //source={require("../assets/bec-1620-1615.png")}
+            style={{
+              flex: 1,
+              width: null,
+              height: null,
+              resizeMode: "cover",
+              backgroundColor: "transparent",
+              border: "solid",
+              borderColor: Colors.secondary,
+              borderRadius: 20,
+              //transform: "rotate(90deg)",
+            }}
+          />
         </View>
       );
     });
