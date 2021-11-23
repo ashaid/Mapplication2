@@ -83,6 +83,11 @@ class MapDisplay extends Component {
       destinationRoom,
       destinationBuilding,
     } = this.state;
+    // if == -1
+    //
+    // {enabledVar}
+    // style = {}
+
     return (
       <ImageBackground style={stylesMD.background}>
         <View style={stylesMD.screenContainer}>
@@ -91,7 +96,7 @@ class MapDisplay extends Component {
               <Text style={stylesMD.header}>MAP BUILDER</Text>
             </View>
           </View>
-          <View style = {stylesMD.line}></View>
+          <View style={stylesMD.line}></View>
           <View style={stylesMD.textContainer}>
             <Text style={stylesMD.inputText}>Enter Starting Point:</Text>
           </View>
@@ -101,7 +106,7 @@ class MapDisplay extends Component {
               <RNPickerSelect
                 style={pickerStyles}
                 onValueChange={(value) => this.setStartingBuilding(value)}
-                placeholder={{ label: "Building", value: null }}
+                placeholder={{ label: "Building", value: "" }}
                 items={[
                   { label: "No Starting Location", value: -1},
                   { label: "BEC", value: "bec" },
@@ -126,7 +131,7 @@ class MapDisplay extends Component {
               <RNPickerSelect
                 style={pickerStyles}
                 onValueChange={(value) => this.setDestinationBuilding(value)}
-                placeholder={{ label: "Building", value: null }}
+                placeholder={{ label: "Building", value: "" }}
                 items={[
                   { label: "BEC", value: "bec" },
                   { label: "PFT", value: "pft" },
@@ -211,7 +216,7 @@ const stylesMD = StyleSheet.create({
     paddingHorizontal: 60,
     borderRadius: 100,
   },
-  buttonText:{
+  buttonText: {
     position: "relative",
     color: "black",
     marginTop: 3,

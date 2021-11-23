@@ -4,8 +4,7 @@ const FloorFinder = (building, roomNumber) => {
     floor = "bec1";
   } else if (building == "pft") {
     if (roomNumber < 2000) floor = "pft1";
-    else roomNumber < 3000;
-    floor = "pft2";
+    else floor = "pft2";
   } else if (building == "loc") {
     if (roomNumber < 100) floor = "loc0";
     else if (roomNumber < 200) floor = "loc1";
