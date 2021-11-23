@@ -31,13 +31,13 @@ export const Home = ({ navigation }) => (
         <View style={styles.logoContainer}>
           <Text style={styles.logoText}>Welcome</Text>
         </View>
-        <View style = {Style.centerItem}>
-          <View style = {styles.imageTextContainer}>
-            <Text style = {styles.imageText}>Your Saved Maps</Text>
+        <View style={Style.centerItem}>
+          <View style={styles.imageTextContainer}>
+            <Text style={styles.imageText}>Your Saved Maps</Text>
           </View>
-          <View style = {styles.imageContainer}>  
-            <CarouselTest/>
-          </View>    
+          <View style={styles.imageContainer}>
+            <CarouselTest />
+          </View>
         </View>
       </View>
     </ImageBackground>
@@ -208,8 +208,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imageContainer: {
-    width: "50%",
-    flex: "75%",
+    // width: "50%",
+    // flex: "75%",
     marginHorizontal: 10,
   },
   imageTextContainer: {

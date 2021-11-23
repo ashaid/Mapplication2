@@ -232,8 +232,17 @@ class MapDisplayComponent extends Component {
   };
 
   //renders a loading screen
+  maps = () => {
+    return this.state.dataArray.map((element, i) => {
+      return (
+        <View key={i}>
+          <Text style={{ color: Colors.white }}>{element}</Text>
+        </View>
+      );
+    });
+  };
   render() {
-    const { loading, error, data } = this.state;
+    const { loading, error, dataArray } = this.state;
     if (loading) {
       return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
     }
@@ -249,26 +258,25 @@ class MapDisplayComponent extends Component {
         </Text>
       );
     }
-    let map;
-    map = (
-      <View style={{ flex: 1, alignSelf: "stretch" }}>
-        <Image
-          //source={{ uri: "data:image/png;base64," + data }}
-          source={require("../assets/bec-1620-1615.png")}
-          style={{
-            flex: 1,
-            width: null,
-            height: null,
-            resizeMode: "cover",
-            backgroundColor: "transparent",
-            border: "solid",
-            borderColor: Colors.secondary,
-            borderRadius: 20,
-            //transform: "rotate(90deg)",
-          }}
-        />
-      </View>
-    );
+    // maps = (
+    //   <View style={{ flex: 1, alignSelf: "stretch" }}>
+    //     <Image
+    //       //source={{ uri: "data:image/png;base64," + data }}
+    //       source={require("../assets/bec-1620-1615.png")}
+    //       style={{
+    //         flex: 1,
+    //         width: null,
+    //         height: null,
+    //         resizeMode: "cover",
+    //         backgroundColor: "transparent",
+    //         border: "solid",
+    //         borderColor: Colors.secondary,
+    //         borderRadius: 20,
+    //         //transform: "rotate(90deg)",
+    //       }}
+    //     />
+    //   </View>
+    // );
     return (
       <View
         style={
@@ -284,7 +292,7 @@ class MapDisplayComponent extends Component {
             backgroundColor: Colors.tertiary,
           }}
         >
-          {map}
+          {this.maps()}
         </View>
       </View>
     );
