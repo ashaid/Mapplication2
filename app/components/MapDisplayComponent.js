@@ -136,37 +136,37 @@ class MapDisplayComponent extends Component {
     } else if (startBuild == destBuild) {
       // same building same floor
       if (sFloorNum == dFloorNum) {
-        this.loadData(destinationBuilding, startingRoom, destinationRoom);
+        this.loadData(destinationFloor, startingRoom, destinationRoom);
         TOTAL_MAPS = 1;
       } else {
         // same building different floor
-        this.loadData(destinationBuilding, startingRoom, destinationRoom);
+        this.loadData(destinationFloor, startingRoom, destinationRoom);
         TOTAL_MAPS = 2;
       }
     } else {
       // min 2 max 4
       // bec1 pft1 = we know we need 2
       if (mapTotalControl == 2) {
-        this.loadData(startingBuilding, startingRoom, exitNode);
-        this.loadData(destinationBuilding, entranceNode, destinationRoom);
+        this.loadData(startingFloor, startingRoom, exitNode);
+        this.loadData(destinationFloor, entranceNode, destinationRoom);
         TOTAL_MAPS = mapTotalControl;
       } else if (mapTotalControl == 3) {
-        this.loadData(startingBuilding, startingRoom, exitNode);
+        this.loadData(startingFloor, startingRoom, exitNode);
         if (sFloorNum < dFloorNum) {
           // bec1 pft2 = we know we need 3 maps
           // if sfloor < dfloor
-          this.loadData(destinationBuilding, entranceNode, exitNode);
-          destinationBuilding = destinationBuilding.replace(
-            /.$/,
-            dFloorNum.toString()
+          this.loadData(
+            destinationFloor.replace(/.$/, "1"),
+            entranceNode,
+            exitNode
           );
-          this.loadData(destinationBuilding, entranceNode, destinationRoom);
+          this.loadData(destinationFloor, entranceNode, destinationRoom);
         } else {
           // pft2 bec1
           // if sfloor > dfloor
-          startingBuilding = startingBuilding.replace(/.$/, "1");
-          this.loadData(startingBuilding, entranceNode, exitNode);
-          this.loadData(destinationBuilding, entranceNode, destinationRoom);
+          startingFloor = startingFloor.replace(/.$/, "1");
+          this.loadData(startingFloor, entranceNode, exitNode);
+          this.loadData(destinationFloor, entranceNode, destinationRoom);
         }
 
         TOTAL_MAPS = mapTotalControl;
@@ -174,16 +174,16 @@ class MapDisplayComponent extends Component {
         // bec2 pf2 = we know we need 4
         // if mapTotalControl = 4
         // pft, bec, loc
-        this.loadData(startingBuilding, startingRoom, exitNode); // pft2
-        startingBuilding = startingBuilding.replace(/.$/, "1");
-        this.loadData(startingBuilding, entranceNode, exitNode); // pft1 9997 9999
+        this.loadData(startingFloor, startingRoom, exitNode); // pft2
+        startingFloor = startingFloor.replace(/.$/, "1");
+        this.loadData(startingFloor, entranceNode, exitNode); // pft1 9997 9999
 
-        this.loadData(destinationBuilding, entranceNode, exitNode);
-        destinationBuilding = destinationBuilding.replace(
-          /.$/,
-          dFloorNum.toString()
+        this.loadData(
+          destinationFloor.replace(/.$/, "1"),
+          entranceNode,
+          exitNode
         );
-        this.loadData(destinationBuilding, entranceNode, destinationRoom);
+        this.loadData(destinationFloor, entranceNode, destinationRoom);
         TOTAL_MAPS = mapTotalControl;
       }
     }
