@@ -151,23 +151,38 @@ class MapDisplayComponent extends Component {
         TOTAL_MAPS = mapTotalControl;
       } else if (mapTotalControl == 3) {
         this.loadData(startingBuilding, startingRoom, exitNode);
-        console.log('got here')
         if (sFloorNum < dFloorNum) {
-              // bec1 pft2 = we know we need 3 maps
-              // if sfloor < dfloor
-              this.loadData(destinationBuilding, entranceNode, exitNode);
-              this.loadData(destinationBuilding, entranceNode, destinationRoom);
+          // bec1 pft2 = we know we need 3 maps
+          // if sfloor < dfloor
+          this.loadData(destinationBuilding, entranceNode, exitNode);
+          destinationBuilding = destinationBuilding.replace(
+            /.$/,
+            dFloorNum.toString()
+          );
+          this.loadData(destinationBuilding, entranceNode, destinationRoom);
         } else {
-              // pft2 bec1
-              // if sfloor > dfloor
-              this.loadData(startingBuilding, entranceNode, exitNode);
-              this.loadData(destinationBuilding, entranceNode, destinationRoom);
+          // pft2 bec1
+          // if sfloor > dfloor
+          startingBuilding = startingBuilding.replace(/.$/, "1");
+          this.loadData(startingBuilding, entranceNode, exitNode);
+          this.loadData(destinationBuilding, entranceNode, destinationRoom);
         }
 
         TOTAL_MAPS = mapTotalControl;
       } else {
         // bec2 pf2 = we know we need 4
         // if mapTotalControl = 4
+        // pft, bec, loc
+        this.loadData(startingBuilding, startingRoom, exitNode); // pft2
+        startingBuilding = startingBuilding.replace(/.$/, "1");
+        this.loadData(startingBuilding, entranceNode, exitNode); // pft1 9997 9999
+
+        this.loadData(destinationBuilding, entranceNode, exitNode);
+        destinationBuilding = destinationBuilding.replace(
+          /.$/,
+          dFloorNum.toString()
+        );
+        this.loadData(destinationBuilding, entranceNode, destinationRoom);
         TOTAL_MAPS = mapTotalControl;
       }
     }
