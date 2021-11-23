@@ -1,25 +1,53 @@
-// import Carousel from "react-native-snap-carousel";
+import React, { Component, useState } from "react";
+import {
+  SafeAreaView,
+  FlatList,
+  StyleSheet,
+  View,
+  Dimensions,
+  Image,
+} from "react-native";
+import FastImage from "react-native-fast-image";
 
-// export class MapViews extends Component {
-//   _renderItem = ({ item, index }) => {
-//     return (
-//       <View style={styles.slide}>
-//         <Text style={styles.title}>{item.title}</Text>
-//       </View>
-//     );
-//   };
+//grabs width of screen
+const SCREEN_WIDTH = Dimensions.get("window").width;
 
-//   render() {
-//     return (
-//       <Carousel
-//         ref={(c) => {
-//           this._carousel = c;
-//         }}
-//         data={this.state.entries}
-//         renderItem={this._renderItem}
-//         sliderWidth={sliderWidth}
-//         itemWidth={itemWidth}
-//       />
-//     );
-//   }
-// }
+export default class MapViews extends Component {
+  constructor(props) {
+    super();
+
+    this.state = {
+      images: [],
+    };
+  }
+  render() {
+    return (
+      <FlatList
+        horizontal={true}
+        pagingEnabled={true}
+        showsHorizontalScrollIndicator={false}
+        data={images} //probably needs something with state to make it work
+        legacyImplementation={false}
+        renderItem={({ item, index }) => {
+          <View
+            style={{
+              width: SCREEN_WIDTH + 5,
+              height: "auto",
+              flexDirection: "row",
+            }}
+          >
+            <FastImage
+              source={{ uri: item.source.uri }} //use this to set image soruce
+              key={index} //important to set a key for list items, shouldn't use indexes as keys but may still work
+              resizeMode={FastImage.resizeMod1e.contain}
+              style={
+                styles.photo //hasn't been made
+              }
+            />
+          </View>;
+        }}
+        style={{ width: SCREEN_WIDTH + 5, height: "100%" }}
+      />
+    );
+  }
+}
