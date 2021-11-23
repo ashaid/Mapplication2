@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "react-native-reanimated";
 import {
-  Image,
   ImageBackground,
   StyleSheet,
   Text,

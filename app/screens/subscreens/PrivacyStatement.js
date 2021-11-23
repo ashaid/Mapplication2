@@ -16,13 +16,13 @@ export class PrivacyStatement extends Component{
             <ImageBackground style = {styles.background}>
                 <View style = {styles.textContainer}>
                     <Text style = {styles.screenText}>
-                        Mapplication aspires to protect all users from exploitation by foreign attacks. {"\n"}
+                        Mapplication aspires to protect all users from exploitation by foreign attacks. {"\n\n"}
                         We complete this by {"\n"}
                         1) Protecting all valuable data from each user {"\n"}
                         2) Don't force the user to put any details that are not needed while using the app {"\n"}
                         3) Implementing security measures when a leak happens {"\n\n"}
                         Mapplication does not store or take any information that is not explicitly given to the app from the user. {"\n"}
-                        Mapplication stores only information pertinent to elements specifically requested by the app. {"\n"}
+                        Mapplication stores only information pertinent to elements specifically requested by the app. {"\n\n"}
                         Mapplication does not store the user's information on any other database or storage facility. Mapplication does not keep files or records on users
                         schedules, locations, or college.
                     </Text>

@@ -156,7 +156,7 @@ const pickerStyles = StyleSheet.create({
     paddingLeft: 65,
     paddingRight: 65,
     borderRadius: 8,
-    backgroundColor: "#131313",
+    backgroundColor: "white",
   },
   inputAndroid: {
     fontSize: 16,
@@ -168,7 +168,7 @@ const pickerStyles = StyleSheet.create({
     color: "black",
     paddingRight: 98,
     paddingLeft: 98,
-    backgroundColor: "#131313",
+    backgroundColor: "white",
   },
 });
 
