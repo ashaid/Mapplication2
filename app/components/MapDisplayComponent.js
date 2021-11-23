@@ -82,7 +82,7 @@ class MapDisplayComponent extends Component {
   componentDidMount() {
     //this.loadData();
     console.log("mounted");
-    this.handleMapDeconstruction();
+    // this.handleMapDeconstruction();
   }
 
   handleMapDeconstruction = () => {
@@ -266,7 +266,16 @@ class MapDisplayComponent extends Component {
     const { loading, error, dataArray } = this.state;
     const images = this.maps();
     if (loading) {
-      return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
+      // return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
+      return (
+        <FlatList
+          horizontal={true}
+          pagingEnabled={true}
+          showsHorizontalScrollIndicator={false}
+          data={this.images} //probably needs something with state to make it work
+          legacyImplementation={false}
+        ></FlatList>
+      );
     }
     if (error) {
       return (
