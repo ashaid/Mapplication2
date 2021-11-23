@@ -14,6 +14,8 @@ import {
   ImageBackground,
   ImageBase,
   TextInput,
+  FlatList,
+  Dimensions,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import axios from "axios";
@@ -21,6 +23,7 @@ import checkRoom from "../../backend/RoomCheck";
 import FloorFinder from "../../backend/FloorFinder";
 import nodeUpdater from "../../backend/NodeUpdater";
 import { FadeLoading } from "react-native-fade-loading";
+const SCREEN_WIDTH = Dimensions.get("window").width;
 
 class MapDisplayComponent extends Component {
   constructor(props) {
@@ -270,8 +273,10 @@ class MapDisplayComponent extends Component {
       );
     });
   };
+  
   render() {
     const { loading, error, dataArray } = this.state;
+    const images = this.maps();
     if (loading) {
       return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
     }
@@ -321,11 +326,32 @@ class MapDisplayComponent extends Component {
             backgroundColor: Colors.tertiary,
           }}
         >
-          {this.maps()}
+        <FlatList
+          horizontal={true}
+          pagingEnabled={true}
+          showsHorizontalScrollIndicator={false}
+          data={this.images} //probably needs something with state to make it work
+          legacyImplementation={false}
+          renderItem={({ item, index }) => {
+          <View
+            style={{
+              width: SCREEN_WIDTH + 5,
+              height: "auto",
+              flexDirection: "row",
+            }}
+          >
+          <Image
+              source={{ item }} //use this to set image soruce
+              key={index} //important to set a key for list items, shouldn't use indexes as keys but may still work
+            />
+          </View>;
+        }}
+        style={{ width: SCREEN_WIDTH + 5, height: "100%" }}
+      />
+          {/* {this.maps()} */}
         </View>
       </View>
     );
   }
 }
-
 export { MapDisplayComponent };
