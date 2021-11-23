@@ -67,7 +67,7 @@ export const Splash = () => (
   <ScreenContainer>
     <AnimatedSplash
     logoImage={require("../assets/logo.png")}
-    backgroundColor={"#0f0f0f"}
+    backgroundColor={"#131313"}
     translucent = {false}
     />
   </ScreenContainer>
