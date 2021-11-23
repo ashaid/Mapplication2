@@ -14,8 +14,10 @@ import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
-import images from "../components/CarouselData";
+import { FadeLoading } from 'react-native-fade-loading';
 import ImageView from "react-native-image-view";
+import images from "../components/CarouselData";
+//import { white } from "react-native-paper/lib/typescript/styles/colors";
 
 export const Home = ({ navigation }) => (
   <ScreenContainer>
@@ -62,7 +64,7 @@ export const FindClasses = () => {
 
 export const Splash = () => (
   <ScreenContainer>
-    <Text>Loading...</Text>
+    <FadeLoading primaryColor="gray" secondaryColor="lightgray" />
   </ScreenContainer>
 );
 

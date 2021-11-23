@@ -238,7 +238,7 @@ class MapDisplayComponent extends Component {
   render() {
     const { loading, error, data } = this.state;
     if (loading) {
-      return <FadeLoading primaryColor="gray" secondaryColor="lightgray" duration={5000} />;
+      return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
     }
     if (error) {
       return (
