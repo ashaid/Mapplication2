@@ -27,7 +27,7 @@ export class ProfileSettings extends Component {
     return (
       <ImageBackground style={styles.background}>
         <View style={styles.headerContainer}>
-          <Text style={styles.TitleText}>Settings {"\n"}</Text>
+          <Text style={styles.TitleText}>Settings</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.dropContainer}>
