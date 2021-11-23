@@ -19,7 +19,11 @@ import { Style, Colors } from "../style/styles";
 import axios from "axios";
 import checkRoom from "../../backend/RoomCheck";
 import FloorFinder from "../../backend/FloorFinder";
+<<<<<<< HEAD
 import nodeUpdater from "../../backend/NodeUpdater";
+=======
+import { FadeLoading } from 'react-native-fade-loading';
+>>>>>>> a21602baafd3365ac48191d1d1913f3daea0ec18
 
 class MapDisplayComponent extends Component {
   constructor(props) {
@@ -234,7 +238,7 @@ class MapDisplayComponent extends Component {
   render() {
     const { loading, error, data } = this.state;
     if (loading) {
-      return <Text>Loading ...</Text>;
+      return <FadeLoading primaryColor="gray" secondaryColor="lightgray" duration={5000} />;
     }
     if (error) {
       return (
