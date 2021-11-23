@@ -16,6 +16,20 @@ import { Style, Colors } from "../style/styles";
 import RNPickerSelect from "react-native-picker-select";
 
 class MapDisplay extends Component {
+  //IDEA OF SOMETHING TO REPLACE 1200 for no starting point
+  // constructer(){
+  //   if (this.setStartingBuilding != -1){
+  //     return ( <TextInput
+  //     style={stylesMD.source}
+  //     placeholder={"Ex:1200"}
+  //     onChangeText={(value) => this.setStartingRoom(value)}
+  //     maxLength={4} 
+  //   />)
+  //   }
+  //   else{
+  //     return (null)
+  //   }
+  //   }
   constructor() {
     super();
 
@@ -89,7 +103,7 @@ class MapDisplay extends Component {
                 onValueChange={(value) => this.setStartingBuilding(value)}
                 placeholder={{ label: "Building", value: null }}
                 items={[
-                  { label: "No Starting Location", value: -1 },
+                  { label: "No Starting Location", value: -1},
                   { label: "BEC", value: "bec" },
                   { label: "PFT", value: "pft" },
                   { label: "Lockett", value: "loc" },
@@ -100,7 +114,7 @@ class MapDisplay extends Component {
               style={stylesMD.source}
               placeholder={"Ex:1200"}
               onChangeText={(value) => this.setStartingRoom(value)}
-              maxLength={4}
+              maxLength={4} 
             />
           </View>
           <View style={stylesMD.textContainer}>
