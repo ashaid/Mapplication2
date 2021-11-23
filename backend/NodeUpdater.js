@@ -1,5 +1,5 @@
-const NodeUpdater = (startingBuilding, destinationBuilding) => {
-  nodeArr = [];
+const nodeUpdater = (startingBuilding, destinationBuilding) => {
+  let nodeArr = [];
   let entranceNode,
     exitNode = "";
   if (startingBuilding == "bec") {
@@ -22,8 +22,6 @@ const NodeUpdater = (startingBuilding, destinationBuilding) => {
       exitNode = 9999;
       entranceNode = 9999;
     }
-  } else if ((startingBuilding = -1)) {
-    entranceNode = 9999;
   }
 
   nodeArr.push(entranceNode);
@@ -31,4 +29,4 @@ const NodeUpdater = (startingBuilding, destinationBuilding) => {
   return nodeArr;
 };
 
-export default NodeUpdater;
+export default nodeUpdater;
