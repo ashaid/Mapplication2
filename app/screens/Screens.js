@@ -31,22 +31,14 @@ export const Home = ({ navigation }) => (
         <View style={styles.logoContainer}>
           <Text style={styles.logoText}>Welcome</Text>
         </View>
-        <SafeAreaView>
-          <View>
-            <Text>Your Saved Maps</Text>
-            {/* <ImageView
-              images={images}
-              imageIndex={0}
-              isVisible={true}
-              renderHeader={(currentImage) => (
-                <View>
-                  <Text>{images.title}</Text>
-                </View>
-              )}
-            ></ImageView> */}
-            <CarouselTest />
+        <View style = {Style.centerItem}>
+          <View style = {styles.imageTextContainer}>
+            <Text style = {styles.imageText}>Your Saved Maps</Text>
           </View>
-        </SafeAreaView>
+          <View style = {styles.imageContainer}>  
+            <CarouselTest/>
+          </View>    
+        </View>
       </View>
     </ImageBackground>
   </ScreenContainer>
@@ -137,14 +129,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   itemContainer: {
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    top: 8,
     alignItems: "center",
-    top: "45%",
   },
   background: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: Colors.tertiary,
     width: "100%",
     height: "100%",
@@ -216,5 +206,25 @@ const styles = StyleSheet.create({
     fontSize: 40,
     alignItems: "center",
     justifyContent: "center",
+  },
+  imageContainer: {
+    width: "50%",
+    flex: "75%",
+    marginHorizontal: 10,
+  },
+  imageTextContainer: {
+    backgroundColor: "#dba60b",
+    borderRadius: 10,
+    padding: 5,
+    margin: 10,
+    width: "75%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  imageText: {
+    color: "white",
+    alignSelf: "center",
+    fontWeight: "bold",
+    fontSize: 30,
   },
 });

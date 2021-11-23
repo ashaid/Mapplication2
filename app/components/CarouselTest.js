@@ -14,29 +14,39 @@ import ImageView from "react-native-image-view";
 
 const { width } = Dimensions.get("window");
 
+/* USE THIS FOR WHEN WE ACTUALLY GET BUILDING IMAGES
+const buildingImages = [
+  {
+    source: {},
+    title: "PFT",
+  },
+  {
+    source: {},
+    title: "BEC",
+  },
+  {
+    source: {},
+    title: "LOC",
+  },
+]
+*/
+
 const cities = [
   {
-    source: {
-      uri: "https://avatars.mds.yandex.net/get-pdb/49816/d9152cc6-bf48-4e44-b2d5-de73b2e94454/s800",
-    },
-    title: "London",
+    source: require("../assets/images/cat1.jpg"),
+    title: "First Cat",
   },
   {
     // eslint-disable-next-line
-    source: require("../assets/images/cat1.jpg"),
-    title: "St-Petersburg",
-    width: 1200,
-    height: 800,
+    source: require("../assets/images/cat2.jpg"),
+    title: "Second Cat",
   },
   {
-    source: {
-      uri: "https://cdn.pixabay.com/photo/2017/08/17/10/47/paris-2650808_960_720.jpg",
-    },
-    title: "Paris",
-    width: 806,
-    height: 720,
+    source: require("../assets/images/cat3.jpg"),
+    title: "Third Cat",
   },
 ];
+
 
 const nature = [
   {
@@ -63,6 +73,7 @@ const nature = [
     height: 590,
   },
 ];
+
 
 const tabs = [
   { title: "Cities", images: cities },
