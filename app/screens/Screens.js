@@ -209,11 +209,11 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: "50%",
-    flex: "75%",
     marginHorizontal: 10,
+    marginBottom: 10,
   },
   imageTextContainer: {
-    backgroundColor: "#dba60b",
+    backgroundColor: "#ff7a00",
     borderRadius: 10,
     padding: 5,
     margin: 10,

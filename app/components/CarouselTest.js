@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#000",
+    marginBottom: 10,
     paddingTop: Platform.select({ ios: 0, android: 10 }),
   },
   tabs: {
