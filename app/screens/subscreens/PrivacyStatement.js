@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#131313",
         flex: 1,
         alignItems: "center",
+        justifyContent: "center",
     },
     textContainer:{
         alignItems: "center",
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: "center",
         alignSelf: "auto",
+        marginVertical: 10,
     },
     })
 
