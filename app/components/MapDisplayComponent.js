@@ -14,6 +14,7 @@ import {
   ImageBackground,
   ImageBase,
   TextInput,
+  List,
   FlatList,
   Dimensions,
 } from "react-native";
@@ -28,13 +29,17 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 class MapDisplayComponent extends Component {
   constructor(props) {
     super();
-
     this.state = {
       // change to loading: true for api call
       loading: true,
       error: "",
       dataArray: [],
       updateMap: false,
+      images: [
+        { src: require("../assets/images/cat1.jpg") },
+        { src: require("../assets/images/cat2.jpg") },
+        { src: require("../assets/images/cat3.jpg") },
+      ],
     };
   }
 
@@ -83,6 +88,12 @@ class MapDisplayComponent extends Component {
     //this.loadData();
     console.log("mounted");
     // this.handleMapDeconstruction();
+
+    const text = require("../assets/b64test.json");
+    let data = text.data;
+    this.handleChange(data);
+
+    this.handleChange(data);
   }
 
   handleMapDeconstruction = () => {
@@ -241,7 +252,6 @@ class MapDisplayComponent extends Component {
     return this.state.dataArray.map((element, i) => {
       return (
         <View key={i} style={{ flex: 1, alignSelf: "stretch" }}>
-          <Text style={{ color: Colors.white }}>{console.log(element)}</Text>
           <Image
             source={{ uri: "data:image/png;charset=utf-8;base64," + element }}
             //source={require("../assets/bec-1620-1615.png")}
@@ -262,19 +272,47 @@ class MapDisplayComponent extends Component {
     });
   };
 
+  handleChange = (text) => {
+    this.setState((prevState) => ({
+      dataArray: [...prevState.dataArray, text],
+    }));
+  };
+
   render() {
     const { loading, error, dataArray } = this.state;
+
     const images = this.maps();
+
     if (loading) {
       // return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
+      console.log(this.state.dataArray);
       return (
-        <FlatList
-          horizontal={true}
-          pagingEnabled={true}
-          showsHorizontalScrollIndicator={false}
-          data={this.images} //probably needs something with state to make it work
-          legacyImplementation={false}
-        ></FlatList>
+        <View>
+          <Text>test text</Text>
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            // data={this.state.images}
+            data={this.state.dataArray}
+            renderItem={({ item, index }) => (
+              <Image
+                source={{
+                  uri: "data:image/png;charset=utf-8;base64," + item,
+                }}
+                key={index}
+                style={{
+                  width: 260,
+                  height: 300,
+                  borderWidth: 2,
+                  borderColor: "#d35647",
+                  resizeMode: "contain",
+                  margin: 8,
+                }}
+              ></Image>
+            )}
+          />
+          <Text>test text2</Text>
+        </View>
       );
     }
     if (error) {
