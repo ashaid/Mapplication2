@@ -28,37 +28,47 @@ class MapDisplayComponent extends Component {
       // change to loading: true for api call
       loading: false,
       error: "",
-      data: null,
+      dataArray: [],
       updateMap: false,
     };
   }
 
   loadData = async (...args) => {
     // args[0] = building, args[1] = startingRoom, args[2] = destinationRoom
-    console.log(args);
-    this.setState({ loading: true });
-    try {
-      const result = await axios.post(
-        "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=bec&start=" +
-          args[0] +
-          "&dest=" +
-          args[1]
-      );
-      console.log(result);
-      this.setState({
-        data: result.data,
-        loading: false,
-        error: false,
-      });
-    } catch (error) {
-      console.error("error: ", error);
-      this.setState({
-        // objects cannot be used as a react child
-        // -> <p>{error}</p> would throw otherwise
-        error: `${error}`,
-        loading: false,
-      });
-    }
+    var result =
+      "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=" +
+      args[0] +
+      "&start=" +
+      args[1] +
+      "&dest=" +
+      args[2];
+    this.state.dataArray.push(result);
+    this.setState({ dataArray: this.state.dataArray });
+    // this.setState({ loading: true });
+    // try {
+    //   const result = await axios.post(
+    //     "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=" +
+    //       args[0] +
+    //       "&start=" +
+    //       args[1] +
+    //       "&dest=" +
+    //       args[2]
+    //   );
+    //   console.log(result);
+    //   this.setState({
+    //     data: result.data,
+    //     loading: false,
+    //     error: false,
+    //   });
+    // } catch (error) {
+    //   console.error("error: ", error);
+
+    //   this.setState({
+    //     // objects cannot be used as a react child
+    //     // -> <p>{error}</p> would throw otherwise
+    //     error: `${error}`,
+    //     loading: false,
+    //   });
   };
   componentDidMount() {
     //this.loadData();
@@ -92,6 +102,10 @@ class MapDisplayComponent extends Component {
     let sFloorHold = startingFloor.match(/(\d+)/);
     let dFloorHold = destinationFloor.match(/(\d+)/);
 
+    //holds the building values without floor identifier
+    let startBuild = startingFloor.replace(/[0-9]/g, "");
+    let destBuild = destinationFloor.replace(/[0-9]/g, "");
+
     //changes the strings in the array into integers
     let sFloorNum = parseInt(sFloorHold[0]);
     let dFloorNum = parseInt(dFloorHold[0]);
@@ -104,17 +118,60 @@ class MapDisplayComponent extends Component {
       dFloorNum++;
     }
 
-    console.log(startingFloor && destinationFloor);
-
-    //evaluates the source and destination floors in order to get a number of map images that need to be generated
-    if (startingBuilding == -1) {
-      TOTAL_MAPS = dFloorNum;
-    } else if (startingFloor == destinationFloor) {
-      TOTAL_MAPS = 1;
-    } else {
-      TOTAL_MAPS = sFloorNum + dFloorNum;
+    //keeps the map total to 4 regardless of floor number
+    let mapTotalControl = sFloorNum + dFloorNum;
+    if (mapTotalControl > 4) {
+      mapTotalControl = 4;
     }
 
+    console.log(startingFloor && destinationFloor);
+
+    let exitNode = 9999;
+    let entranceNode = 9999;
+    //evaluates the source and destination floors in order to get a number of map images that need to be generated
+    if (startingBuilding == -1) {
+      // no starting
+      TOTAL_MAPS = dFloorNum;
+    } else if (startBuild == destBuild) {
+      // same building same floor
+      if (sFloorNum == dFloorNum) {
+        this.loadData(destinationBuilding, startingRoom, destinationRoom);
+        TOTAL_MAPS = 1;
+      } else {
+        // same building different floor
+        this.loadData(destinationBuilding, startingRoom, destinationRoom);
+        TOTAL_MAPS = 2;
+      }
+    } else {
+      // min 2 max 4
+      // bec1 pft1 = we know we need 2
+      if (mapTotalControl == 2) {
+        this.loadData(startingBuilding, startingRoom, exitNode);
+        this.loadData(destinationBuilding, entranceNode, destinationRoom);
+        TOTAL_MAPS = mapTotalControl;
+      } else if (mapTotalControl == 3) {
+        this.loadData(startingBuilding, startingRoom, exitNode);
+        console.log('got here')
+        if (sFloorNum < dFloorNum) {
+              // bec1 pft2 = we know we need 3 maps
+              // if sfloor < dfloor
+              this.loadData(destinationBuilding, entranceNode, exitNode);
+              this.loadData(destinationBuilding, entranceNode, destinationRoom);
+        } else {
+              // pft2 bec1
+              // if sfloor > dfloor
+              this.loadData(startingBuilding, entranceNode, exitNode);
+              this.loadData(destinationBuilding, entranceNode, destinationRoom);
+        }
+
+        TOTAL_MAPS = mapTotalControl;
+      } else {
+        // bec2 pf2 = we know we need 4
+        // if mapTotalControl = 4
+        TOTAL_MAPS = mapTotalControl;
+      }
+    }
+    console.log(this.state.dataArray);
     //prints total number of maps
     console.log("TOTAL MAPS: " + TOTAL_MAPS);
 
