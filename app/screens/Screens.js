@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,13 +7,15 @@ import {
   ImageBackground,
   TouchableOpacity,
   SafeAreaView,
+  ImageComponent,
 } from "react-native";
 
 import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Style, Colors } from "../style/styles";
 import { Wobble } from "../components/LogoAnimation";
-//import { white } from "react-native-paper/lib/typescript/styles/colors";
+import images from "../components/CarouselData";
+import ImageView from "react-native-image-view";
 
 export const Home = ({ navigation }) => (
   <ScreenContainer>
@@ -24,11 +26,24 @@ export const Home = ({ navigation }) => (
     >
     <View style = {styles.itemContainer}>
       <View style={styles.logoContainer}>
-        <Text style={styles.logoText}>Mapplication</Text>
+        <Text style={styles.logoText}>Welcome</Text>
       </View>
+    <SafeAreaView>
+      <View>
+        <Text>Your Saved Maps</Text>
+        <ImageView
+          images = {images}
+          imageIndex = {0}
+          isVisible = {true}
+          renderHeader = {(currentImage) => (<View><Text>{images.title}</Text></View>)}
+        >
+        </ImageView>
+      </View>
+    </SafeAreaView>
     </View>
     </ImageBackground>
   </ScreenContainer>
+
 );
 
 export const FindClasses = () => {
@@ -135,14 +150,14 @@ const styles = StyleSheet.create({
     height: "15%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#00ae6b",
+    backgroundColor: "#5a4ec7",
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
     borderRadius: 5,
   },
   preferencesButton: {
-    backgroundColor: "#ffc200",
+    backgroundColor: "#3827cf",
     width: "70%",
     height: "15%",
     flexDirection: "row",
@@ -159,20 +174,17 @@ const styles = StyleSheet.create({
     height: "15%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#ff7a00",
+    backgroundColor: "#2412c9",
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
     borderRadius: 5,
   },
   buttonContainer: {
-    display: "flex",
-    flexWrap: "wrap",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
-    alignSelf: "auto",
   },
   buttonText: {
     display: "flex",
