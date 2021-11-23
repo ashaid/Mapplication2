@@ -19,6 +19,11 @@ import { Style, Colors } from "../style/styles";
 import axios from "axios";
 import checkRoom from "../../backend/RoomCheck";
 import FloorFinder from "../../backend/FloorFinder";
+<<<<<<< HEAD
+import nodeUpdater from "../../backend/NodeUpdater";
+=======
+import { FadeLoading } from 'react-native-fade-loading';
+>>>>>>> a21602baafd3365ac48191d1d1913f3daea0ec18
 
 class MapDisplayComponent extends Component {
   constructor(props) {
@@ -94,6 +99,10 @@ class MapDisplayComponent extends Component {
 
     let TOTAL_MAPS = 0;
 
+    const staircaseNode = 7777;
+
+    let nodeContainer;
+
     //established the floor the room is located on and creates an identifier string
     let startingFloor = FloorFinder(startingBuilding, startingRoom);
     let destinationFloor = FloorFinder(destinationBuilding, destinationRoom);
@@ -126,48 +135,88 @@ class MapDisplayComponent extends Component {
 
     console.log(startingFloor && destinationFloor);
 
-    let exitNode = 9999;
-    let entranceNode = 9999;
     //evaluates the source and destination floors in order to get a number of map images that need to be generated
     if (startingBuilding == -1) {
       // no starting
+      let entranceNode = 9999;
+      this.loadData(
+        destinationFloor.replace(/.$/, dFloorNum.toString()),
+        entranceNode,
+        destinationRoom
+      );
       TOTAL_MAPS = dFloorNum;
     } else if (startBuild == destBuild) {
       // same building same floor
       if (sFloorNum == dFloorNum) {
-        this.loadData(destinationBuilding, startingRoom, destinationRoom);
+        this.loadData(
+          destinationFloor.replace(/.$/, dFloorNum.toString()),
+          startingRoom,
+          destinationRoom
+        );
         TOTAL_MAPS = 1;
       } else {
+        this.loadData(
+          startingFloor.replace(/.$/, sFloorNum.toString()),
+          startingRoom,
+          staircaseNode
+        );
         // same building different floor
-        this.loadData(destinationBuilding, startingRoom, destinationRoom);
+        this.loadData(
+          destinationFloor.replace(/.$/, dFloorNum.toString()),
+          staircaseNode,
+          destinationRoom
+        );
         TOTAL_MAPS = 2;
       }
     } else {
       // min 2 max 4
       // bec1 pft1 = we know we need 2
       if (mapTotalControl == 2) {
-        this.loadData(startingBuilding, startingRoom, exitNode);
-        this.loadData(destinationBuilding, entranceNode, destinationRoom);
+        nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
+        this.loadData(startingFloor, startingRoom, nodeContainer[1]);
+        this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
         TOTAL_MAPS = mapTotalControl;
       } else if (mapTotalControl == 3) {
-        this.loadData(startingBuilding, startingRoom, exitNode);
-        console.log('got here')
         if (sFloorNum < dFloorNum) {
-              // bec1 pft2 = we know we need 3 maps
-              // if sfloor < dfloor
-              this.loadData(destinationBuilding, entranceNode, exitNode);
-              this.loadData(destinationBuilding, entranceNode, destinationRoom);
+          //node update for first two loads belowl
+          nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
+          this.loadData(startingFloor, startingRoom, nodeContainer[1]);
+          // bec1 pft2 = we know we need 3 maps
+          // if sfloor < dfloor
+          this.loadData(
+            destinationFloor.replace(/.$/, "1"),
+            nodeContainer[0],
+            staircaseNode
+          );
+          this.loadData(destinationFloor, staircaseNode, destinationRoom);
         } else {
-              // pft2 bec1
-              // if sfloor > dfloor
-              this.loadData(startingBuilding, entranceNode, exitNode);
-              this.loadData(destinationBuilding, entranceNode, destinationRoom);
+          this.loadData(startingFloor, startingRoom, staircaseNode);
+          // pft2 bec1
+          // if sfloor > dfloor
+          startingFloor = startingFloor.replace(/.$/, "1");
+          //node update for two maps below
+          nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
+          this.loadData(startingFloor, staircaseNode, nodeContainer[1]);
+          this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
         }
 
         TOTAL_MAPS = mapTotalControl;
       } else {
         // bec2 pf2 = we know we need 4
         // if mapTotalControl = 4
+        // pft, bec, loc
+        this.loadData(startingFloor, startingRoom, staircaseNode); // pft2
+        startingFloor = startingFloor.replace(/.$/, "1");
+        //node update for next two maps
+        nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
+        this.loadData(startingFloor, staircaseNode, nodeContainer[0]); // pft1 9997 9999
+
+        this.loadData(
+          destinationFloor.replace(/.$/, "1"),
+          nodeContainer[1],
+          staircaseNode
+        );
+        this.loadData(destinationFloor, staircaseNode, destinationRoom);
         TOTAL_MAPS = mapTotalControl;
       }
     }
@@ -189,7 +238,7 @@ class MapDisplayComponent extends Component {
   render() {
     const { loading, error, data } = this.state;
     if (loading) {
-      return <Text>Loading ...</Text>;
+      return <FadeLoading primaryColor="gray" secondaryColor="lightgray" duration={5000} />;
     }
     if (error) {
       return (
