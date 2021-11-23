@@ -108,17 +108,13 @@ class MapDisplayComponent extends Component {
     let startingFloor = FloorFinder(startingBuilding, startingRoom);
     let destinationFloor = FloorFinder(destinationBuilding, destinationRoom);
 
-    //take the id strings and isolated the numbers in an array
-    let sFloorHold = startingFloor.match(/(\d+)/);
-    let dFloorHold = destinationFloor.match(/(\d+)/);
-
     //holds the building values without floor identifier
     let startBuild = startingFloor.replace(/[0-9]/g, "");
     let destBuild = destinationFloor.replace(/[0-9]/g, "");
 
     //changes the strings in the array into integers
-    let sFloorNum = parseInt(sFloorHold[0]);
-    let dFloorNum = parseInt(dFloorHold[0]);
+    let sFloorNum = parseInt(startingFloor.match(/(\d+)/));
+    let dFloorNum = parseInt(destinationFloor.match(/(\d+)/));
 
     //if a floor is in the basement aka 0, it ups the floornumber so that it is included in the map count
     if (sFloorNum == 0) {
@@ -137,7 +133,8 @@ class MapDisplayComponent extends Component {
     console.log(startingFloor && destinationFloor);
 
     //evaluates the source and destination floors in order to get a number of map images that need to be generated
-    if (startingBuilding == -1) {
+    if (startingBuilding == -1) 
+    {
       // no starting
       let entranceNode = 9999;
       this.loadData(
@@ -146,16 +143,21 @@ class MapDisplayComponent extends Component {
         destinationRoom
       );
       TOTAL_MAPS = dFloorNum;
-    } else if (startBuild == destBuild) {
+    } 
+    else if (startBuild == destBuild) 
+    {
       // same building same floor
-      if (sFloorNum == dFloorNum) {
+      if (sFloorNum == dFloorNum) 
+      {
         this.loadData(
           destinationFloor.replace(/.$/, dFloorNum.toString()),
           startingRoom,
           destinationRoom
         );
         TOTAL_MAPS = 1;
-      } else {
+      } 
+      else 
+      {
         this.loadData(
           startingFloor.replace(/.$/, sFloorNum.toString()),
           startingRoom,
@@ -169,18 +171,22 @@ class MapDisplayComponent extends Component {
         );
         TOTAL_MAPS = 2;
       }
-    } else {
+    } 
+    else 
+    {
       // min 2 max 4
       // bec1 pft1 = we know we need 2
-      if (mapTotalControl == 2) {
-        nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
+      nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
+      if (mapTotalControl == 2) 
+      {
         this.loadData(startingFloor, startingRoom, nodeContainer[1]);
         this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
         TOTAL_MAPS = mapTotalControl;
-      } else if (mapTotalControl == 3) {
-        if (sFloorNum < dFloorNum) {
-          //node update for first two loads belowl
-          nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
+      } 
+      else if (mapTotalControl == 3) 
+      {
+        if (sFloorNum < dFloorNum) 
+        {
           this.loadData(startingFloor, startingRoom, nodeContainer[1]);
           // bec1 pft2 = we know we need 3 maps
           // if sfloor < dfloor
@@ -190,26 +196,27 @@ class MapDisplayComponent extends Component {
             staircaseNode
           );
           this.loadData(destinationFloor, staircaseNode, destinationRoom);
-        } else {
+        }
+        else 
+        {
           this.loadData(startingFloor, startingRoom, staircaseNode);
           // pft2 bec1
           // if sfloor > dfloor
-          startingFloor = startingFloor.replace(/.$/, "1");
-          //node update for two maps below
-          nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
-          this.loadData(startingFloor, staircaseNode, nodeContainer[1]);
+          this.loadData(startingFloor.replace(/.$/, "1"), staircaseNode, nodeContainer[1]);
           this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
         }
 
         TOTAL_MAPS = mapTotalControl;
-      } else {
+      } 
+      else 
+      {
         // bec2 pf2 = we know we need 4
         // if mapTotalControl = 4
         // pft, bec, loc
         this.loadData(startingFloor, startingRoom, staircaseNode); // pft2
         startingFloor = startingFloor.replace(/.$/, "1");
         //node update for next two maps
-        nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
+        //nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
         this.loadData(startingFloor, staircaseNode, nodeContainer[0]); // pft1 9997 9999
 
         this.loadData(
