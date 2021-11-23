@@ -17,6 +17,7 @@ import { Wobble } from "../components/LogoAnimation";
 import { FadeLoading } from 'react-native-fade-loading';
 import ImageView from "react-native-image-view";
 import images from "../components/CarouselData";
+import AnimatedSplash from "react-native-animated-splash-screen";
 //import { white } from "react-native-paper/lib/typescript/styles/colors";
 
 export const Home = ({ navigation }) => (
@@ -54,7 +55,7 @@ export const FindClasses = () => {
       <ImageBackground
         style={{ flex: 1, width: "100%", height: "100%" }}
         resizeMode="cover"
-        source={require("../assets/Background.png")}
+        source={require("../assets/logo.png")}
       >
         <View style={Style.centerItem}></View>
       </ImageBackground>
@@ -64,7 +65,11 @@ export const FindClasses = () => {
 
 export const Splash = () => (
   <ScreenContainer>
-    <FadeLoading primaryColor="gray" secondaryColor="lightgray" />
+    <AnimatedSplash
+    logoImage={require("../assets/logo.png")}
+    backgroundColor={"#0f0f0f"}
+    translucent = {false}
+    />
   </ScreenContainer>
 );
 
@@ -129,6 +134,11 @@ export const ProfileScreen = ({ navigation }) => {
 
 
 const styles = StyleSheet.create({
+  circle: {
+    height: 100,
+    width: 100,
+    borderRadius: 100,
+  },
   imgBackground: {
     flex: 1,
     justifyContent: "center",
