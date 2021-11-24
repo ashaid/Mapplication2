@@ -9,8 +9,13 @@ import {
   View,
   SafeAreaView,
   Alert,
+  Modal,
 } from "react-native";
+import { Style, Colors } from "../../style/styles";
 import TimeTableView, { genTimeBlock } from "react-native-timetable";
+import { TouchableHighlight } from "react-native-gesture-handler";
+
+const static_image = require("../../assets/bec-1620-1615.png");
 
 const events_data = [
   {
@@ -73,6 +78,10 @@ export class ScheduleBuilder extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      modalVisible: false,
+    };
+
     this.numOfDays = 5;
     this.pivotDate = genTimeBlock("mon");
   }
@@ -81,8 +90,13 @@ export class ScheduleBuilder extends Component {
     this.timetableRef = ref;
   };
 
-  onEventPress = (evt) => {
+  onEventPress = () => {
+    this.toggleModal(true);
     console.log("pressed");
+  };
+
+  toggleModal = (visible) => {
+    this.setState({ modalVisible: visible });
   };
 
   render() {
@@ -102,6 +116,25 @@ export class ScheduleBuilder extends Component {
             locale="en-us"
             style={styles.text}
           />
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              console.log("Modal has been closed.");
+            }}
+          >
+            <SafeAreaView style={[Style.centerItem, styles.container]}>
+              <TouchableHighlight
+                style={styles.goButton}
+                onPress={() => {
+                  this.toggleModal(!this.state.modalVisible);
+                }}
+              >
+                <Image source={static_image} />
+              </TouchableHighlight>
+            </SafeAreaView>
+          </Modal>
         </View>
       </SafeAreaView>
     );
@@ -129,6 +162,25 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
+  },
+  goButton: {
+    marginTop: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 120,
+    width: "80%",
+    height: "8%",
+    backgroundColor: "white",
+    paddingVertical: 6,
+    paddingHorizontal: 60,
+    borderRadius: 100,
+  },
+  buttonText: {
+    position: "relative",
+    color: "black",
+    marginTop: 3,
+    fontWeight: "bold",
+    fontSize: 20,
   },
 });
 
