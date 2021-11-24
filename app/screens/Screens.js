@@ -18,6 +18,7 @@ import { FadeLoading } from "react-native-fade-loading";
 import ImageView from "react-native-image-view";
 import images from "../components/CarouselData";
 import AnimatedSplash from "react-native-animated-splash-screen";
+
 //import { white } from "react-native-paper/lib/typescript/styles/colors";
 
 export const Home = () => (
@@ -34,17 +35,6 @@ export const Home = () => (
         <SafeAreaView>
           <View>
             <Text style={styles.imageText}>Your Saved Maps</Text>
-            {/* <ImageView
-              images={images}
-              imageIndex={0}
-              isVisible={true}
-              useNativeDriver={false}
-              renderHeader={(currentImage) => (
-                <View>
-                  <Text>{images.title}</Text>
-                </View>
-              )}
-            ></ImageView> */}
           </View>
         </SafeAreaView>
       </View>

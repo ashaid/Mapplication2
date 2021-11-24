@@ -76,6 +76,19 @@ class MapDisplay extends Component {
     );
   };
 
+  logOutZoomState = (event, gestureState, zoomableViewEventObject) => {
+    console.log("");
+    console.log("");
+    console.log("-------------");
+    console.log("Event: ", event);
+    console.log("GestureState: ", gestureState);
+    console.log("ZoomableEventObject: ", zoomableViewEventObject);
+    console.log("");
+    console.log(
+      `Zoomed from ${zoomableViewEventObject.lastZoomLevel} to  ${zoomableViewEventObject.zoomLevel}`
+    );
+  };
+
   render() {
     const {
       startingRoom,

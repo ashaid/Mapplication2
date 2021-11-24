@@ -12,8 +12,6 @@ import {
 } from "react-native";
 import TimeTableView, { genTimeBlock } from "react-native-timetable";
 
-//ITS NOT WORKING WHAT THE FUCK
-
 const events_data = [
   {
     title: "CSC 4103",
@@ -102,6 +100,7 @@ export class ScheduleBuilder extends Component {
             onEventPress={this.onEventPress}
             formatDateHeader="dddd"
             locale="en-us"
+            style={styles.text}
           />
         </View>
       </SafeAreaView>
@@ -122,10 +121,14 @@ const styles = StyleSheet.create({
   },
   headerStyle: {
     backgroundColor: "#277dff",
+    color: "white",
   },
   container: {
     flex: 1,
     backgroundColor: "#131313",
+  },
+  text: {
+    color: "white",
   },
 });
 
