@@ -158,6 +158,7 @@ class MapDisplay extends Component {
               <TouchableOpacity
                 style={stylesMD.goButton}
                 onPress={() => {
+                  this.toggleModal(!this.state.modalVisible);
                   this.printInputState();
                   this.props.navigation.push("Rendered Map", {
                     startingRoom,
