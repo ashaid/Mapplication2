@@ -31,15 +31,10 @@ class MapDisplayComponent extends Component {
     super();
     this.state = {
       // change to loading: true for api call
-      loading: true,
+      loading: false,
       error: "",
       dataArray: [],
       updateMap: false,
-      images: [
-        { src: require("../assets/images/cat1.jpg") },
-        { src: require("../assets/images/cat2.jpg") },
-        { src: require("../assets/images/cat3.jpg") },
-      ],
     };
   }
 
@@ -65,14 +60,8 @@ class MapDisplayComponent extends Component {
           args[2]
       );
       console.log(result);
-      let imgString = result.data;
-      console.log(imgString);
-      this.state.dataArray.push(imgString);
-      this.setState({
-        dataArray: this.state.dataArray,
-        // loading: false,
-        error: false,
-      });
+      this.handleDataArrayChange(result.data);
+      this.setState({ error: false });
     } catch (error) {
       console.error("error: ", error);
 
@@ -85,15 +74,7 @@ class MapDisplayComponent extends Component {
     }
   };
   componentDidMount() {
-    //this.loadData();
-    console.log("mounted");
-    // this.handleMapDeconstruction();
-
-    const text = require("../assets/b64test.json");
-    let data = text.data;
-    this.handleChange(data);
-
-    this.handleChange(data);
+    this.handleMapDeconstruction();
   }
 
   handleMapDeconstruction = () => {
@@ -247,32 +228,7 @@ class MapDisplayComponent extends Component {
     this.setState({ loading: false });
   };
 
-  //renders a loading screen
-  maps = () => {
-    return this.state.dataArray.map((element, i) => {
-      return (
-        <View key={i} style={{ flex: 1, alignSelf: "stretch" }}>
-          <Image
-            source={{ uri: "data:image/png;charset=utf-8;base64," + element }}
-            //source={require("../assets/bec-1620-1615.png")}
-            style={{
-              flex: 1,
-              width: null,
-              height: null,
-              resizeMode: "cover",
-              backgroundColor: "transparent",
-              border: "solid",
-              borderColor: Colors.secondary,
-              borderRadius: 20,
-              //transform: "rotate(90deg)",
-            }}
-          />
-        </View>
-      );
-    });
-  };
-
-  handleChange = (text) => {
+  handleDataArrayChange = (text) => {
     this.setState((prevState) => ({
       dataArray: [...prevState.dataArray, text],
     }));
@@ -281,39 +237,10 @@ class MapDisplayComponent extends Component {
   render() {
     const { loading, error, dataArray } = this.state;
 
-    const images = this.maps();
+    console.log(dataArray);
 
     if (loading) {
-      // return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
-      console.log(this.state.dataArray);
-      return (
-        <View>
-          <Text>test text</Text>
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            // data={this.state.images}
-            data={this.state.dataArray}
-            renderItem={({ item, index }) => (
-              <Image
-                source={{
-                  uri: "data:image/png;charset=utf-8;base64," + item,
-                }}
-                key={index}
-                style={{
-                  width: 260,
-                  height: 300,
-                  borderWidth: 2,
-                  borderColor: "#d35647",
-                  resizeMode: "contain",
-                  margin: 8,
-                }}
-              ></Image>
-            )}
-          />
-          <Text>test text2</Text>
-        </View>
-      );
+      return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
     }
     if (error) {
       return (
@@ -327,25 +254,6 @@ class MapDisplayComponent extends Component {
         </Text>
       );
     }
-    // maps = (
-    //   <View style={{ flex: 1, alignSelf: "stretch" }}>
-    //     <Image
-    //       //source={{ uri: "data:image/png;base64," + data }}
-    //       source={require("../assets/bec-1620-1615.png")}
-    //       style={{
-    //         flex: 1,
-    //         width: null,
-    //         height: null,
-    //         resizeMode: "cover",
-    //         backgroundColor: "transparent",
-    //         border: "solid",
-    //         borderColor: Colors.secondary,
-    //         borderRadius: 20,
-    //         //transform: "rotate(90deg)",
-    //       }}
-    //     />
-    //   </View>
-    // );
     return (
       <View
         style={
@@ -361,29 +269,29 @@ class MapDisplayComponent extends Component {
             backgroundColor: Colors.tertiary,
           }}
         >
-          <FlatList
-            horizontal={true}
-            pagingEnabled={true}
-            showsHorizontalScrollIndicator={false}
-            data={this.images} //probably needs something with state to make it work
-            legacyImplementation={false}
-            renderItem={({ item, index }) => {
-              <View
-                style={{
-                  width: SCREEN_WIDTH + 5,
-                  height: "auto",
-                  flexDirection: "row",
-                }}
-              >
+          <View>
+            <FlatList
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              data={dataArray}
+              renderItem={({ item, index }) => (
                 <Image
-                  source={{ item }} //use this to set image soruce
-                  key={index} //important to set a key for list items, shouldn't use indexes as keys but may still work
-                />
-              </View>;
-            }}
-            style={{ width: SCREEN_WIDTH + 5, height: "100%" }}
-          />
-          {/* {this.maps()} */}
+                  source={{
+                    uri: "data:image/png;charset=utf-8;base64," + item,
+                  }}
+                  key={index}
+                  style={{
+                    width: 260,
+                    height: 300,
+                    borderWidth: 2,
+                    borderColor: "#d35647",
+                    resizeMode: "contain",
+                    margin: 8,
+                  }}
+                ></Image>
+              )}
+            />
+          </View>
         </View>
       </View>
     );

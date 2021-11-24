@@ -23,7 +23,7 @@ class MapDisplay extends Component {
   //     style={stylesMD.source}
   //     placeholder={"Ex:1200"}
   //     onChangeText={(value) => this.setStartingRoom(value)}
-  //     maxLength={4} 
+  //     maxLength={4}
   //   />)
   //   }
   //   else{
@@ -108,7 +108,7 @@ class MapDisplay extends Component {
                 onValueChange={(value) => this.setStartingBuilding(value)}
                 placeholder={{ label: "Building", value: "" }}
                 items={[
-                  { label: "No Starting Location", value: -1},
+                  { label: "No Starting Location", value: -1 },
                   { label: "BEC", value: "bec" },
                   { label: "PFT", value: "pft" },
                   { label: "Lockett", value: "loc" },
@@ -119,7 +119,8 @@ class MapDisplay extends Component {
               style={stylesMD.source}
               placeholder={"Ex:1200"}
               onChangeText={(value) => this.setStartingRoom(value)}
-              maxLength={4} 
+              maxLength={4}
+              keyboardType="numeric"
             />
           </View>
           <View style={stylesMD.textContainer}>
@@ -144,21 +145,23 @@ class MapDisplay extends Component {
               placeholder={"Ex:1615"}
               maxLength={4}
               onChangeText={(value) => this.setDestinationRoom(value)}
+              keyboardType="numeric"
             />
           </View>
-            <TouchableOpacity style = {stylesMD.goButton}
-              onPress={() => {
-                this.printInputState();
-                this.props.navigation.push("Rendered Map", {
-                  startingRoom,
-                  destinationRoom,
-                  startingBuilding,
-                  destinationBuilding,
-                });
-              }}
-            >
-              <Text style={stylesMD.buttonText}>Go!</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={stylesMD.goButton}
+            onPress={() => {
+              this.printInputState();
+              this.props.navigation.push("Rendered Map", {
+                startingRoom,
+                destinationRoom,
+                startingBuilding,
+                destinationBuilding,
+              });
+            }}
+          >
+            <Text style={stylesMD.buttonText}>Go!</Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     );
@@ -202,7 +205,7 @@ const stylesMD = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
   },
-  goButton:{
+  goButton: {
     marginTop: 50,
     alignItems: "center",
     justifyContent: "center",
@@ -286,7 +289,6 @@ const stylesMD = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 5,
   },
-  
 });
 
 const pickerStyles = StyleSheet.create({
