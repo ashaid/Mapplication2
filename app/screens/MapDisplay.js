@@ -18,6 +18,8 @@ import {
 import { Style, Colors } from "../style/styles";
 import RNPickerSelect from "react-native-picker-select";
 
+const static_image = require("../assets/newLogo.png");
+
 class MapDisplay extends Component {
   constructor() {
     super();
@@ -92,95 +94,7 @@ class MapDisplay extends Component {
             </View>
           </View>
 
-          <Modal
-            animationType="slide"
-            transparent={false}
-            visible={this.state.modalVisible}
-            onRequestClose={() => {
-              console.log("Modal has been closed.");
-            }}
-          >
-            <SafeAreaView style={stylesMD.screenContainer}>
-              <View style={stylesMD.line}></View>
-              <View style={stylesMD.textContainer}>
-                <Text style={stylesMD.inputText}>Enter Starting Point:</Text>
-              </View>
-              <View style={stylesMD.row}>
-                {/* from https://github.com/lawnstarter/react-native-picker-select */}
-                <View>
-                  <RNPickerSelect
-                    style={pickerStyles}
-                    onValueChange={(value) => this.setStartingBuilding(value)}
-                    placeholder={{ label: "Building", value: "" }}
-                    items={[
-                      { label: "No Starting Location", value: -1 },
-                      { label: "BEC", value: "bec" },
-                      { label: "PFT", value: "pft" },
-                      { label: "Lockett", value: "loc" },
-                    ]}
-                  />
-                </View>
-                <TextInput
-                  style={stylesMD.source}
-                  placeholder={"Ex:1200"}
-                  onChangeText={(value) => this.setStartingRoom(value)}
-                  maxLength={4}
-                  keyboardType="numeric"
-                />
-              </View>
-              <View style={stylesMD.textContainer}>
-                <Text style={stylesMD.inputText}>Enter Destination:</Text>
-              </View>
-              <View style={stylesMD.row}>
-                {/* from https://github.com/lawnstarter/react-native-picker-select */}
-                <View>
-                  <RNPickerSelect
-                    style={pickerStyles}
-                    onValueChange={(value) =>
-                      this.setDestinationBuilding(value)
-                    }
-                    placeholder={{ label: "Building", value: "" }}
-                    items={[
-                      { label: "BEC", value: "bec" },
-                      { label: "PFT", value: "pft" },
-                      { label: "Lockett", value: "loc" },
-                    ]}
-                  />
-                </View>
-                <TextInput
-                  style={stylesMD.destination}
-                  placeholder={"Ex:1615"}
-                  maxLength={4}
-                  onChangeText={(value) => this.setDestinationRoom(value)}
-                  keyboardType="numeric"
-                />
-              </View>
-              <TouchableOpacity
-                style={stylesMD.goButton}
-                onPress={() => {
-                  this.toggleModal(!this.state.modalVisible);
-                  this.printInputState();
-                  this.props.navigation.push("Rendered Map", {
-                    startingRoom,
-                    destinationRoom,
-                    startingBuilding,
-                    destinationBuilding,
-                  });
-                }}
-              >
-                <Text style={stylesMD.buttonText}>Go!</Text>
-              </TouchableOpacity>
-              <TouchableHighlight
-                style={stylesMD.goButton}
-                onPress={() => {
-                  this.toggleModal(!this.state.modalVisible);
-                }}
-              >
-                <Text style={stylesMD.buttonText}>close modal</Text>
-              </TouchableHighlight>
-            </SafeAreaView>
-          </Modal>
-          <View style={stylesMD.row}>
+          <View style={[stylesMD.row, { alignItems: "flex-end" }]}>
             <TouchableOpacity
               style={stylesMD.goButton}
               onPress={() => {
@@ -190,6 +104,96 @@ class MapDisplay extends Component {
               <Text style={stylesMD.buttonText}>show modal</Text>
             </TouchableOpacity>
           </View>
+          <Modal
+            animationType="slide"
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              console.log("Modal has been closed.");
+            }}
+          >
+            <ImageBackground style={stylesMD.background}>
+              <SafeAreaView style={stylesMD.screenContainer}>
+                <View style={stylesMD.line}></View>
+                <View style={stylesMD.textContainer}>
+                  <Text style={stylesMD.inputText}>Enter Starting Point:</Text>
+                </View>
+                <View style={stylesMD.row}>
+                  {/* from https://github.com/lawnstarter/react-native-picker-select */}
+                  <View>
+                    <RNPickerSelect
+                      style={pickerStyles}
+                      onValueChange={(value) => this.setStartingBuilding(value)}
+                      placeholder={{ label: "Building", value: "" }}
+                      items={[
+                        { label: "No Starting Location", value: -1 },
+                        { label: "BEC", value: "bec" },
+                        { label: "PFT", value: "pft" },
+                        { label: "Lockett", value: "loc" },
+                      ]}
+                    />
+                  </View>
+                  <TextInput
+                    style={stylesMD.source}
+                    placeholder={"Ex:1200"}
+                    onChangeText={(value) => this.setStartingRoom(value)}
+                    maxLength={4}
+                    keyboardType="numeric"
+                  />
+                </View>
+                <View style={stylesMD.textContainer}>
+                  <Text style={stylesMD.inputText}>Enter Destination:</Text>
+                </View>
+                <View style={stylesMD.row}>
+                  {/* from https://github.com/lawnstarter/react-native-picker-select */}
+                  <View>
+                    <RNPickerSelect
+                      style={pickerStyles}
+                      onValueChange={(value) =>
+                        this.setDestinationBuilding(value)
+                      }
+                      placeholder={{ label: "Building", value: "" }}
+                      items={[
+                        { label: "BEC", value: "bec" },
+                        { label: "PFT", value: "pft" },
+                        { label: "Lockett", value: "loc" },
+                      ]}
+                    />
+                  </View>
+                  <TextInput
+                    style={stylesMD.destination}
+                    placeholder={"Ex:1615"}
+                    maxLength={4}
+                    onChangeText={(value) => this.setDestinationRoom(value)}
+                    keyboardType="numeric"
+                  />
+                </View>
+                <TouchableOpacity
+                  style={stylesMD.goButton}
+                  onPress={() => {
+                    this.toggleModal(!this.state.modalVisible);
+                    this.printInputState();
+                    this.props.navigation.push("Rendered Map", {
+                      startingRoom,
+                      destinationRoom,
+                      startingBuilding,
+                      destinationBuilding,
+                    });
+                  }}
+                >
+                  <Text style={stylesMD.buttonText}>Go!</Text>
+                </TouchableOpacity>
+                <TouchableHighlight
+                  style={stylesMD.goButton}
+                  onPress={() => {
+                    this.toggleModal(!this.state.modalVisible);
+                  }}
+                >
+                  <Text style={stylesMD.buttonText}>close modal</Text>
+                </TouchableHighlight>
+              </SafeAreaView>
+            </ImageBackground>
+          </Modal>
         </View>
       </ImageBackground>
     );
