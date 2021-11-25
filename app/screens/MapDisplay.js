@@ -118,20 +118,37 @@ class MapDisplay extends Component {
           </View>
           <Modal
             animationType="slide"
-            transparent={false}
+            transparent={true}
             visible={this.state.modalVisible}
             onRequestClose={() => {
               console.log("Modal has been closed.");
             }}
           >
-            <ImageBackground style={stylesMD.background}>
-              <SafeAreaView style={stylesMD.screenContainer}>
-                <View style={stylesMD.line}></View>
+            <SafeAreaView
+              style={[Style.centerItem, { justifyContent: "flex-end" }]}
+            >
+              <View
+                style={[
+                  stylesMD.modalBackground,
+                  {
+                    height: "55%",
+                    width: "100%",
+                  },
+                ]}
+              >
+                <TouchableHighlight
+                  style={stylesMD.modalLine}
+                  onPress={() => {
+                    this.toggleModal(!this.state.modalVisible);
+                  }}
+                >
+                  <View style></View>
+                </TouchableHighlight>
+
                 <View style={stylesMD.textContainer}>
                   <Text style={stylesMD.inputText}>Enter Starting Point:</Text>
                 </View>
                 <View style={stylesMD.row}>
-                  {/* from https://github.com/lawnstarter/react-native-picker-select */}
                   <View>
                     <RNPickerSelect
                       style={pickerStyles}
@@ -157,7 +174,6 @@ class MapDisplay extends Component {
                   <Text style={stylesMD.inputText}>Enter Destination:</Text>
                 </View>
                 <View style={stylesMD.row}>
-                  {/* from https://github.com/lawnstarter/react-native-picker-select */}
                   <View>
                     <RNPickerSelect
                       style={pickerStyles}
@@ -181,7 +197,7 @@ class MapDisplay extends Component {
                   />
                 </View>
                 <TouchableOpacity
-                  style={stylesMD.goButton}
+                  style={stylesMD.modalButton2}
                   onPress={() => {
                     this.toggleModal(!this.state.modalVisible);
                     this.printInputState();
@@ -195,16 +211,8 @@ class MapDisplay extends Component {
                 >
                   <Text style={stylesMD.buttonText}>Go!</Text>
                 </TouchableOpacity>
-                <TouchableHighlight
-                  style={stylesMD.goButton}
-                  onPress={() => {
-                    this.toggleModal(!this.state.modalVisible);
-                  }}
-                >
-                  <Text style={stylesMD.buttonText}>close modal</Text>
-                </TouchableHighlight>
-              </SafeAreaView>
-            </ImageBackground>
+              </View>
+            </SafeAreaView>
           </Modal>
         </View>
       </ImageBackground>
@@ -220,6 +228,14 @@ const stylesMD = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "#131313",
     position: "relative",
+  },
+  modalScreenContainer: {
+    flex: 1,
+    top: 20,
+    alignItems: "center",
+    // flexDirection: "column",
+    backgroundColor: "#131313",
+    // position: "relative",
   },
   source: {
     borderWidth: 0.5,
@@ -247,7 +263,7 @@ const stylesMD = StyleSheet.create({
     backgroundColor: "white",
   },
   row: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "row",
   },
   modalButton: {
@@ -257,6 +273,19 @@ const stylesMD = StyleSheet.create({
     marginBottom: 120,
     width: "80%",
     height: "5%",
+    backgroundColor: "white",
+    paddingVertical: 0,
+    paddingHorizontal: 60,
+    borderRadius: 100,
+    position: "relative",
+  },
+  modalButton2: {
+    marginTop: 0,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 0,
+    width: "80%",
+    height: "15%",
     backgroundColor: "white",
     paddingVertical: 0,
     paddingHorizontal: 60,
@@ -311,6 +340,11 @@ const stylesMD = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  modalBackground: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.tertiary,
+  },
   header: {
     fontSize: 45,
     alignItems: "center",
@@ -335,7 +369,7 @@ const stylesMD = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 18,
   },
   line: {
     color: "white",
@@ -346,6 +380,16 @@ const stylesMD = StyleSheet.create({
     flexDirection: "row",
     marginVertical: 10,
     borderRadius: 5,
+  },
+  modalLine: {
+    color: "white",
+    backgroundColor: "white",
+    width: "75%",
+    height: 20,
+    display: "flex",
+    flexDirection: "row",
+    marginVertical: 10,
+    borderRadius: 15,
   },
 });
 
