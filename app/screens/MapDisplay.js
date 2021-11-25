@@ -92,11 +92,23 @@ class MapDisplay extends Component {
             <View style={stylesMD.headerContainer}>
               <Text style={stylesMD.header}>MAP BUILDER</Text>
             </View>
-          </View>
-
-          <View style={[stylesMD.row, { alignItems: "flex-end" }]}>
+            {/* i have border visible to see how much of the screen we are working with */}
+            <View style={{ height: "75%", borderWidth: 5, borderColor: "red" }}>
+              <Image
+                source={static_image}
+                style={{
+                  flex: 1,
+                  width: "100%",
+                  height: "100%",
+                  resizeMode: "cover",
+                }}
+              />
+            </View>
             <TouchableOpacity
-              style={stylesMD.goButton}
+              style={[
+                stylesMD.modalButton,
+                { justifyContent: "center", alignSelf: "center" },
+              ]}
               onPress={() => {
                 this.toggleModal(true);
               }}
@@ -238,13 +250,26 @@ const stylesMD = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
   },
-  goButton: {
-    marginTop: 50,
+  modalButton: {
+    marginTop: 15,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 120,
     width: "80%",
-    height: "8%",
+    height: "5%",
+    backgroundColor: "white",
+    paddingVertical: 0,
+    paddingHorizontal: 60,
+    borderRadius: 100,
+    position: "relative",
+  },
+  goButton: {
+    marginTop: 35,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 120,
+    width: "80%",
+    height: "10%",
     backgroundColor: "white",
     paddingVertical: 6,
     paddingHorizontal: 60,
