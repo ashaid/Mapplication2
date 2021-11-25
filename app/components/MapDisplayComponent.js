@@ -86,12 +86,20 @@ class MapDisplayComponent extends Component {
      *
      * need to think about basement logic? idk
      */
+    // old way
+    // const {
+    //   startingBuilding,
+    //   startingRoom,
+    //   destinationBuilding,
+    //   destinationRoom,
+    // } = this.props.route.params;
+
     const {
       startingBuilding,
       startingRoom,
       destinationBuilding,
       destinationRoom,
-    } = this.props.route.params;
+    } = this.props;
 
     let TOTAL_MAPS = 0;
 

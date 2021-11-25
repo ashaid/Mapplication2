@@ -14,9 +14,12 @@ import {
   Modal,
   TouchableHighlight,
   SafeAreaView,
+  KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import RNPickerSelect from "react-native-picker-select";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const static_image = require("../assets/newLogo.png");
 
@@ -26,6 +29,8 @@ class MapDisplay extends Component {
 
     this.state = {
       modalVisible: false,
+
+      isVisible: false,
 
       startingRoom: "",
       destinationRoom: "",
@@ -73,6 +78,12 @@ class MapDisplay extends Component {
     this.setState({ modalVisible: visible });
   };
 
+  renderResults = () => {
+    this.setState({
+      isVisible: !this.state.isVisible, //toggles the visibilty of the text
+    });
+  };
+
   render() {
     const {
       startingRoom,
@@ -94,15 +105,24 @@ class MapDisplay extends Component {
             </View>
             {/* i have border visible to see how much of the screen we are working with */}
             <View style={{ height: "75%", borderWidth: 5, borderColor: "red" }}>
-              <Image
-                source={static_image}
-                style={{
-                  flex: 1,
-                  width: "100%",
-                  height: "100%",
-                  resizeMode: "cover",
-                }}
-              />
+              {this.state.isVisible ? (
+                <MapDisplayComponent
+                  startingRoom={this.state.startingRoom}
+                  startingBuilding={this.state.startingBuilding}
+                  destinationRoom={this.state.destinationRoom}
+                  destinationBuilding={this.state.destinationBuilding}
+                />
+              ) : (
+                <Image
+                  source={static_image}
+                  style={{
+                    flex: 1,
+                    width: "100%",
+                    height: "100%",
+                    resizeMode: "cover",
+                  }}
+                />
+              )}
             </View>
             <TouchableOpacity
               style={[
@@ -124,7 +144,12 @@ class MapDisplay extends Component {
               console.log("Modal has been closed.");
             }}
           >
-            <View style={[Style.centerItem, { justifyContent: "flex-end" }]}>
+            <KeyboardAwareScrollView
+              contentContainerStyle={[
+                Style.centerItem,
+                { justifyContent: "flex-end" },
+              ]}
+            >
               <View
                 style={[
                   stylesMD.modalBackground,
@@ -200,18 +225,20 @@ class MapDisplay extends Component {
                   onPress={() => {
                     this.toggleModal(!this.state.modalVisible);
                     this.printInputState();
-                    this.props.navigation.push("Rendered Map", {
-                      startingRoom,
-                      destinationRoom,
-                      startingBuilding,
-                      destinationBuilding,
-                    });
+                    this.renderResults();
+
+                    // this.props.navigation.push("Rendered Map", {
+                    //   startingRoom,
+                    //   destinationRoom,
+                    //   startingBuilding,
+                    //   destinationBuilding,
+                    // });
                   }}
                 >
                   <Text style={stylesMD.buttonText}>Go!</Text>
                 </TouchableOpacity>
               </View>
-            </View>
+            </KeyboardAwareScrollView>
           </Modal>
         </View>
       </ImageBackground>
