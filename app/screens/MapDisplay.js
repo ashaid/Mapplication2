@@ -282,7 +282,7 @@ const stylesMD = StyleSheet.create({
     marginTop: 0,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 0,
+    marginBottom: 10,
     width: "80%",
     height: "15%",
     backgroundColor: "white",
