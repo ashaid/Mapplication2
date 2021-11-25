@@ -118,21 +118,36 @@ export class ScheduleBuilder extends Component {
           />
           <Modal
             animationType="slide"
-            transparent={false}
+            transparent={true}
             visible={this.state.modalVisible}
             onRequestClose={() => {
               console.log("Modal has been closed.");
             }}
           >
-            <SafeAreaView style={[Style.centerItem, styles.container]}>
-              <TouchableHighlight
-                style={styles.goButton}
-                onPress={() => {
-                  this.toggleModal(!this.state.modalVisible);
+            <SafeAreaView style={[Style.centerItem]}>
+              <View
+                style={{
+                  height: "50%",
+                  width: "100%",
                 }}
               >
-                <Image source={static_image} />
-              </TouchableHighlight>
+                <TouchableHighlight
+                  style={styles.modalContainer}
+                  onPress={() => {
+                    this.toggleModal(!this.state.modalVisible);
+                  }}
+                >
+                  <Image
+                    source={static_image}
+                    style={{
+                      flex: 1,
+                      width: "100%",
+                      height: "100%",
+                      resizeMode: "stretch",
+                    }}
+                  />
+                </TouchableHighlight>
+              </View>
             </SafeAreaView>
           </Modal>
         </View>
@@ -181,6 +196,12 @@ const styles = StyleSheet.create({
     marginTop: 3,
     fontWeight: "bold",
     fontSize: 20,
+  },
+  modalContainer: {
+    borderRadius: 4,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "transparent",
   },
 });
 
