@@ -124,15 +124,14 @@ class MapDisplay extends Component {
               console.log("Modal has been closed.");
             }}
           >
-            <SafeAreaView
-              style={[Style.centerItem, { justifyContent: "flex-end" }]}
-            >
+            <View style={[Style.centerItem, { justifyContent: "flex-end" }]}>
               <View
                 style={[
                   stylesMD.modalBackground,
                   {
-                    height: "55%",
+                    height: "50%",
                     width: "100%",
+                    borderRadius: 45,
                   },
                 ]}
               >
@@ -212,7 +211,7 @@ class MapDisplay extends Component {
                   <Text style={stylesMD.buttonText}>Go!</Text>
                 </TouchableOpacity>
               </View>
-            </SafeAreaView>
+            </View>
           </Modal>
         </View>
       </ImageBackground>
@@ -385,11 +384,11 @@ const stylesMD = StyleSheet.create({
     color: "white",
     backgroundColor: "white",
     width: "75%",
-    height: 20,
+    height: "5%",
     display: "flex",
     flexDirection: "row",
     marginVertical: 10,
-    borderRadius: 15,
+    borderRadius: 50,
   },
 });
 
