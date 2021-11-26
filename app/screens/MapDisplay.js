@@ -36,6 +36,8 @@ class MapDisplay extends Component {
 
       isVisible: false,
 
+      fadeButton: false,
+
       startingRoom: "",
       destinationRoom: "",
 
@@ -88,6 +90,10 @@ class MapDisplay extends Component {
     });
   };
 
+  handleFadeButton = (text) => {
+    this.setState({ fadeButton: text });
+  };
+
   render() {
     const {
       startingRoom,
@@ -126,7 +132,7 @@ class MapDisplay extends Component {
                   startingBuilding={this.state.startingBuilding}
                   destinationRoom={this.state.destinationRoom}
                   destinationBuilding={this.state.destinationBuilding}
-                  style={{}}
+                  fadeButton={this.handleFadeButton}
                 />
               </View>
             ) : (
@@ -141,28 +147,30 @@ class MapDisplay extends Component {
               />
             )}
           </View>
-          <TouchableOpacity
-            style={[stylesMD.modalButton]}
-            onPress={() => {
-              this.up_arrow.play();
-              setTimeout(() => {
-                this.toggleModal(true);
-              }, 500);
-            }}
-          >
-            {/* <Text style={stylesMD.buttonText}>START</Text> */}
-            {/* <AntDesign name="API" size={42} color="black" /> */}
-            <LottieView
-              ref={(animation) => {
-                this.up_arrow = animation;
+          {!this.state.fadeButton ? (
+            <TouchableOpacity
+              style={[stylesMD.modalButton]}
+              onPress={() => {
+                this.up_arrow.play();
+                setTimeout(() => {
+                  this.toggleModal(true);
+                }, 500);
               }}
-              source={require("../assets/up_arrow.json")}
-              loop={false}
-            />
-          </TouchableOpacity>
+            >
+              <LottieView
+                ref={(animation) => {
+                  this.up_arrow = animation;
+                }}
+                source={require("../assets/up_arrow.json")}
+                loop={false}
+              />
+            </TouchableOpacity>
+          ) : null}
         </SafeAreaView>
         <Modal
           animationType="slide"
+          // animationOut="slideOutDown"
+          // animationOutTiming="200"
           transparent={true}
           isVisible={this.state.modalVisible}
           swipeDirection="down"
@@ -341,7 +349,7 @@ const stylesMD = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     marginBottom: 10,
-    width: "80%",
+    width: "100%",
     height: "15%",
     // backgroundColor: "white",
     paddingVertical: 0,

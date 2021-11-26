@@ -68,11 +68,13 @@ class MapDisplayComponent extends Component {
       });
     }
 
-    this.state.totalMapsState == this.state.counter
-      ? this.setState({ loading: false })
-      : console.log("not equal");
+    if (this.state.totalMapsState == this.state.counter) {
+      this.setState({ loading: false });
+      this.props.fadeButton(false);
+    } else console.log("not finished loading maps");
   };
   componentDidMount() {
+    this.props.fadeButton(true);
     this.map_loader.play();
     this.handleMapDeconstruction();
   }
@@ -276,10 +278,10 @@ class MapDisplayComponent extends Component {
     }
     return (
       <FlatList
-        maximumZoomScale={2}
+        maximumZoomScale={3}
         minimumZoomScale={1}
         horizontal={true}
-        showsHorizontalScrollIndicator={true}
+        showsHorizontalScrollIndicator={false}
         data={dataArray}
         keyExtractor={(item, index) => index.toString()}
         // ItemSeparatorComponent={this.renderSeperator}
@@ -293,12 +295,9 @@ class MapDisplayComponent extends Component {
             style={[
               Style.centerItem,
               {
-                flex: 1,
-                aspectRatio: 1.5,
-                // width: Dimensions.get("window").width,
-                // height: "100%",
-                resizeMode: "stretch",
-                // elevation: 30,
+                borderRadius: 5,
+                aspectRatio: 1.3,
+                resizeMode: "contain",
               },
             ]}
           ></Image>
