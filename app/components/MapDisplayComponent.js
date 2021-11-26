@@ -8,7 +8,6 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   Button,
   SafeAreaView,
   ImageBackground,
@@ -17,6 +16,7 @@ import {
   List,
   FlatList,
   Dimensions,
+  Image,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import axios from "axios";
@@ -24,6 +24,7 @@ import checkRoom from "../../backend/RoomCheck";
 import FloorFinder from "../../backend/FloorFinder";
 import nodeUpdater from "../../backend/NodeUpdater";
 import { FadeLoading } from "react-native-fade-loading";
+// import Image from "react-native-scalable-image";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 class MapDisplayComponent extends Component {
@@ -248,7 +249,11 @@ class MapDisplayComponent extends Component {
     console.log(dataArray);
 
     if (loading) {
-      return <FadeLoading primaryColor="gray" secondaryColor="lightgray" />;
+      return (
+        <View style={{ width: "100%", height: "100%" }}>
+          <FadeLoading primaryColor="white" secondaryColor="lightgray" />
+        </View>
+      );
     }
     if (error) {
       return (
@@ -263,45 +268,31 @@ class MapDisplayComponent extends Component {
       );
     }
     return (
-      <View
-        style={
-          (Style.centerItem,
-          { width: "100%", height: "100%", backgroundColor: Colors.tertiary })
-        }
-      >
-        <View
-          style={{
-            display: "flex",
-            width: "100%",
-            height: "80%",
-            backgroundColor: Colors.tertiary,
-          }}
-        >
-          <View>
-            <FlatList
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              data={dataArray}
-              renderItem={({ item, index }) => (
-                <Image
-                  source={{
-                    uri: "data:image/png;charset=utf-8;base64," + item,
-                  }}
-                  key={index}
-                  style={{
-                    width: 260,
-                    height: 300,
-                    borderWidth: 2,
-                    borderColor: "#d35647",
-                    resizeMode: "contain",
-                    margin: 8,
-                  }}
-                ></Image>
-              )}
-            />
-          </View>
-        </View>
-      </View>
+      <FlatList
+        maximumZoomScale={2}
+        minimumZoomScale={1}
+        horizontal={true}
+        showsHorizontalScrollIndicator={true}
+        data={dataArray}
+        // contentContainerStyle=
+        renderItem={({ item, index }) => (
+          <Image
+            source={{
+              uri: "data:image/png;charset=utf-8;base64," + item,
+            }}
+            key={index}
+            style={[
+              Style.centerItem,
+              {
+                flex: 1,
+                width: Dimensions.get("window").width,
+                height: "100%",
+                resizeMode: "contain",
+              },
+            ]}
+          ></Image>
+        )}
+      />
     );
   }
 }

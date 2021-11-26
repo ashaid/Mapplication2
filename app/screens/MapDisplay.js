@@ -104,14 +104,24 @@ class MapDisplay extends Component {
               <Text style={stylesMD.header}>MAP BUILDER</Text>
             </View>
             {/* i have border visible to see how much of the screen we are working with */}
-            <View style={{ height: "75%", borderWidth: 5, borderColor: "red" }}>
+            <View style={{ height: "75%" }}>
               {this.state.isVisible ? (
-                <MapDisplayComponent
-                  startingRoom={this.state.startingRoom}
-                  startingBuilding={this.state.startingBuilding}
-                  destinationRoom={this.state.destinationRoom}
-                  destinationBuilding={this.state.destinationBuilding}
-                />
+                <View
+                  style={{
+                    flex: 1,
+                    width: "100%",
+                    height: "100%",
+                    resizeMode: "contain",
+                  }}
+                >
+                  <MapDisplayComponent
+                    startingRoom={this.state.startingRoom}
+                    startingBuilding={this.state.startingBuilding}
+                    destinationRoom={this.state.destinationRoom}
+                    destinationBuilding={this.state.destinationBuilding}
+                    style={{}}
+                  />
+                </View>
               ) : (
                 <Image
                   source={static_image}
@@ -156,17 +166,16 @@ class MapDisplay extends Component {
                   {
                     height: "50%",
                     width: "100%",
-                    borderRadius: 45,
                   },
                 ]}
               >
                 <TouchableHighlight
-                  style={stylesMD.modalLine}
+                  style={[stylesMD.modalLine]}
                   onPress={() => {
                     this.toggleModal(!this.state.modalVisible);
                   }}
                 >
-                  <View style></View>
+                  <View></View>
                 </TouchableHighlight>
 
                 <View style={stylesMD.textContainer}>
