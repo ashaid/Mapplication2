@@ -278,8 +278,9 @@ class MapDisplayComponent extends Component {
     }
     return (
       <View style={Style.centerItem}>
+
         <FlatList
-          maximumZoomScale={3}
+          maximumZoomScale={2}
           minimumZoomScale={1}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -304,7 +305,7 @@ class MapDisplayComponent extends Component {
             ></Image>
           )}
         />
-        <LottieView
+                  {/* <LottieView
           ref={(animation) => {
             this.confetti_boom = animation;
           }}
@@ -312,8 +313,8 @@ class MapDisplayComponent extends Component {
           autoPlay
           loop={false}
           speed={0.7}
-          style={{ transform: [{ scale: 1.2 }] }}
-        />
+          style={{ transform: [{ scale: 1.2 }], position: "absolute", bottom: "10%" }}
+        /> */}
       </View>
     );
   }
