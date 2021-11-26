@@ -11,7 +11,6 @@ import {
   Alert,
   Image,
   TouchableOpacity,
-  Modal,
   TouchableHighlight,
   SafeAreaView,
   KeyboardAvoidingView,
@@ -23,9 +22,10 @@ import RNPickerSelect from "react-native-picker-select";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { AntDesign } from "@expo/vector-icons";
 import LottieView from "lottie-react-native";
+import Modal from "react-native-modal";
 
 const static_image = require("../assets/newLogo.png");
-const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_WIDTH = Dimensions.get("screen").width;
 
 class MapDisplay extends Component {
   constructor() {
@@ -167,10 +167,13 @@ class MapDisplay extends Component {
           <Modal
             animationType="slide"
             transparent={true}
-            visible={this.state.modalVisible}
-            onRequestClose={() => {
-              console.log("Modal has been closed.");
-            }}
+            isVisible={this.state.modalVisible}
+            swipeDirection="down"
+            onSwipeThreshold={150}
+            onSwipeComplete={() => this.setState({ modalVisible: false })}
+            backdropOpacity={0.6}
+            avoidKeyboard={false}
+            style={{ margin: 0 }}
           >
             <KeyboardAwareScrollView
               contentContainerStyle={[
@@ -178,7 +181,7 @@ class MapDisplay extends Component {
                 { justifyContent: "flex-end" },
               ]}
             >
-              <View
+              <SafeAreaView
                 style={[
                   stylesMD.modalBackground,
                   {
@@ -264,7 +267,7 @@ class MapDisplay extends Component {
                 >
                   <Text style={stylesMD.buttonText}>Go!</Text>
                 </TouchableOpacity>
-              </View>
+              </SafeAreaView>
             </KeyboardAwareScrollView>
           </Modal>
         </View>

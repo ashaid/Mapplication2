@@ -19,6 +19,7 @@ import {
   LogIn,
   ProfileScreen,
   Splash,
+  SafeAreaView,
 } from "./app/screens/Screens.js";
 import { AuthContext } from "./app/components/AuthContext.js";
 import { Ionicons } from "@expo/vector-icons";
@@ -175,7 +176,7 @@ const RootStackScreen = ({ userToken }) => (
     headerMode="none"
     screenOptions={{
       headerShown: false,
-      headerStyle: { backgroundColor: Colors.primary },
+      headerStyle: { backgroundColor: Colors.primary, flex: 1 },
     }}
   >
     {userToken ? (
