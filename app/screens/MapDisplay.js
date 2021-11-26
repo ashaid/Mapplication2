@@ -22,6 +22,7 @@ import { Style, Colors } from "../style/styles";
 import RNPickerSelect from "react-native-picker-select";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { AntDesign } from "@expo/vector-icons";
+import LottieView from "lottie-react-native";
 
 const static_image = require("../assets/newLogo.png");
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -136,7 +137,6 @@ class MapDisplay extends Component {
                     flex: 1,
                     width: "100%",
                     height: "100%",
-                    resizeMode: "",
                   }}
                 />
               )}
@@ -147,11 +147,21 @@ class MapDisplay extends Component {
                 { justifyContent: "center", alignSelf: "center" },
               ]}
               onPress={() => {
-                this.toggleModal(true);
+                this.up_arrow.play();
+                setTimeout(() => {
+                  this.toggleModal(true);
+                }, 500);
               }}
             >
               {/* <Text style={stylesMD.buttonText}>START</Text> */}
-              <AntDesign name="API" size={42} color="black" />
+              {/* <AntDesign name="API" size={42} color="black" /> */}
+              <LottieView
+                ref={(animation) => {
+                  this.up_arrow = animation;
+                }}
+                source={require("../assets/up_arrow.json")}
+                loop={false}
+              />
             </TouchableOpacity>
           </View>
           <Modal
@@ -313,14 +323,15 @@ const stylesMD = StyleSheet.create({
     marginTop: 0,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 150,
+    marginBottom: 50,
     width: "100%",
-    height: "8%",
-    backgroundColor: "white",
+    height: "15%",
+    backgroundColor: Colors.tertiary,
     paddingVertical: 10,
     paddingHorizontal: 40,
     borderRadius: 10,
     position: "relative",
+    transform: [{ scale: 2 }],
   },
   modalButton2: {
     marginTop: 0,

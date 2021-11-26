@@ -5183,10 +5183,15 @@
   dependencies:
     "js-tokens" "^3.0.0 || ^4.0.0"
 
-"lottie-react-native@^5.0.0":
-  "integrity" "sha512-yAFTmWVSFpGq/kiybv2OWN1EKHe1jyKLLLpf4rsp+AIxTyS64TFU1WZbH3vlMgTwtgujBMz8JQ7u5UWSSYMcyA=="
-  "resolved" "https://registry.npmjs.org/lottie-react-native/-/lottie-react-native-5.0.0.tgz"
-  "version" "5.0.0"
+"lottie-ios@^3.2.3":
+  "integrity" "sha512-mubYMN6+1HXa8z3EJKBvNBkl4UoVM4McjESeB2PgvRMSngmJtC5yUMRdhbbrIAn5Liu3hFGao/14s5hQIgtkRQ=="
+  "resolved" "https://registry.npmjs.org/lottie-ios/-/lottie-ios-3.2.3.tgz"
+  "version" "3.2.3"
+
+"lottie-react-native@^5.0.1":
+  "integrity" "sha512-V+ODPqiHOSRzEWg8VsfrJBicgc2k0ZPlCjk3J7ULUkh94smL1nrsF/n4OGukj4MLZwonpv+frVK7pPh5U7t3rQ=="
+  "resolved" "https://registry.npmjs.org/lottie-react-native/-/lottie-react-native-5.0.1.tgz"
+  "version" "5.0.1"
   dependencies:
     "invariant" "^2.2.2"
     "prop-types" "^15.5.10"
