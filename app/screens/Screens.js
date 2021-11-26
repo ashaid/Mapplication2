@@ -57,13 +57,7 @@ export const FindClasses = () => {
 };
 
 export const Splash = () => (
-  <ScreenContainer>
-    <AnimatedSplash
-      logoImage={require("../assets/logo.png")}
-      backgroundColor={"#131313"}
-      translucent={false}
-    />
-  </ScreenContainer>
+  <ScreenContainer style={{ backgroundColor: "#131313" }}></ScreenContainer>
 );
 
 export const LogIn = () => {
