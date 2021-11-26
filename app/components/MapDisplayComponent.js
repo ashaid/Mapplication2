@@ -24,6 +24,7 @@ import checkRoom from "../../backend/RoomCheck";
 import FloorFinder from "../../backend/FloorFinder";
 import nodeUpdater from "../../backend/NodeUpdater";
 import { FadeLoading } from "react-native-fade-loading";
+import LottieView from "lottie-react-native";
 // import Image from "react-native-scalable-image";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
@@ -32,25 +33,16 @@ class MapDisplayComponent extends Component {
     super();
     this.state = {
       // change to loading: true for api call
-      loading: false,
+      loading: true,
       error: "",
       dataArray: [],
       updateMap: false,
+      counter: 0,
+      totalMapsState: 0,
     };
   }
 
   loadData = async (...args) => {
-    // args[0] = building, args[1] = startingRoom, args[2] = destinationRoom
-    // var result =
-    //   "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=" +
-    //   args[0] +
-    //   "&start=" +
-    //   args[1] +
-    //   "&dest=" +
-    //   args[2];
-    // this.state.dataArray.push(result);
-    // this.setState({ dataArray: this.state.dataArray });
-    // this.setState({ loading: true });
     try {
       var result = await axios.post(
         "https://93tdgadq0a.execute-api.us-east-1.amazonaws.com/staging?building=" +
@@ -62,7 +54,9 @@ class MapDisplayComponent extends Component {
       );
       console.log(result);
       this.handleDataArrayChange(result.data);
-      this.setState({ error: false });
+      this.setState((prevState) => {
+        return { error: false, counter: prevState.counter + 1 };
+      });
     } catch (error) {
       console.error("error: ", error);
 
@@ -73,8 +67,13 @@ class MapDisplayComponent extends Component {
         loading: false,
       });
     }
+
+    this.state.totalMapsState == this.state.counter
+      ? this.setState({ loading: false })
+      : console.log("not equal");
   };
   componentDidMount() {
+    this.map_loader.play();
     this.handleMapDeconstruction();
   }
 
@@ -139,22 +138,25 @@ class MapDisplayComponent extends Component {
     //evaluates the source and destination floors in order to get a number of map images that need to be generated
     if (startingBuilding == -1) {
       // no starting
+      TOTAL_MAPS = dFloorNum;
+      this.setState({ totalMapsState: TOTAL_MAPS });
       let entranceNode = 9999;
       this.loadData(
         destinationFloor.replace(/.$/, dFloorNum.toString()),
         entranceNode,
         destinationRoom
       );
-      TOTAL_MAPS = dFloorNum;
     } else if (startBuild == destBuild) {
       // same building same floor
+      TOTAL_MAPS = 2;
       if (sFloorNum == dFloorNum) {
+        TOTAL_MAPS = 1;
+        this.setState({ totalMapsState: TOTAL_MAPS });
         this.loadData(
           destinationFloor.replace(/.$/, dFloorNum.toString()),
           startingRoom,
           destinationRoom
         );
-        TOTAL_MAPS = 1;
       } else {
         this.loadData(
           startingFloor.replace(/.$/, sFloorNum.toString()),
@@ -167,17 +169,19 @@ class MapDisplayComponent extends Component {
           staircaseNode,
           destinationRoom
         );
-        TOTAL_MAPS = 2;
       }
     } else {
       // min 2 max 4
       // bec1 pft1 = we know we need 2
       nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
       if (mapTotalControl == 2) {
+        TOTAL_MAPS = mapTotalControl;
+        this.setState({ totalMapsState: TOTAL_MAPS });
         this.loadData(startingFloor, startingRoom, nodeContainer[1]);
         this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
-        TOTAL_MAPS = mapTotalControl;
       } else if (mapTotalControl == 3) {
+        TOTAL_MAPS = mapTotalControl;
+        this.setState({ totalMapsState: TOTAL_MAPS });
         if (sFloorNum < dFloorNum) {
           this.loadData(startingFloor, startingRoom, nodeContainer[1]);
           // bec1 pft2 = we know we need 3 maps
@@ -199,9 +203,9 @@ class MapDisplayComponent extends Component {
           );
           this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
         }
-
-        TOTAL_MAPS = mapTotalControl;
       } else {
+        TOTAL_MAPS = mapTotalControl;
+        this.setState({ totalMapsState: TOTAL_MAPS });
         // bec2 pf2 = we know we need 4
         // if mapTotalControl = 4
         // pft, bec, loc
@@ -217,7 +221,6 @@ class MapDisplayComponent extends Component {
           staircaseNode
         );
         this.loadData(destinationFloor, staircaseNode, destinationRoom);
-        TOTAL_MAPS = mapTotalControl;
       }
     }
     //prints total number of maps
@@ -233,8 +236,6 @@ class MapDisplayComponent extends Component {
     );
     console.log("LOGGING");
     console.log(this.state.dataArray);
-    console.log("DONE LOGGIN");
-    this.setState({ loading: false });
   };
 
   handleDataArrayChange = (text) => {
@@ -246,12 +247,18 @@ class MapDisplayComponent extends Component {
   render() {
     const { loading, error, dataArray } = this.state;
 
-    console.log(dataArray);
-
+    // console.log(dataArray);
     if (loading) {
       return (
         <View style={{ width: "100%", height: "100%" }}>
-          <FadeLoading primaryColor="white" secondaryColor="lightgray" />
+          <LottieView
+            ref={(animation) => {
+              this.map_loader = animation;
+            }}
+            source={require("../assets/map_loader.json")}
+            loop={true}
+          />
+          {/* <FadeLoading primaryColor="white" secondaryColor="lightgray" /> */}
         </View>
       );
     }
@@ -274,6 +281,7 @@ class MapDisplayComponent extends Component {
         horizontal={true}
         showsHorizontalScrollIndicator={true}
         data={dataArray}
+        keyExtractor={(item, index) => index.toString()}
         // ItemSeparatorComponent={this.renderSeperator}
         contentContainerStyle={{}}
         renderItem={({ item, index }) => (
@@ -281,16 +289,16 @@ class MapDisplayComponent extends Component {
             source={{
               uri: "data:image/png;charset=utf-8;base64," + item,
             }}
-            key={index}
+            // key={index}
             style={[
               Style.centerItem,
               {
                 flex: 1,
-                aspectRatio: "1.5",
+                aspectRatio: 1.5,
                 // width: Dimensions.get("window").width,
                 // height: "100%",
                 resizeMode: "stretch",
-                elevation: 30,
+                // elevation: 30,
               },
             ]}
           ></Image>

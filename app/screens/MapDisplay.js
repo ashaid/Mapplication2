@@ -102,175 +102,172 @@ class MapDisplay extends Component {
 
     return (
       <ImageBackground style={stylesMD.background}>
-        <View style={stylesMD.screenContainer}>
-          <View style={{ marginTop: 70, marginBottom: 15 }}>
-            {/* <View style={stylesMD.headerContainer}>
+        <SafeAreaView style={stylesMD.screenContainer}>
+          {/* <View style={{ marginTop: 70, marginBottom: 15 }}> */}
+          {/* <View style={stylesMD.headerContainer}>
               <Text style={stylesMD.header}>MAP BUILDER</Text>
             </View> */}
 
-            <View
-              style={{
-                height: "80%",
-                width: 390,
-              }}
-            >
-              {this.state.isVisible ? (
-                <View
-                  style={{
-                    flex: 1,
-                    // width: "100%",
-                    // height: "100%",
-                  }}
-                >
-                  <MapDisplayComponent
-                    startingRoom={this.state.startingRoom}
-                    startingBuilding={this.state.startingBuilding}
-                    destinationRoom={this.state.destinationRoom}
-                    destinationBuilding={this.state.destinationBuilding}
-                    style={{}}
-                  />
-                </View>
-              ) : (
-                <Image
-                  source={static_image}
-                  style={{
-                    flex: 1,
-                    width: "100%",
-                    height: "100%",
-                  }}
-                />
-              )}
-            </View>
-            <TouchableOpacity
-              style={[
-                stylesMD.modalButton,
-                { justifyContent: "center", alignSelf: "center" },
-              ]}
-              onPress={() => {
-                this.up_arrow.play();
-                setTimeout(() => {
-                  this.toggleModal(true);
-                }, 500);
-              }}
-            >
-              {/* <Text style={stylesMD.buttonText}>START</Text> */}
-              {/* <AntDesign name="API" size={42} color="black" /> */}
-              <LottieView
-                ref={(animation) => {
-                  this.up_arrow = animation;
-                }}
-                source={require("../assets/up_arrow.json")}
-                loop={false}
-              />
-            </TouchableOpacity>
-          </View>
-          <Modal
-            animationType="slide"
-            transparent={true}
-            isVisible={this.state.modalVisible}
-            swipeDirection="down"
-            onSwipeThreshold={150}
-            onSwipeComplete={() => this.setState({ modalVisible: false })}
-            backdropOpacity={0.6}
-            avoidKeyboard={false}
-            style={{ margin: 0 }}
+          <View
+            style={{
+              height: "80%",
+              width: 390,
+              alignSelf: "flex-end",
+            }}
           >
-            <KeyboardAwareScrollView
-              contentContainerStyle={[
-                Style.centerItem,
-                { justifyContent: "flex-end" },
+            {this.state.isVisible ? (
+              <View
+                style={{
+                  flex: 1,
+                }}
+              >
+                <MapDisplayComponent
+                  startingRoom={this.state.startingRoom}
+                  startingBuilding={this.state.startingBuilding}
+                  destinationRoom={this.state.destinationRoom}
+                  destinationBuilding={this.state.destinationBuilding}
+                  style={{}}
+                />
+              </View>
+            ) : (
+              <Image
+                source={static_image}
+                style={{
+                  flex: 1,
+                  width: "100%",
+                  height: "100%",
+                  position: "absolute",
+                }}
+              />
+            )}
+          </View>
+          <TouchableOpacity
+            style={[stylesMD.modalButton]}
+            onPress={() => {
+              this.up_arrow.play();
+              setTimeout(() => {
+                this.toggleModal(true);
+              }, 500);
+            }}
+          >
+            {/* <Text style={stylesMD.buttonText}>START</Text> */}
+            {/* <AntDesign name="API" size={42} color="black" /> */}
+            <LottieView
+              ref={(animation) => {
+                this.up_arrow = animation;
+              }}
+              source={require("../assets/up_arrow.json")}
+              loop={false}
+            />
+          </TouchableOpacity>
+        </SafeAreaView>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          isVisible={this.state.modalVisible}
+          swipeDirection="down"
+          onSwipeThreshold={150}
+          onSwipeComplete={() => this.setState({ modalVisible: false })}
+          backdropOpacity={0.65}
+          avoidKeyboard={false}
+          style={{ margin: 0, justifyContent: "flex-end" }}
+        >
+          <KeyboardAwareScrollView
+            contentContainerStyle={[
+              Style.centerItem,
+              { justifyContent: "flex-end" },
+            ]}
+          >
+            <SafeAreaView
+              style={[
+                stylesMD.modalBackground,
+                {
+                  height: "50%",
+                  width: "100%",
+                },
               ]}
             >
-              <SafeAreaView
-                style={[
-                  stylesMD.modalBackground,
-                  {
-                    height: "50%",
-                    width: "100%",
-                  },
-                ]}
+              <TouchableHighlight
+                style={[stylesMD.modalLine]}
+                onPress={() => {
+                  this.toggleModal(!this.state.modalVisible);
+                }}
               >
-                <TouchableHighlight
-                  style={[stylesMD.modalLine]}
-                  onPress={() => {
-                    this.toggleModal(!this.state.modalVisible);
-                  }}
-                >
-                  <View></View>
-                </TouchableHighlight>
+                <View></View>
+              </TouchableHighlight>
 
-                <View style={stylesMD.textContainer}>
-                  <Text style={stylesMD.inputText}>Enter Starting Point:</Text>
-                </View>
-                <View style={stylesMD.row}>
-                  <View>
-                    <RNPickerSelect
-                      style={pickerStyles}
-                      onValueChange={(value) => this.setStartingBuilding(value)}
-                      placeholder={{ label: "Building", value: "" }}
-                      items={[
-                        { label: "No Starting Location", value: -1 },
-                        { label: "BEC", value: "bec" },
-                        { label: "PFT", value: "pft" },
-                        { label: "Lockett", value: "loc" },
-                      ]}
-                    />
-                  </View>
-                  <TextInput
-                    style={stylesMD.source}
-                    placeholder={"Ex:1200"}
-                    onChangeText={(value) => this.setStartingRoom(value)}
-                    maxLength={4}
-                    keyboardType="numeric"
+              <View style={stylesMD.textContainer}>
+                <Text style={stylesMD.inputText}>Enter Starting Point:</Text>
+              </View>
+              <View style={stylesMD.row}>
+                <View>
+                  <RNPickerSelect
+                    style={pickerStyles}
+                    onValueChange={(value) => this.setStartingBuilding(value)}
+                    placeholder={{ label: "Building", value: "" }}
+                    items={[
+                      { label: "No Starting Location", value: -1 },
+                      { label: "BEC", value: "bec" },
+                      { label: "PFT", value: "pft" },
+                      { label: "Lockett", value: "loc" },
+                    ]}
                   />
                 </View>
-                <View style={stylesMD.textContainer}>
-                  <Text style={stylesMD.inputText}>Enter Destination:</Text>
-                </View>
-                <View style={stylesMD.row}>
-                  <View>
-                    <RNPickerSelect
-                      style={pickerStyles}
-                      onValueChange={(value) =>
-                        this.setDestinationBuilding(value)
-                      }
-                      placeholder={{ label: "Building", value: "" }}
-                      items={[
-                        { label: "BEC", value: "bec" },
-                        { label: "PFT", value: "pft" },
-                        { label: "Lockett", value: "loc" },
-                      ]}
-                    />
-                  </View>
-                  <TextInput
-                    style={stylesMD.destination}
-                    placeholder={"Ex:1615"}
-                    maxLength={4}
-                    onChangeText={(value) => this.setDestinationRoom(value)}
-                    keyboardType="numeric"
+                <TextInput
+                  style={stylesMD.source}
+                  placeholder={"Ex:1200"}
+                  onChangeText={(value) => this.setStartingRoom(value)}
+                  maxLength={4}
+                  keyboardType="numeric"
+                />
+              </View>
+              <View style={stylesMD.textContainer}>
+                <Text style={stylesMD.inputText}>Enter Destination:</Text>
+              </View>
+              <View style={stylesMD.row}>
+                <View>
+                  <RNPickerSelect
+                    style={pickerStyles}
+                    onValueChange={(value) =>
+                      this.setDestinationBuilding(value)
+                    }
+                    placeholder={{ label: "Building", value: "" }}
+                    items={[
+                      { label: "BEC", value: "bec" },
+                      { label: "PFT", value: "pft" },
+                      { label: "Lockett", value: "loc" },
+                    ]}
                   />
                 </View>
-                <TouchableOpacity
-                  style={stylesMD.modalButton2}
-                  onPress={() => {
-                    this.toggleModal(!this.state.modalVisible);
-                    this.printInputState();
-                    this.renderResults();
+                <TextInput
+                  style={stylesMD.destination}
+                  placeholder={"Ex:1615"}
+                  maxLength={4}
+                  onChangeText={(value) => this.setDestinationRoom(value)}
+                  keyboardType="numeric"
+                />
+              </View>
+              <TouchableOpacity
+                style={stylesMD.modalButton2}
+                onPress={() => {
+                  this.toggleModal(!this.state.modalVisible);
+                  this.printInputState();
+                  this.renderResults();
 
-                    // this.props.navigation.push("Rendered Map", {
-                    //   startingRoom,
-                    //   destinationRoom,
-                    //   startingBuilding,
-                    //   destinationBuilding,
-                    // });
-                  }}
-                >
-                  <Text style={stylesMD.buttonText}>Go!</Text>
-                </TouchableOpacity>
-              </SafeAreaView>
-            </KeyboardAwareScrollView>
-          </Modal>
-        </View>
+                  // this.props.navigation.push("Rendered Map", {
+                  //   startingRoom,
+                  //   destinationRoom,
+                  //   startingBuilding,
+                  //   destinationBuilding,
+                  // });
+                }}
+              >
+                <Text style={stylesMD.buttonText}>Go!</Text>
+              </TouchableOpacity>
+            </SafeAreaView>
+          </KeyboardAwareScrollView>
+        </Modal>
+        {/* </View> */}
       </ImageBackground>
     );
   }
@@ -280,8 +277,10 @@ const stylesMD = StyleSheet.create({
   screenContainer: {
     flex: 1,
     top: 20,
-    alignItems: "center",
-    flexDirection: "column",
+    height: Dimensions.get("screen").height,
+    alignSelf: "flex-end",
+    // alignItems: "flex-end",
+    // flexDirection: "column",
     backgroundColor: "#131313",
     position: "relative",
   },
@@ -323,16 +322,13 @@ const stylesMD = StyleSheet.create({
     flexDirection: "row",
   },
   modalButton: {
-    marginTop: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 50,
-    width: "100%",
-    height: "15%",
+    marginTop: 50,
+    // marginBottom: 50,
+
     backgroundColor: Colors.tertiary,
-    paddingVertical: 10,
+    paddingVertical: 20,
     paddingHorizontal: 40,
-    borderRadius: 10,
+    // borderRadius: 10,
     position: "relative",
     transform: [{ scale: 2 }],
   },
@@ -392,7 +388,9 @@ const stylesMD = StyleSheet.create({
   background: {
     flex: 1,
     justifyContent: "flex-end",
-    alignItems: "center",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    alignSelf: "flex-end",
     backgroundColor: Colors.tertiary,
     width: "100%",
     height: "100%",
