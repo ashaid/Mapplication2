@@ -39,6 +39,7 @@ class MapDisplayComponent extends Component {
       updateMap: false,
       counter: 0,
       totalMapsState: 0,
+      renderConfetti: true,
     };
   }
 
@@ -71,6 +72,7 @@ class MapDisplayComponent extends Component {
     if (this.state.totalMapsState == this.state.counter) {
       this.setState({ loading: false });
       this.props.fadeButton(false);
+      setTimeout( () => {this.setState({renderConfetti: false})}, 2500)
     } else console.log("not finished loading maps");
   };
   componentDidMount() {
@@ -278,7 +280,6 @@ class MapDisplayComponent extends Component {
     }
     return (
       <View style={Style.centerItem}>
-
         <FlatList
           maximumZoomScale={2}
           minimumZoomScale={1}
@@ -305,7 +306,7 @@ class MapDisplayComponent extends Component {
             ></Image>
           )}
         />
-                  {/* <LottieView
+          {this.state.renderConfetti ? <LottieView
           ref={(animation) => {
             this.confetti_boom = animation;
           }}
@@ -314,7 +315,7 @@ class MapDisplayComponent extends Component {
           loop={false}
           speed={0.7}
           style={{ transform: [{ scale: 1.2 }], position: "absolute", bottom: "10%" }}
-        /> */}
+        /> : console.log('confetti gone')}
       </View>
     );
   }
