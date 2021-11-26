@@ -250,19 +250,22 @@ class MapDisplay extends Component {
               <TouchableOpacity
                 style={stylesMD.modalButton2}
                 onPress={() => {
-                  this.toggleModal(!this.state.modalVisible);
+                  this.go_button.play(52, 105);
                   this.printInputState();
-                  this.renderResults();
-
-                  // this.props.navigation.push("Rendered Map", {
-                  //   startingRoom,
-                  //   destinationRoom,
-                  //   startingBuilding,
-                  //   destinationBuilding,
-                  // });
+                  setTimeout(() => {
+                    this.toggleModal(!this.state.modalVisible);
+                    this.renderResults();
+                  }, 1800);
                 }}
               >
-                <Text style={stylesMD.buttonText}>Go!</Text>
+                <LottieView
+                  ref={(animation) => {
+                    this.go_button = animation;
+                  }}
+                  source={require("../assets/go_button.json")}
+                  loop={false}
+                />
+                {/* <Text style={stylesMD.buttonText}>Go!</Text> */}
               </TouchableOpacity>
             </SafeAreaView>
           </KeyboardAwareScrollView>
@@ -336,13 +339,14 @@ const stylesMD = StyleSheet.create({
     marginTop: 0,
     alignItems: "center",
     justifyContent: "center",
+    alignSelf: "center",
     marginBottom: 10,
     width: "80%",
     height: "15%",
-    backgroundColor: "white",
+    // backgroundColor: "white",
     paddingVertical: 0,
-    paddingHorizontal: 60,
-    borderRadius: 100,
+    // paddingHorizontal: 60,
+    // borderRadius: 100,
     position: "relative",
   },
   goButton: {
