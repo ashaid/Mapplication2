@@ -154,7 +154,7 @@ class MapDisplay extends Component {
                 this.up_arrow.play();
                 setTimeout(() => {
                   this.toggleModal(true);
-                }, 500);
+                }, 400);
               }}
             >
               <LottieView
@@ -163,6 +163,7 @@ class MapDisplay extends Component {
                 }}
                 source={require("../assets/up_arrow.json")}
                 loop={false}
+                speed={1.2}
               />
             </TouchableOpacity>
           ) : null}
@@ -278,7 +279,6 @@ class MapDisplay extends Component {
             </SafeAreaView>
           </KeyboardAwareScrollView>
         </Modal>
-        {/* </View> */}
       </ImageBackground>
     );
   }

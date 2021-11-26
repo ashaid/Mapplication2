@@ -259,8 +259,8 @@ class MapDisplayComponent extends Component {
             }}
             source={require("../assets/map_loader.json")}
             loop={true}
+            style={{ transform: [{ scale: 1.2 }] }}
           />
-          {/* <FadeLoading primaryColor="white" secondaryColor="lightgray" /> */}
         </View>
       );
     }
@@ -277,32 +277,44 @@ class MapDisplayComponent extends Component {
       );
     }
     return (
-      <FlatList
-        maximumZoomScale={3}
-        minimumZoomScale={1}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        data={dataArray}
-        keyExtractor={(item, index) => index.toString()}
-        // ItemSeparatorComponent={this.renderSeperator}
-        contentContainerStyle={{}}
-        renderItem={({ item, index }) => (
-          <Image
-            source={{
-              uri: "data:image/png;charset=utf-8;base64," + item,
-            }}
-            // key={index}
-            style={[
-              Style.centerItem,
-              {
-                borderRadius: 5,
-                aspectRatio: 1.3,
-                resizeMode: "contain",
-              },
-            ]}
-          ></Image>
-        )}
-      />
+      <View style={Style.centerItem}>
+        <FlatList
+          maximumZoomScale={3}
+          minimumZoomScale={1}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          data={dataArray}
+          keyExtractor={(item, index) => index.toString()}
+          // ItemSeparatorComponent={this.renderSeperator}
+          contentContainerStyle={{}}
+          renderItem={({ item, index }) => (
+            <Image
+              source={{
+                uri: "data:image/png;charset=utf-8;base64," + item,
+              }}
+              // key={index}
+              style={[
+                Style.centerItem,
+                {
+                  borderRadius: 5,
+                  aspectRatio: 1.3,
+                  resizeMode: "contain",
+                },
+              ]}
+            ></Image>
+          )}
+        />
+        <LottieView
+          ref={(animation) => {
+            this.confetti_boom = animation;
+          }}
+          source={require("../assets/confetti.json")}
+          autoPlay
+          loop={false}
+          speed={0.7}
+          style={{ transform: [{ scale: 1.2 }] }}
+        />
+      </View>
     );
   }
 }
