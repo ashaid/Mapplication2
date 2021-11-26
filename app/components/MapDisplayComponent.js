@@ -274,7 +274,8 @@ class MapDisplayComponent extends Component {
         horizontal={true}
         showsHorizontalScrollIndicator={true}
         data={dataArray}
-        // contentContainerStyle=
+        // ItemSeparatorComponent={this.renderSeperator}
+        contentContainerStyle={{}}
         renderItem={({ item, index }) => (
           <Image
             source={{
@@ -285,9 +286,11 @@ class MapDisplayComponent extends Component {
               Style.centerItem,
               {
                 flex: 1,
-                width: Dimensions.get("window").width,
-                height: "100%",
-                resizeMode: "contain",
+                aspectRatio: "1.5",
+                // width: Dimensions.get("window").width,
+                // height: "100%",
+                resizeMode: "stretch",
+                elevation: 30,
               },
             ]}
           ></Image>
