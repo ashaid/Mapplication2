@@ -16,12 +16,15 @@ import {
   SafeAreaView,
   KeyboardAvoidingView,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import { Style, Colors } from "../style/styles";
 import RNPickerSelect from "react-native-picker-select";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { AntDesign } from "@expo/vector-icons";
 
 const static_image = require("../assets/newLogo.png");
+const SCREEN_WIDTH = Dimensions.get("window").width;
 
 class MapDisplay extends Component {
   constructor() {
@@ -100,18 +103,22 @@ class MapDisplay extends Component {
       <ImageBackground style={stylesMD.background}>
         <View style={stylesMD.screenContainer}>
           <View style={{ marginTop: 70, marginBottom: 15 }}>
-            <View style={stylesMD.headerContainer}>
+            {/* <View style={stylesMD.headerContainer}>
               <Text style={stylesMD.header}>MAP BUILDER</Text>
-            </View>
-            {/* i have border visible to see how much of the screen we are working with */}
-            <View style={{ height: "75%" }}>
+            </View> */}
+
+            <View
+              style={{
+                height: "80%",
+                width: 390,
+              }}
+            >
               {this.state.isVisible ? (
                 <View
                   style={{
                     flex: 1,
-                    width: "100%",
-                    height: "100%",
-                    resizeMode: "stretch",
+                    // width: "100%",
+                    // height: "100%",
                   }}
                 >
                   <MapDisplayComponent
@@ -129,7 +136,7 @@ class MapDisplay extends Component {
                     flex: 1,
                     width: "100%",
                     height: "100%",
-                    resizeMode: "cover",
+                    resizeMode: "",
                   }}
                 />
               )}
@@ -143,7 +150,8 @@ class MapDisplay extends Component {
                 this.toggleModal(true);
               }}
             >
-              <Text style={stylesMD.buttonText}>show modal</Text>
+              {/* <Text style={stylesMD.buttonText}>START</Text> */}
+              <AntDesign name="API" size={42} color="black" />
             </TouchableOpacity>
           </View>
           <Modal
@@ -302,16 +310,16 @@ const stylesMD = StyleSheet.create({
     flexDirection: "row",
   },
   modalButton: {
-    marginTop: 15,
+    marginTop: 0,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 120,
-    width: "80%",
-    height: "5%",
+    marginBottom: 150,
+    width: "100%",
+    height: "8%",
     backgroundColor: "white",
-    paddingVertical: 0,
-    paddingHorizontal: 60,
-    borderRadius: 100,
+    paddingVertical: 10,
+    paddingHorizontal: 40,
+    borderRadius: 10,
     position: "relative",
   },
   modalButton2: {
