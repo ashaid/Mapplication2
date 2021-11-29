@@ -213,12 +213,15 @@ class MapDisplay extends Component {
                   <RNPickerSelect
                     style={pickerStyles}
                     onValueChange={(value) => this.setStartingBuilding(value)}
-                    placeholder={{ label: "Building", value: "" }}
+                    placeholder={{
+                      label: "Building",
+                      value: "",
+                    }}
                     items={[
-                      { label: "N/A", value: -1 },
-                      { label: "BEC", value: "bec" },
-                      { label: "PFT", value: "pft" },
-                      { label: "Lockett", value: "loc" },
+                      { label: "N/A", value: -1, color: "white" },
+                      { label: "BEC", value: "bec", color: "white" },
+                      { label: "PFT", value: "pft", color: "white" },
+                      { label: "Lockett", value: "loc", color: "white" },
                     ]}
                   />
                 </View>
@@ -235,6 +238,11 @@ class MapDisplay extends Component {
               </View>
               <View style={stylesMD.row}>
                 <RNPickerSelect
+                  modalProps={{
+                    modalViewMiddle: {
+                      backgroundColor: "#232323",
+                    },
+                  }}
                   style={pickerStyles}
                   onValueChange={(value) => this.setDestinationBuilding(value)}
                   placeholder={{
@@ -242,9 +250,9 @@ class MapDisplay extends Component {
                     value: "",
                   }}
                   items={[
-                    { label: "BEC", value: "bec" },
-                    { label: "PFT", value: "pft" },
-                    { label: "Lockett", value: "loc" },
+                    { label: "BEC", value: "bec", color: "white" },
+                    { label: "PFT", value: "pft", color: "white" },
+                    { label: "Lockett", value: "loc", color: "white" },
                   ]}
                 />
                 <TextInput
@@ -459,6 +467,22 @@ const stylesMD = StyleSheet.create({
 });
 
 const pickerStyles = StyleSheet.create({
+  modalViewMiddle: {
+    backgroundColor: "#232323",
+    borderTopColor: "#252525",
+  },
+  chevron: {
+    borderColor: "#707070",
+  },
+  done: {
+    color: "#fff",
+  },
+  modalViewBottom: {
+    backgroundColor: "#252525",
+  },
+  placeholder: {
+    color: "#777777",
+  },
   inputIOS: {
     fontSize: 16,
     paddingVertical: 12,
