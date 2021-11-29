@@ -38,16 +38,33 @@ export class ProfileSettings extends Component {
               style={pickerStyles}
               placeholder={{ label: "School", value: null }}
               items={[
-                { label: "Lousiana State University", value: "lsu" },
-                { label: "Baton Rouge Community College", value: "brcc" },
+                {
+                  label: "Lousiana State University",
+                  value: "lsu",
+                  color: "#b3b3b3",
+                },
+                {
+                  label: "Baton Rouge Community College",
+                  value: "brcc",
+                  color: "#b3b3b3",
+                },
                 {
                   label: "University of Lousiana at Lafayette",
                   value: "Lafay",
+                  color: "#b3b3b3",
                 },
-                { label: "Southeastern University of Louisiana", value: "slu" },
-                { label: "University of New Orleans", value: "uno" },
-                { label: "Loyola University", value: "loyo" },
-                { label: "Tulane University", value: "tul" },
+                {
+                  label: "Southeastern University of Louisiana",
+                  value: "slu",
+                  color: "#b3b3b3",
+                },
+                {
+                  label: "University of New Orleans",
+                  value: "uno",
+                  color: "#b3b3b3",
+                },
+                { label: "Loyola University", value: "loyo", color: "#b3b3b3" },
+                { label: "Tulane University", value: "tul", color: "#b3b3b3" },
               ]}
               onValueChange={(value) => this.setUniversity(value)}
             />
@@ -89,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   dropContainer: {
-    backgroundColor: "#f2283c",
+    backgroundColor: "#462638",
     height: "15%",
     width: "75%",
     borderRadius: 10,
@@ -116,7 +133,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   line: {
-    color: "white",
+    color: "#181818",
     backgroundColor: "white",
     width: "75%",
     height: 2,
@@ -128,7 +145,7 @@ const styles = StyleSheet.create({
   TermsText: {
     display: "flex",
     position: "relative",
-    color: "white",
+    color: "#b3b3b3",
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "left",
@@ -138,7 +155,7 @@ const styles = StyleSheet.create({
   TitleText: {
     display: "flex",
     position: "relative",
-    color: "white",
+    color: "#b3b3b3",
     fontWeight: "bold",
     fontSize: 50,
     textAlign: "center",
@@ -146,24 +163,40 @@ const styles = StyleSheet.create({
 });
 
 const pickerStyles = StyleSheet.create({
+  modalViewMiddle: {
+    backgroundColor: "#232323",
+    borderTopColor: "#252525",
+  },
+  chevron: {
+    borderColor: "#707070",
+  },
+  done: {
+    color: "#fff",
+  },
+  modalViewBottom: {
+    backgroundColor: "#252525",
+  },
+  placeholder: {
+    color: "#777777",
+  },
   inputIOS: {
     fontSize: 16,
     paddingVertical: 12,
     paddingHorizontal: 100,
-    borderWidth: 1,
-    borderColor: "#131313",
-    color: "black",
+    // borderWidth: 1,
+    // borderColor: "#277dff",
+    color: "#b3b3b3",
     paddingLeft: 65,
     paddingRight: 65,
     borderRadius: 8,
-    backgroundColor: "white",
+    backgroundColor: "#121212",
   },
   inputAndroid: {
     fontSize: 16,
     paddingHorizontal: 90,
     paddingVertical: 21,
     borderWidth: 1,
-    borderColor: "#131313",
+    borderColor: "#277dff",
     borderRadius: 1,
     color: "black",
     paddingRight: 98,

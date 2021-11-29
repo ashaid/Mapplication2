@@ -218,10 +218,10 @@ class MapDisplay extends Component {
                       value: "",
                     }}
                     items={[
-                      { label: "N/A", value: -1, color: "white" },
-                      { label: "BEC", value: "bec", color: "white" },
-                      { label: "PFT", value: "pft", color: "white" },
-                      { label: "Lockett", value: "loc", color: "white" },
+                      { label: "N/A", value: -1, color: "#b3b3b3" },
+                      { label: "BEC", value: "bec", color: "#b3b3b3" },
+                      { label: "PFT", value: "pft", color: "#b3b3b3" },
+                      { label: "Lockett", value: "loc", color: "#b3b3b3" },
                     ]}
                   />
                 </View>
@@ -250,9 +250,9 @@ class MapDisplay extends Component {
                     value: "",
                   }}
                   items={[
-                    { label: "BEC", value: "bec", color: "white" },
-                    { label: "PFT", value: "pft", color: "white" },
-                    { label: "Lockett", value: "loc", color: "white" },
+                    { label: "BEC", value: "bec", color: "#b3b3b3" },
+                    { label: "PFT", value: "pft", color: "#b3b3b3" },
+                    { label: "Lockett", value: "loc", color: "#b3b3b3" },
                   ]}
                 />
                 <TextInput
@@ -308,12 +308,14 @@ const stylesMD = StyleSheet.create({
     alignItems: "center",
     // flexDirection: "column",
     backgroundColor: "#131313",
+    borderRadius: 100,
+    padding: 20,
     // position: "relative",
   },
   source: {
     borderWidth: 0.5,
     borderColor: "#277dff",
-    color: Colors.white,
+    color: "#b3b3b3",
     padding: 8,
     height: 45,
     width: "50%",
@@ -328,6 +330,7 @@ const stylesMD = StyleSheet.create({
     borderColor: "#277dff",
     paddingHorizontal: 10,
     paddingVertical: 8,
+    color: "#b3b3b3",
     height: 45,
     width: "50%",
     borderWidth: 0.5,
@@ -439,7 +442,7 @@ const stylesMD = StyleSheet.create({
   },
   inputText: {
     position: "relative",
-    color: "white",
+    color: "#b3b3b3",
     marginTop: 3,
     alignItems: "center",
     justifyContent: "center",
@@ -489,7 +492,7 @@ const pickerStyles = StyleSheet.create({
     paddingHorizontal: 100,
     borderWidth: 1,
     borderColor: "#277dff",
-    color: "white",
+    color: "#b3b3b3",
     paddingLeft: 65,
     paddingRight: 65,
     borderRadius: 8,

@@ -95,6 +95,7 @@ export const LogIn = () => {
 };
 
 export const ProfileScreen = ({ navigation }) => {
+  const { signOut } = React.useContext(AuthContext);
   return (
     <ScreenContainer>
       <View
@@ -140,7 +141,8 @@ export const ProfileScreen = ({ navigation }) => {
           <TouchableOpacity
             title="Log Out"
             onPress={() => {
-              navigation.push("Log Out");
+              // navigation.push("Log Out");
+              signOut();
             }}
             style={styles.logoutButton}
           >
