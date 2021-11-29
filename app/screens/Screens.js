@@ -95,10 +95,13 @@ export const LogIn = () => {
 export const ProfileScreen = ({ navigation }) => {
   return (
     <ScreenContainer>
-      <ImageBackground
-        style={{ flex: 1, width: "100%", height: "100%" }}
-        resizeMode="cover"
-        source={require("../assets/Background.png")}
+      <View
+        style={{
+          flex: 1,
+          width: "100%",
+          height: "100%",
+          backgroundColor: Colors.tertiary,
+        }}
       >
         <View style={styles.buttonContainer}>
           <TouchableOpacity
@@ -129,7 +132,7 @@ export const ProfileScreen = ({ navigation }) => {
             <Text style={styles.buttonText}>Log Out</Text>
           </TouchableOpacity>
         </View>
-      </ImageBackground>
+      </View>
     </ScreenContainer>
   );
 };

@@ -1,7 +1,12 @@
 import "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
+import { useColorScheme } from "react-native";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MapDisplay from "./app/screens/MapDisplay";
@@ -129,7 +134,7 @@ const MapStackScreen = () => (
 );
 
 const TabsScreen = () => (
-  <Tabs.Navigator>
+  <Tabs.Navigator barStyle={{ backgroundColor: "#282828" }}>
     <Tabs.Screen
       name="Map Display"
       component={MapStackScreen}
@@ -167,7 +172,7 @@ const RootStackScreen = ({ userToken }) => (
     headerMode="none"
     screenOptions={{
       headerShown: false,
-      headerStyle: { backgroundColor: "white", flex: 1 },
+      headerStyle: { flex: 1 },
     }}
   >
     {userToken ? (
@@ -181,6 +186,7 @@ const RootStackScreen = ({ userToken }) => (
 export default function App() {
   const [userToken, setUserToken] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
+  const scheme = useColorScheme();
   const authContext = React.useMemo(() => {
     return {
       logIn: () => {

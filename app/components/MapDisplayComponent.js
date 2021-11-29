@@ -72,7 +72,9 @@ class MapDisplayComponent extends Component {
     if (this.state.totalMapsState == this.state.counter) {
       this.setState({ loading: false });
       this.props.fadeButton(false);
-      setTimeout( () => {this.setState({renderConfetti: false})}, 2500)
+      setTimeout(() => {
+        this.setState({ renderConfetti: false });
+      }, 2500);
     } else console.log("not finished loading maps");
   };
   componentDidMount() {
@@ -306,16 +308,24 @@ class MapDisplayComponent extends Component {
             ></Image>
           )}
         />
-          {this.state.renderConfetti ? <LottieView
-          ref={(animation) => {
-            this.confetti_boom = animation;
-          }}
-          source={require("../assets/confetti.json")}
-          autoPlay
-          loop={false}
-          speed={0.7}
-          style={{ transform: [{ scale: 1.2 }], position: "absolute", bottom: "10%" }}
-        /> : console.log('confetti gone')}
+        {this.state.renderConfetti ? (
+          <LottieView
+            ref={(animation) => {
+              this.confetti_boom = animation;
+            }}
+            source={require("../assets/confetti.json")}
+            autoPlay
+            loop={false}
+            speed={0.7}
+            style={{
+              transform: [{ scale: 1.2 }],
+              position: "absolute",
+              bottom: "10%",
+            }}
+          />
+        ) : (
+          console.log("confetti gone")
+        )}
       </View>
     );
   }
