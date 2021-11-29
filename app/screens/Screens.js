@@ -16,7 +16,9 @@ import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Style, Colors } from "../style/styles";
 import { LoadEffect } from "../components/LoadEffect";
-
+import { Entypo } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 //import { white } from "react-native-paper/lib/typescript/styles/colors";
 
 export const Home = () => (
@@ -111,7 +113,11 @@ export const ProfileScreen = ({ navigation }) => {
             }}
             style={styles.scheduleButton}
           >
-            <Text style={styles.buttonText}>View Schedule</Text>
+            <View style={{ width: "18%" }}>
+              <Entypo name="calendar" size={40} color="black" />
+            </View>
+
+            <Text style={styles.buttonText}>Schedule</Text>
           </TouchableOpacity>
           <TouchableOpacity
             title="Preferences"
@@ -120,7 +126,11 @@ export const ProfileScreen = ({ navigation }) => {
             }}
             style={styles.preferencesButton}
           >
-            <Text style={styles.buttonText}>Preferences</Text>
+            <View style={{ width: "20%" }}>
+              <Ionicons name="settings" size={40} color="black" />
+            </View>
+
+            <Text style={styles.buttonText}>Settings</Text>
           </TouchableOpacity>
           <TouchableOpacity
             title="Log Out"
@@ -129,6 +139,10 @@ export const ProfileScreen = ({ navigation }) => {
             }}
             style={styles.logoutButton}
           >
+            <View style={{ width: "18%" }}>
+              <MaterialCommunityIcons name="exit-run" size={40} color="black" />
+            </View>
+
             <Text style={styles.buttonText}>Log Out</Text>
           </TouchableOpacity>
         </View>
@@ -205,11 +219,12 @@ const styles = StyleSheet.create({
   buttonText: {
     display: "flex",
     position: "relative",
-    color: Colors.white,
+    color: "#B3B3B3",
     fontWeight: "bold",
     fontSize: 30,
     textAlign: "center",
     alignSelf: "auto",
+    margin: 10,
   },
   logoContainer: {
     flexDirection: "row",
