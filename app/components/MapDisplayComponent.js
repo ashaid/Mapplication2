@@ -125,12 +125,15 @@ class MapDisplayComponent extends Component {
     let sFloorNum = parseInt(startingFloor.match(/(\d+)/));
     let dFloorNum = parseInt(destinationFloor.match(/(\d+)/));
 
+    let basementNode = false;
+
     //if a floor is in the basement aka 0, it ups the floornumber so that it is included in the map count
     if (sFloorNum == 0) {
       sFloorNum++;
     }
     if (dFloorNum == 0) {
       dFloorNum++;
+      basementNode = true;
     }
 
     //keeps the map total to 4 regardless of floor number
@@ -147,11 +150,22 @@ class MapDisplayComponent extends Component {
       TOTAL_MAPS = dFloorNum;
       this.setState({ totalMapsState: TOTAL_MAPS });
       let entranceNode = 9999;
-      this.loadData(
-        destinationFloor.replace(/.$/, dFloorNum.toString()),
-        entranceNode,
-        destinationRoom
-      );
+      if(!basementNode)
+      {
+        this.loadData(
+          destinationFloor.replace(/.$/, dFloorNum.toString()),
+          entranceNode,
+          destinationRoom
+        );
+      }
+      else
+      {
+        this.loadData(
+          destinationFloor.replace(/.$/, '0'),
+          entranceNode,
+          destinationRoom
+        );
+      }
     } else if (startBuild == destBuild) {
       // same building same floor
       TOTAL_MAPS = 2;
