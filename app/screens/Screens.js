@@ -14,11 +14,7 @@ import {
 import { AuthContext } from "../components/AuthContext";
 import { ScreenContainer } from "../components/ScreenContainer";
 import { Style, Colors } from "../style/styles";
-import { Wobble } from "../components/LogoAnimation";
-import { FadeLoading } from "react-native-fade-loading";
-import ImageView from "react-native-image-view";
-import images from "../components/CarouselData";
-import AnimatedSplash from "react-native-animated-splash-screen";
+import { SplashEffect } from "../components/SplashEffect";
 
 //import { white } from "react-native-paper/lib/typescript/styles/colors";
 
@@ -70,11 +66,13 @@ export const LogIn = () => {
     <ImageBackground style={styles.background}>
       <SafeAreaView style={{ flex: 1, height: "100%", width: "100%" }}>
         <View style={[Style.centerItem]}>
+          <SplashEffect />
           <Image
             source={require("../assets/newLogo.png")}
             style={{ resizeMode: "contain", width: "100%", height: "100%" }}
           />
         </View>
+
         <Button title="Log In" onPress={() => logIn()} />
       </SafeAreaView>
     </ImageBackground>
