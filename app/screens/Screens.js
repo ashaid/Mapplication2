@@ -72,7 +72,12 @@ export const LogIn = () => {
           <View style={[Style.centerItem, { width: "100%", height: "100%" }]}>
             <Image
               source={require("../assets/newLogo.png")}
-              style={{ resizeMode: "contain", width: "100%", height: "100%" }}
+              style={{
+                resizeMode: "contain",
+                width: "100%",
+                height: "100%",
+                position: "relative",
+              }}
             />
             <View>
               <Button

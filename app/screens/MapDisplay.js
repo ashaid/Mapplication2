@@ -134,39 +134,64 @@ class MapDisplay extends Component {
                   destinationBuilding={this.state.destinationBuilding}
                   fadeButton={this.handleFadeButton}
                 />
+                {!this.state.fadeButton ? (
+                  <TouchableOpacity
+                    style={stylesMD.modalButton}
+                    onPress={() => {
+                      this.side_arrow.play();
+                      setTimeout(() => this.renderResults(), 400);
+                    }}
+                  >
+                    <LottieView
+                      ref={(animation) => {
+                        this.side_arrow = animation;
+                      }}
+                      source={require("../assets/up_arrow.json")}
+                      loop={false}
+                      speed={1.2}
+                      style={{}}
+                    />
+                  </TouchableOpacity>
+                ) : null}
               </View>
             ) : (
-              <Image
-                source={static_image}
+              <View
                 style={{
-                  flex: 1,
                   width: "100%",
                   height: "100%",
-                  position: "absolute",
+                  flex: 1,
                 }}
-              />
+              >
+                <Image
+                  source={static_image}
+                  style={{
+                    flex: 1,
+                    width: "100%",
+                    height: "100%",
+                    position: "relative",
+                  }}
+                />
+                <TouchableOpacity
+                  style={[stylesMD.modalButton]}
+                  onPress={() => {
+                    this.up_arrow.play();
+                    setTimeout(() => {
+                      this.toggleModal(true);
+                    }, 400);
+                  }}
+                >
+                  <LottieView
+                    ref={(animation) => {
+                      this.up_arrow = animation;
+                    }}
+                    source={require("../assets/up_arrow.json")}
+                    loop={false}
+                    speed={1.2}
+                  />
+                </TouchableOpacity>
+              </View>
             )}
           </View>
-          {!this.state.fadeButton ? (
-            <TouchableOpacity
-              style={[stylesMD.modalButton]}
-              onPress={() => {
-                this.up_arrow.play();
-                setTimeout(() => {
-                  this.toggleModal(true);
-                }, 400);
-              }}
-            >
-              <LottieView
-                ref={(animation) => {
-                  this.up_arrow = animation;
-                }}
-                source={require("../assets/up_arrow.json")}
-                loop={false}
-                speed={1.2}
-              />
-            </TouchableOpacity>
-          ) : null}
         </SafeAreaView>
         <Modal
           animationType="slide"
@@ -344,15 +369,14 @@ const stylesMD = StyleSheet.create({
     flexDirection: "row",
   },
   modalButton: {
-    marginTop: 50,
+    marginTop: 30,
     // marginBottom: 50,
-
     backgroundColor: Colors.tertiary,
     paddingVertical: 20,
     paddingHorizontal: 40,
     // borderRadius: 10,
-    position: "relative",
-    transform: [{ scale: 2 }],
+    // position: "relative",
+    transform: [{ scale: 3 }],
   },
   modalButton2: {
     marginTop: 0,

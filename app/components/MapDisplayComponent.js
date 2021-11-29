@@ -155,6 +155,7 @@ class MapDisplayComponent extends Component {
     } else if (startBuild == destBuild) {
       // same building same floor
       TOTAL_MAPS = 2;
+      this.setState({ totalMapsState: TOTAL_MAPS });
       if (sFloorNum == dFloorNum) {
         TOTAL_MAPS = 1;
         this.setState({ totalMapsState: TOTAL_MAPS });
@@ -164,6 +165,7 @@ class MapDisplayComponent extends Component {
           destinationRoom
         );
       } else {
+        // this.setState({ totalMapsState: TOTAL_MAPS });
         this.loadData(
           startingFloor.replace(/.$/, sFloorNum.toString()),
           startingRoom,
