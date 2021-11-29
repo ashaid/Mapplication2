@@ -43,7 +43,7 @@ function Wobble(props) {
       >
         <Animated.Image
           style={[styles.box, animatedStyle]}
-          source={require("../assets/logo.png")}
+          source={require("../assets/newLogo.png")}
         />
       </TouchableOpacity>
     </View>
