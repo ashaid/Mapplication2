@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   ImageComponent,
   Image,
+  Touchable,
 } from "react-native";
 
 import { AuthContext } from "../components/AuthContext";
@@ -62,21 +63,24 @@ export const LogIn = () => {
   const [displayLogo, setDisplayLogo] = useState(true);
   return (
     <ImageBackground style={styles.background}>
-      <SafeAreaView style={{ flex: 1, height: "100%", width: "100%" }}>
+      <SafeAreaView
+        style={{ flex: 1, height: "100%", width: "100%", marginBottom: 50 }}
+      >
         {displayLogo ? (
           <View style={[Style.centerItem, { width: "100%", height: "100%" }]}>
             <Image
               source={require("../assets/newLogo.png")}
               style={{ resizeMode: "contain", width: "100%", height: "100%" }}
             />
-            <Button
-              style={{}}
-              title="Log In"
-              onPress={() => {
-                setDisplayLogo(false);
-                setTimeout(() => logIn(), 2000);
-              }}
-            />
+            <View>
+              <Button
+                title="Log In"
+                onPress={() => {
+                  setDisplayLogo(false);
+                  setTimeout(() => logIn(), 2000);
+                }}
+              />
+            </View>
           </View>
         ) : (
           <LoadEffect />
