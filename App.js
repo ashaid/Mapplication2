@@ -130,15 +130,6 @@ const MapStackScreen = () => (
 
 const TabsScreen = () => (
   <Tabs.Navigator>
-    {/* <Tabs.Screen
-      name="Home"
-      component={HomeStackScreen}
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="home" color={color} size={20} />
-        ),
-      }}
-    /> */}
     <Tabs.Screen
       name="Map Display"
       component={MapStackScreen}
@@ -176,7 +167,7 @@ const RootStackScreen = ({ userToken }) => (
     headerMode="none"
     screenOptions={{
       headerShown: false,
-      headerStyle: { backgroundColor: Colors.primary, flex: 1 },
+      headerStyle: { backgroundColor: "white", flex: 1 },
     }}
   >
     {userToken ? (
