@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ImageComponent,
+  Image,
 } from "react-native";
 
 import { AuthContext } from "../components/AuthContext";
@@ -67,8 +68,13 @@ export const LogIn = () => {
     // <ScreenContainer style={{ flex: 1 }}>
 
     <ImageBackground style={styles.background}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <Wobble />
+      <SafeAreaView style={{ flex: 1, height: "100%", width: "100%" }}>
+        <View style={[Style.centerItem]}>
+          <Image
+            source={require("../assets/newLogo.png")}
+            style={{ resizeMode: "contain", width: "100%", height: "100%" }}
+          />
+        </View>
         <Button title="Log In" onPress={() => logIn()} />
       </SafeAreaView>
     </ImageBackground>
