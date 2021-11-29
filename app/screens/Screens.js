@@ -114,7 +114,12 @@ export const ProfileScreen = ({ navigation }) => {
             style={styles.scheduleButton}
           >
             <View style={{ width: "18%" }}>
-              <Entypo name="calendar" size={40} color="black" />
+              <Entypo
+                name="calendar"
+                size={38}
+                color="black"
+                // style={{ backgroundColor: "red" }}
+              />
             </View>
 
             <Text style={styles.buttonText}>Schedule</Text>

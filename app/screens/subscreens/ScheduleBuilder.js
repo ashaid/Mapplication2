@@ -101,10 +101,11 @@ export class ScheduleBuilder extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, timeText: { color: "white" } }}>
         <View style={styles.container}>
           <TimeTableView
             scrollViewRef={this.scrollViewRef}
+            // this is so fucking stupid
             events={events_data}
             pivotTime={7}
             pivotEndTime={20}
@@ -114,7 +115,8 @@ export class ScheduleBuilder extends Component {
             onEventPress={this.onEventPress}
             formatDateHeader="dddd"
             locale="en-us"
-            style={styles.text}
+            // TimeTableView={scheduleStyle}
+            // style={scheduleStyle}
           />
           <Modal
             animationType="slide"
@@ -202,6 +204,12 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "transparent",
+  },
+});
+
+const scheduleStyle = StyleSheet.create({
+  timeText: {
+    color: "white",
   },
 });
 
