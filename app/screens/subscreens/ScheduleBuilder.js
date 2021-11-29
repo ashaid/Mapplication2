@@ -145,7 +145,7 @@ export class ScheduleBuilder extends Component {
                       flex: 1,
                       width: "100%",
                       height: "100%",
-                      resizeMode: "stretch",
+                      resizeMode: "contain",
                     }}
                   />
                 </TouchableHighlight>
