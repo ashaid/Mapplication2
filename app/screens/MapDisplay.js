@@ -215,7 +215,7 @@ class MapDisplay extends Component {
                     onValueChange={(value) => this.setStartingBuilding(value)}
                     placeholder={{ label: "Building", value: "" }}
                     items={[
-                      { label: "No Starting Location", value: -1 },
+                      { label: "N/A", value: -1 },
                       { label: "BEC", value: "bec" },
                       { label: "PFT", value: "pft" },
                       { label: "Lockett", value: "loc" },
@@ -234,20 +234,19 @@ class MapDisplay extends Component {
                 <Text style={stylesMD.inputText}>Enter Destination:</Text>
               </View>
               <View style={stylesMD.row}>
-                <View>
-                  <RNPickerSelect
-                    style={pickerStyles}
-                    onValueChange={(value) =>
-                      this.setDestinationBuilding(value)
-                    }
-                    placeholder={{ label: "Building", value: "" }}
-                    items={[
-                      { label: "BEC", value: "bec" },
-                      { label: "PFT", value: "pft" },
-                      { label: "Lockett", value: "loc" },
-                    ]}
-                  />
-                </View>
+                <RNPickerSelect
+                  style={pickerStyles}
+                  onValueChange={(value) => this.setDestinationBuilding(value)}
+                  placeholder={{
+                    label: "Building",
+                    value: "",
+                  }}
+                  items={[
+                    { label: "BEC", value: "bec" },
+                    { label: "PFT", value: "pft" },
+                    { label: "Lockett", value: "loc" },
+                  ]}
+                />
                 <TextInput
                   style={stylesMD.destination}
                   placeholder={"Ex:1615"}
@@ -306,6 +305,7 @@ const stylesMD = StyleSheet.create({
   source: {
     borderWidth: 0.5,
     borderColor: "#277dff",
+    color: Colors.white,
     padding: 8,
     height: 45,
     width: "50%",
@@ -314,7 +314,7 @@ const stylesMD = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 8,
     borderRadius: 10,
-    backgroundColor: "white",
+    backgroundColor: "#121212",
   },
   destination: {
     borderColor: "#277dff",
@@ -326,7 +326,7 @@ const stylesMD = StyleSheet.create({
     marginBottom: 50,
     fontSize: 16,
     borderRadius: 10,
-    backgroundColor: "white",
+    backgroundColor: "#121212",
   },
   row: {
     // flex: 1,
@@ -423,7 +423,7 @@ const stylesMD = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     alignItems: "center",
-    backgroundColor: "#99aab5",
+    backgroundColor: "#121212",
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
@@ -431,7 +431,7 @@ const stylesMD = StyleSheet.create({
   },
   inputText: {
     position: "relative",
-    color: Colors.white,
+    color: "white",
     marginTop: 3,
     alignItems: "center",
     justifyContent: "center",
@@ -439,8 +439,7 @@ const stylesMD = StyleSheet.create({
     fontSize: 18,
   },
   line: {
-    color: "white",
-    backgroundColor: "white",
+    backgroundColor: "#181818",
     width: "75%",
     height: 2,
     display: "flex",
@@ -449,8 +448,7 @@ const stylesMD = StyleSheet.create({
     borderRadius: 5,
   },
   modalLine: {
-    color: "white",
-    backgroundColor: "white",
+    backgroundColor: "#404040",
     width: "75%",
     height: "5%",
     display: "flex",
@@ -467,11 +465,11 @@ const pickerStyles = StyleSheet.create({
     paddingHorizontal: 100,
     borderWidth: 1,
     borderColor: "#277dff",
-    color: "black",
+    color: "white",
     paddingLeft: 65,
     paddingRight: 65,
     borderRadius: 8,
-    backgroundColor: "white",
+    backgroundColor: "#121212",
   },
   inputAndroid: {
     fontSize: 16,
