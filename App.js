@@ -130,7 +130,7 @@ const MapStackScreen = () => (
 
 const TabsScreen = () => (
   <Tabs.Navigator>
-    <Tabs.Screen
+    {/* <Tabs.Screen
       name="Home"
       component={HomeStackScreen}
       options={{
@@ -138,7 +138,7 @@ const TabsScreen = () => (
           <Ionicons name="home" color={color} size={20} />
         ),
       }}
-    />
+    /> */}
     <Tabs.Screen
       name="Map Display"
       component={MapStackScreen}
