@@ -286,7 +286,7 @@ class MapDisplayComponent extends Component {
 
         setTimeout(() => {
           this.loadData(destinationFloor, staircaseNode, destinationRoom);
-        }, 8000);
+        }, 9500);
       }
     }
     //prints total number of maps
