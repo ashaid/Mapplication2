@@ -168,7 +168,7 @@ class MapDisplayComponent extends Component {
             } else {
               this.loadData(
                 destinationFloor.replace(/.$/, i.toString()),
-                entranceRoom,
+                entranceNode,
                 destinationRoom
               );
             }
