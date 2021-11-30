@@ -152,11 +152,33 @@ class MapDisplayComponent extends Component {
       let entranceNode = 9999;
       if(!basementNode)
       {
-        this.loadData(
-          destinationFloor.replace(/.$/, dFloorNum.toString()),
-          entranceNode,
-          destinationRoom
-        );
+        for(let i = 1; i <= dFloorNum; i++)
+        {
+          if(i != dFloorNum)
+          {
+            this.loadData(
+              destinationFloor.replace(/.$/, i.toString()),
+              entranceNode,
+              staircaseNode
+            );
+          }
+          else{
+            if(dFloorNum != 1){
+              this.loadData(
+                destinationFloor.replace(/.$/, i.toString()),
+                staircaseNode,
+                destinationRoom
+              );
+            }
+            else{
+              this.loadData(
+                destinationFloor.replace(/.$/, i.toString()),
+                entranceRoom,
+                destinationRoom
+              );
+            }
+          }
+        }
       }
       else
       {
