@@ -150,27 +150,22 @@ class MapDisplayComponent extends Component {
       TOTAL_MAPS = dFloorNum;
       this.setState({ totalMapsState: TOTAL_MAPS });
       let entranceNode = 9999;
-      if(!basementNode)
-      {
-        for(let i = 1; i <= dFloorNum; i++)
-        {
-          if(i != dFloorNum)
-          {
+      if (!basementNode) {
+        for (let i = 1; i <= dFloorNum; i++) {
+          if (i != dFloorNum) {
             this.loadData(
               destinationFloor.replace(/.$/, i.toString()),
               entranceNode,
               staircaseNode
             );
-          }
-          else{
-            if(dFloorNum != 1){
+          } else {
+            if (dFloorNum != 1) {
               this.loadData(
                 destinationFloor.replace(/.$/, i.toString()),
                 staircaseNode,
                 destinationRoom
               );
-            }
-            else{
+            } else {
               this.loadData(
                 destinationFloor.replace(/.$/, i.toString()),
                 entranceRoom,
@@ -179,11 +174,9 @@ class MapDisplayComponent extends Component {
             }
           }
         }
-      }
-      else
-      {
+      } else {
         this.loadData(
-          destinationFloor.replace(/.$/, '0'),
+          destinationFloor.replace(/.$/, "0"),
           entranceNode,
           destinationRoom
         );
@@ -202,17 +195,21 @@ class MapDisplayComponent extends Component {
         );
       } else {
         // this.setState({ totalMapsState: TOTAL_MAPS });
+        console.log("inside pft");
+        console.log(startingRoom);
         this.loadData(
           startingFloor.replace(/.$/, sFloorNum.toString()),
           startingRoom,
           staircaseNode
         );
+        setTimeout(() => {
+          this.loadData(
+            destinationFloor.replace(/.$/, dFloorNum.toString()),
+            staircaseNode,
+            destinationRoom
+          );
+        }, 2000);
         // same building different floor
-        this.loadData(
-          destinationFloor.replace(/.$/, dFloorNum.toString()),
-          staircaseNode,
-          destinationRoom
-        );
       }
     } else {
       // min 2 max 4
@@ -222,30 +219,41 @@ class MapDisplayComponent extends Component {
         TOTAL_MAPS = mapTotalControl;
         this.setState({ totalMapsState: TOTAL_MAPS });
         this.loadData(startingFloor, startingRoom, nodeContainer[1]);
-        this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
+
+        setTimeout(() => {
+          this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
+        }, 2000);
       } else if (mapTotalControl == 3) {
         TOTAL_MAPS = mapTotalControl;
         this.setState({ totalMapsState: TOTAL_MAPS });
         if (sFloorNum < dFloorNum) {
           this.loadData(startingFloor, startingRoom, nodeContainer[1]);
+          setTimeout(() => {
+            this.loadData(
+              destinationFloor.replace(/.$/, "1"),
+              nodeContainer[0],
+              staircaseNode
+            );
+          }, 2000);
+          setTimeout(() => {
+            this.loadData(destinationFloor, staircaseNode, destinationRoom);
+          }, 4000);
           // bec1 pft2 = we know we need 3 maps
           // if sfloor < dfloor
-          this.loadData(
-            destinationFloor.replace(/.$/, "1"),
-            nodeContainer[0],
-            staircaseNode
-          );
-          this.loadData(destinationFloor, staircaseNode, destinationRoom);
         } else {
           this.loadData(startingFloor, startingRoom, staircaseNode);
+          setTimeout(() => {
+            this.loadData(
+              startingFloor.replace(/.$/, "1"),
+              staircaseNode,
+              nodeContainer[1]
+            );
+          }, 2000);
+          setTimeout(() => {
+            this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
+          }, 4000);
           // pft2 bec1
           // if sfloor > dfloor
-          this.loadData(
-            startingFloor.replace(/.$/, "1"),
-            staircaseNode,
-            nodeContainer[1]
-          );
-          this.loadData(destinationFloor, nodeContainer[0], destinationRoom);
         }
       } else {
         TOTAL_MAPS = mapTotalControl;
@@ -254,17 +262,31 @@ class MapDisplayComponent extends Component {
         // if mapTotalControl = 4
         // pft, bec, loc
         this.loadData(startingFloor, startingRoom, staircaseNode); // pft2
-        startingFloor = startingFloor.replace(/.$/, "1");
+
+        // startingFloor = startingFloor.replace(/.$/, "1");
+
         //node update for next two maps
         //nodeContainer = nodeUpdater(startingBuilding, destinationBuilding);
-        this.loadData(startingFloor, staircaseNode, nodeContainer[0]); // pft1 9997 9999
+        // pft1 9997 9999
+        setTimeout(() => {
+          this.loadData(
+            startingFloor.replace(/.$/, "1"),
+            staircaseNode,
+            nodeContainer[0]
+          );
+        }, 4000);
 
-        this.loadData(
-          destinationFloor.replace(/.$/, "1"),
-          nodeContainer[1],
-          staircaseNode
-        );
-        this.loadData(destinationFloor, staircaseNode, destinationRoom);
+        setTimeout(() => {
+          this.loadData(
+            destinationFloor.replace(/.$/, "1"),
+            nodeContainer[1],
+            staircaseNode
+          );
+        }, 6000);
+
+        setTimeout(() => {
+          this.loadData(destinationFloor, staircaseNode, destinationRoom);
+        }, 8000);
       }
     }
     //prints total number of maps
